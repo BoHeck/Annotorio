@@ -1,0 +1,48 @@
+-----------------------
+the listed images are from "Unkown Horizons" (http://unknown-horizons.org/) or to be more clear rendered from blender files made for said game.
+My derivations are licenced under their original licence. A copy of the orininal files can be gotten from "git@github.com:unknown-horizons/gfx.git"
+
+apple_orchard.png 
+a)  from  "uh_farm_pioneer-BLENDER_v249.blend"  by "kaschte"
+b) from "cacao_field-BLENDER-v276.blend" by "janexx" under "Creative Commons Attribution Sharealike 3.0 Unported License"
+
+distillery.png  by "manthus" from "destilliry-BLENDER_v256.blend"
+fishers_hut.png by "dauerflucher" from "fisher_tent-BLENDER_v247.blend"
+kontor.png + kontor_s.png  by "janexx" based from "warehouse_citizens_BLENDER-v276.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+sheep_farm.png  by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+tree_planter.png by "kaschte" from "uh_settler_lumberjack-BLENDER_v249.blend"
+weaver.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"
+woodcutter.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
+
+blacksmith.png by "unknownscribe" from "blacksmith.blend" under http://creativecommons.org/licenses/by-sa/3.0/legalcode also contains
+model and artwork from "Clint Bellanger"(CC-BY-SA 3.0) and Riidom (CC-BY 3.0)
+
+-----------------
+Made by me "TheFunnySide" (from assets of the public domain) released under the main licence of this mod 
+
+fishing_boat.png
+fishing_route.png
+clay_pit_big_png
+mine.png + mine_s.png
+smelter_idle.png + smelter_working.png + smelter_shadow.png
+kiln.png + kiln_shadow.png
+
+------------
+_tree_08_70000.png from "https://opengameart.org/content/tree-collection-v26-bleeds-game-art"   by "Bleed - http://remusprites.carbonmade.com/" under  "https://creativecommons.org/licenses/by/3.0/"
+
+house_citizen.png  from "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
+"Bleed's Game Art - https://www.patreon.com/bleed" 
+
+house_pioneer.png  from "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/"
+
+house_settler.png from "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/"
+----------------
+fish_resource_sheet2.png by "WeaponGuy" rendered  from "animated_rainbowtrout.blend"  from "https://opengameart.org/content/animated-fish-swarm-ready-for-isometric-rendering" 
+
+---------------
+marketplace.png a comibnation of
+a)  "Household" by "Bleed" from "https://opengameart.org/content/household-collection-bleeds-game-art" under "https://creativecommons.org/licenses/by/3.0/" 
+ also see "http://remusprites.carbonmade.com/"
+b)"cart_isometric" by Bleed  .."...
+c)  by "janexx" from "uh_sailor_main_square-BLENDER_v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+---------------

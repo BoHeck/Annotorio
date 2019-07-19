@@ -1,0 +1,44 @@
+{
+  "entity": [
+    [
+      "hidden_generator_forPioniers",
+      "hidden_generator_for_pioneers"
+    ],
+    [
+      "hidden_generator_forsettlers",
+      "hidden_generator_for_settlers"
+    ],
+    [
+      "hidden_generator_forCitizens",
+      "hidden_generator_for_citizens"
+    ],
+    [
+      "house_pionier",
+      "house_pioneer"
+    ]
+  ],
+  "item": [
+    [
+      "house_pionier",
+      "house_pioneer"
+    ],
+    [
+      "marketplace",
+      "marketplace_dummy"
+    ]
+  ],
+  "recipe": [
+    [
+      "pionier_needs",
+      "pioneer_needs"
+    ],
+    [
+      "house_pionier",
+      "house_pioneer"
+    ],
+    [
+      "marketplace",
+      "marketplace_dummy"
+    ]
+  ]
+}

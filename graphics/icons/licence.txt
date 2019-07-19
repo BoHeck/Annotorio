@@ -1,0 +1,78 @@
+﻿-----------------------------------------
+Following pictures can not be shared outside this mod.
+They contain (at least partially) art by "Rexard" included in some humble bundle i bought.
+
+anno_fish_icon.png
+fish_fluid_icon.png
+fishers_hut_icon.png
+fishing_route_icon.png
+wood_icon.png
+gold_icon.png
+seedling_icon.png
+tree_planter_icon.png
+anno_arrow_icon.png (ar_t_02.png)
+trade_category_icon.png
+weapon_category_icon.png
+intermediate_category_icon.png
+production_category_icon.png
+------------------------------------------
+
+bow_icon.png by "DYCHA / Ravenmore - http://dycha.net" from "RavenmoreIconPack.02.2014" under https://creativecommons.org/licenses/by/3.0/    
+
+------------------------------------------
+
+cold_climate_fertile_soil_icon.png and warm_climate_fertile_soil_icon.png  made by combining 
+"grass_and_water_0.png" from "Clint Bellanger" under  https://creativecommons.org/licenses/by/3.0/
+and "snowflake.png" from "mkwong98" under public domain
+
+-----------------------
+bazaar_icon.png by "Daniel Eddeland" from "https://opengameart.org/content/lpc-farming-tilesets-magic-animations-and-ui-elements" under "https://creativecommons.org/licenses/by-sa/3.0/"
+-----------------------
+the listed images are from "Unkown Horizons" (http://unknown-horizons.org/) or to be more clear rendered from blender files made for said game.
+My derivations are licenced under their original licence.
+
+kontor_icon.png by "janexx" based from "warehouse_citizens_BLENDER-v276.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+
+marketplace_icon.png by "janexx" from "uh_sailor_main_square-BLENDER_v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+
+sheep_farm_icon.png by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+and "Daniel Eddeland" from  "sheep_walk_by_daneeklu.png" from "https://opengameart.org/content/lpc-style-farm-animals" under reative Commons Attribution Sharealike 3.0 Unported License 
+
+apple_orchard_icon.png TODO
+blacksmith_icon.png TODO
+
+
+weaver_icon.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"
+woodcutter_icon.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
+distillery_icon.png  by "manthus" from "destilliry-BLENDER_v256.blend"
+
+----------------
+Made by me "TheFunnySide" (from assets of the public domain) released under the main licence of this mod 
+
+anno_tool_icon.png
+apple_icon.png
+ceramics_icon.png
+cider_icon.png
+cloth_icon.png
+copperwares_icon.png
+kiln_icon.png
+smelter_icon.png
+wood_barrel_icon.png
+wool_icon.png
+burned_brick_icon.png
+---------------
+
+young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
+under  "https://creativecommons.org/licenses/by/3.0/"
+
+house_pioneer_icon.png is based on "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/"
+
+house_settler_icon.png is based on "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/"
+
+house_citizen_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
+"Bleed's Game Art - https://www.patreon.com/bleed" 
+
+---------------
+clay_icon.png is a tinted version of "stone.png" from Factorio
+clay_pit_icon.png contains a tinted version of "stone.png" from Factorio
+mine_icon.png contains resource icon parts from Factorio
