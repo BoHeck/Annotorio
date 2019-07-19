@@ -1,0 +1,15 @@
+This mod "Annotorio" was created by "TheFunnySide" contact boheck52@gmail.com
+
+The main licence of this mod is Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.(Other licence documents refer to this as main licence.)
+
+Please give attribution to "Annotorio by TheFunnySide" you may also link to the mod
+
+My source code is licensed under the main licence.
+
+But since this mod contains the works of many different artists, it is not possible to release under a unified licence.
+So in every relevant folder there is a licence document compiling licence-information. If something is not listed do not assume that it can be shared.
+
+All licences do not include the right to use the name "Annotorio" in any derivative work except when giving attribution.
+
+
+Special thanks to the developers of "Unkown Horizons" http://unknown-horizons.org/ . If possible give this game a shot , it is open source and free!
