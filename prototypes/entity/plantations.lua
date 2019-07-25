@@ -45,7 +45,7 @@ local template = {
         height = 10
     },
     monitor_visualization_tint = {r = 78, g = 173, b = 255},
-    fast_replaceable_group = "mining-drill",
+    fast_replaceable_group = "plantation",
     circuit_wire_connection_points = circuit_connector_definitions["electric-mining-drill"].points,
     circuit_connector_sprites = circuit_connector_definitions["electric-mining-drill"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance
@@ -77,6 +77,50 @@ data:extend(
 --------------------------------------------------
 data:extend(
     {
+        --  apple_orchard_dummy
+        {
+            type = "item",
+            name = "apple_orchard_dummy",
+            icon = "__Annotorio__/graphics/icons/apple_orchard_icon.png",
+            icon_size = 64,
+            subgroup = "plantation",
+            order = "b[building]-r[apple_orchard]",
+            place_result = "apple_orchard_dummy",
+            stack_size = 25
+        },
+        --Apple orchard dummy
+        {
+            type = "recipe",
+            name = "apple_orchard_dummy",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"wood", 6},
+                {"anno_tool", 2}
+            },
+            result = "apple_orchard_dummy"
+        },
+        --Apple
+        {
+            type = "item",
+            name = "apple",
+            icon = "__Annotorio__/graphics/icons/apple_icon.png",
+            icon_size = 64,
+            subgroup = "anno_raw",
+            order = "f[apple]",
+            stack_size = 50
+        },
+        --grow Aplles
+        {
+            type = "recipe",
+            name = "grow_apples",
+            enabled = true,
+            hidden = false,
+            energy_required = 2.5,
+            category = "predetermined",
+            ingredients = {},
+            result = "apple"
+        },
         --apple orchard
         {
             type = "assembling-machine",

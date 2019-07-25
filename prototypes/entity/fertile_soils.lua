@@ -1,9 +1,5 @@
 --Note nothing is actually mining these soils. They are only meant to limit the places where certain plantations can be build
 
---local res_index = resource_autoplace.get_next_resource_index()
---resource_autoplace.resource_indexes["cold_climate_fertile_soil"] = res_index
---res_index = resource_autoplace.get_next_resource_index()
---resource_autoplace.resource_indexes["warm_climate_fertile_soil"] = res_index
 data:extend(
     {
         --------- categories -------------
@@ -30,6 +26,26 @@ data:extend(
             category = "resource"
         },
         ----------------------------------
+        --cold_climate_fertile_soil
+        {
+            type = "item",
+            name = "cold_climate_fertile_soil",
+            icon = "__Annotorio__/graphics/icons/cold_climate_fertile_soil_icon.png",
+            icon_size = 64,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 50
+        },
+        --warm_climate_fertile_soil
+        {
+            type = "item",
+            name = "warm_climate_fertile_soil",
+            icon = "__Annotorio__/graphics/icons/warm_climate_fertile_soil_icon.png",
+            icon_size = 32,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 64
+        },
         {
             type = "resource",
             name = "cold_climate_fertile_soil",

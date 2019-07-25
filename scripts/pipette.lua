@@ -10,8 +10,6 @@ function pipette_init()
 
     for i, recipe in pairs(game.recipe_prototypes) do
         if (recipe.name == recipe.products[1].name) then
-            --log(recipe.name .. " and " .. recipe.products[1].name)
-
             global.pipette_pair[recipe.products[1].name] = recipe --This might not seem usefull now but it enables us to later  add pairs by hand....
         end
     end

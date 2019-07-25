@@ -1,5 +1,139 @@
 data:extend(
     {
+        --  blacksmith
+        {
+            type = "item",
+            name = "blacksmith",
+            icon = "__Annotorio__/graphics/icons/blacksmith_icon.png",
+            icon_size = 64,
+            subgroup = "advanced",
+            order = "b[building]-r[blacksmith]",
+            place_result = "blacksmith",
+            stack_size = 25
+        },
+        --Blacksmith
+        {
+            type = "recipe",
+            name = "blacksmith",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"wood", 6},
+                {"ceramics", 9},
+                {"anno_tool", 3}
+            },
+            result = "blacksmith"
+        },
+        {
+            type = "recipe-category",
+            name = "blacksmith"
+        },
+        --wood barrel
+        {
+            type = "recipe",
+            name = "wood_barrel",
+            enabled = true,
+            hidden = false,
+            energy_required = 2,
+            subgroup = "blacksmith",
+            category = "blacksmith",
+            ingredients = {
+                {"wood", 2},
+                {"iron-plate", 1}
+            },
+            result = "wood_barrel",
+            allow_as_intermediate = true
+        },
+        --Tool
+        {
+            type = "item",
+            name = "anno_tool",
+            icon = "__Annotorio__/graphics/icons/anno_tool_icon.png",
+            icon_size = 64,
+            subgroup = "advanced_item",
+            order = "a[anno_tool]",
+            stack_size = 50
+        },
+        --copperwares
+        {
+            type = "tool",
+            name = "copperwares",
+            icon = "__Annotorio__/graphics/icons/copperwares_icon.png",
+            icon_size = 64,
+            subgroup = "advanced_item",
+            order = "d[copperwares]",
+            stack_size = 50,
+            durability = 1,
+            durability_description_key = "description.science-pack-remaining-amount-key",
+            durability_description_value = "description.science-pack-remaining-amount-value"
+        },
+        --wood_barrel
+        {
+            type = "item",
+            name = "wood_barrel",
+            icon = "__Annotorio__/graphics/icons/wood_barrel_icon.png",
+            icon_size = 64,
+            subgroup = "advanced_item",
+            order = "f[wood_barrel]",
+            stack_size = 50
+        },
+        --Tools
+        {
+            type = "recipe",
+            name = "anno_tool",
+            ingredients = {
+                {"wood", 1},
+                {"iron-plate", 1}
+            },
+            result = "anno_tool",
+            energy_required = 2,
+            subgroup = "blacksmith",
+            category = "blacksmith",
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        -- anno_arrow
+        {
+            type = "recipe",
+            name = "anno_arrow",
+            enabled = true,
+            energy_required = 3,
+            category = "blacksmith",
+            ingredients = {
+                {"wood", 2},
+                {"iron-plate", 1}
+            },
+            result = "anno_arrow",
+            allow_as_intermediate = true
+        },
+        -- bow
+        {
+            type = "recipe",
+            name = "bow",
+            enabled = true,
+            energy_required = 6,
+            category = "blacksmith",
+            ingredients = {
+                {"wood", 1}
+            },
+            result = "bow",
+            allow_as_intermediate = true
+        },
+        --copperwares
+        {
+            type = "recipe",
+            name = "copperwares",
+            enabled = true,
+            energy_required = 6,
+            subgroup = "blacksmith",
+            category = "blacksmith",
+            ingredients = {
+                {"copper-plate", 2},
+                {"anno_tool", 1}
+            },
+            results = {{"copperwares", 2}}
+        },
         --Blacksmith
         {
             type = "assembling-machine",
@@ -35,7 +169,7 @@ data:extend(
                         width = 355,
                         height = 280,
                         scale = 0.5,
-                        shift = util.by_pixel(24,-4)
+                        shift = util.by_pixel(24, -4)
                     }
                 }
             },

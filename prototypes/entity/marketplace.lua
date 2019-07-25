@@ -2,6 +2,32 @@ data:extend(
     {
         --Marketplace
         {
+            type = "item",
+            name = "marketplace_dummy",
+            icon = "__Annotorio__/graphics/icons/marketplace_icon.png",
+            icon_size = 64,
+            subgroup = "administration",
+            order = "b",
+            place_result = "marketplace_dummy",
+            stack_size = 25
+        },
+        --Marketplace
+        {
+            type = "recipe",
+            name = "marketplace_dummy",
+            ingredients = {
+                {"wood", 5},
+                {"anno_tool", 3}
+            },
+            result = "marketplace_dummy",
+            energy_required = 0.1,
+            --5
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --Marketplace
+        {
             type = "electric-pole",
             name = "marketplace_dummy",
             icon = "__Annotorio__/graphics/icons/marketplace_icon.png",
@@ -14,7 +40,7 @@ data:extend(
             collision_box = {{-3.65, -2.65}, {3.65, 2.65}},
             selection_box = {{-4, -3}, {4, 3}},
             drawing_box = {{-4, -3}, {4, 3}},
-            maximum_wire_distance = 64,
+            maximum_wire_distance = 1,
             supply_area_distance = 36,
             vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
             pictures = {
@@ -30,6 +56,7 @@ data:extend(
                     }
                 }
             },
+            draw_copper_wires=false,
             connection_points = {
                 {
                     shadow = {

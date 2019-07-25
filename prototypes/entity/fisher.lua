@@ -251,6 +251,110 @@ fish_fluid_animation_overlay = {
 
 data:extend(
     {
+        --Fishing Boat (is a building)
+        {
+            type = "item",
+            name = "fishing_boat",
+            icon = "__Annotorio__/graphics/icons/fishing_boat_icon.png",
+            icon_size = 64,
+            subgroup = "fishing",
+            order = "b[building]-f[fishing_boat]",
+            place_result = "fishing_boat",
+            stack_size = 25
+        },
+        --Fishing Route aka fish pipe
+        {
+            type = "item",
+            name = "fishing_route",
+            icon = "__Annotorio__/graphics/icons/fishing_route_icon.png",
+            icon_size = 64,
+            subgroup = "fishing",
+            order = "b[building]-f[fishing_route]",
+            place_result = "fishing_route",
+            stack_size = 50
+        },
+        --fishers hut
+        {
+            type = "item",
+            name = "fishers_hut",
+            icon = "__Annotorio__/graphics/icons/fishers_hut_icon.png",
+            icon_size = 64,
+            subgroup = "fishing",
+            order = "b[building]-f[fishers_hut]",
+            place_result = "fishers_hut",
+            stack_size = 25
+        },
+        -- fishing boat
+        {
+            type = "recipe",
+            name = "fishing_boat",
+            ingredients = {
+                {"wood", 6},
+                {"anno_tool", 2},
+                {"cloth", 4}
+            },
+            result = "fishing_boat",
+            energy_required = 0.1,
+            --5
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        -- fishing route aka fish pipe
+        {
+            type = "recipe",
+            name = "fishing_route",
+            ingredients = {},
+            result = "fishing_route",
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        -- fishers hut
+        {
+            type = "recipe",
+            name = "fishers_hut",
+            ingredients = {
+                {"wood", 6},
+                {"anno_tool", 2}
+            },
+            result = "fishers_hut",
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --anno Fish
+        {
+            type = "tool",
+            name = "anno_fish",
+            icon = "__Annotorio__/graphics/icons/anno_fish_icon.png",
+            icon_size = 64,
+            subgroup = "anno_raw",
+            order = "d[fish]",
+            stack_size = 50,
+            durability = 1,
+            durability_description_key = "description.science-pack-remaining-amount-key",
+            durability_description_value = "description.science-pack-remaining-amount-value"
+        },
+        --Fish
+        {
+            type = "recipe",
+            name = "fishing",
+            enabled = true,
+            hidden = false,
+            energy_required = 4,
+            category = "predetermined",
+            ingredients = {
+                {
+                    type = "fluid",
+                    name = "fish_fluid",
+                    amount = 80
+                }
+            },
+            result = "anno_fish"
+        },
         fish_fluid_animation_overlay,
         -- category fish_fluid
         {

@@ -25,12 +25,20 @@ local intermediate_subgroup_people_needs = {
     group = "intermediate-products",
     order = "aa"
 }
+local intermediate_subgroup_advanced_item = {
+    type = "item-subgroup",
+    name = "advanced_item",
+    group = "intermediate-products",
+    order = "ee"
+}
+
 local intermediate_subgroup_anno_raw = {
     type = "item-subgroup",
     name = "anno_raw",
     group = "intermediate-products",
     order = "bb"
 }
+
 local intermediate_subgroup_smelter = {
     type = "item-subgroup",
     name = "smelter",
@@ -50,7 +58,57 @@ local intermediate_subgroup_misc = {
     order = "ff"
 }
 
+local luxus_building = {
+    type = "item-subgroup",
+    name = "luxus_building",
+    group = "logistics",
+    order = "zz"
+}
 
+local house = {
+    type = "item-subgroup",
+    name = "house",
+    group = "logistics",
+    order = "xx"
+}
+
+local administration = {
+    type = "item-subgroup",
+    name = "administration",
+    group = "logistics",
+    order = "ww"
+}
+
+local fishing = {
+    type = "item-subgroup",
+    name = "fishing",
+    group = "production",
+    order = "b"
+}
+local basic = {
+    type = "item-subgroup",
+    name = "basic",
+    group = "production",
+    order = "a"
+}
+local advanced = {
+    type = "item-subgroup",
+    name = "advanced",
+    group = "production",
+    order = "z"
+}
+local pasture = {
+    type = "item-subgroup",
+    name = "pasture",
+    group = "production",
+    order = "d"
+}
+local plantation = {
+    type = "item-subgroup",
+    name = "plantation",
+    group = "production",
+    order = "e"
+}
 
 data:extend(
     {
@@ -58,10 +116,19 @@ data:extend(
         trade_subgroup_sell,
         trade_subgroup_buy,
         intermediate_subgroup_people_needs,
+        intermediate_subgroup_advanced_item,
         intermediate_subgroup_blacksmith,
         intermediate_subgroup_smelter,
         intermediate_subgroup_anno_raw,
-        intermediate_subgroup_misc
+        intermediate_subgroup_misc,
+        luxus_building,
+        house,
+        administration,
+        fishing,
+        basic,
+        advanced,
+        pasture,
+        plantation
     }
 )
 

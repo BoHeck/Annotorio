@@ -1,5 +1,71 @@
 data:extend(
     {
+        --  kiln
+        {
+            type = "item",
+            name = "kiln",
+            icon = "__Annotorio__/graphics/icons/kiln_icon.png",
+            icon_size = 64,
+            subgroup = "advanced",
+            order = "b[building]-r[kiln]",
+            place_result = "kiln",
+            stack_size = 25
+        },
+        --kiln
+        {
+            type = "recipe",
+            name = "kiln",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"clay", 9}
+            },
+            result = "kiln"
+        },
+        --ceramics
+        {
+            type = "item",
+            name = "ceramics",
+            icon = "__Annotorio__/graphics/icons/ceramics_icon.png",
+            icon_size = 64,
+            subgroup = "advanced_item",
+            order = "a[bricks]",
+            stack_size = 50
+        },
+        {
+            type = "recipe-category",
+            name = "kiln"
+        },
+        -- ceramics 1
+        {
+            type = "recipe",
+            name = "ceramics_1",
+            enabled = true,
+            energy_required = 24,
+            category = "kiln",
+            ingredients = {
+                {"clay", 12},
+                {"wood", 2}
+            },
+            results = {
+                {"ceramics", 6}
+            }
+        },
+        -- ceramics 2
+        {
+            type = "recipe",
+            name = "ceramics_2",
+            enabled = true,
+            energy_required = 24,
+            category = "kiln",
+            ingredients = {
+                {"clay", 12},
+                {"coal", 2}
+            },
+            results = {
+                {"ceramics", 6}
+            }
+        },
         --kiln
         {
             type = "assembling-machine",
@@ -35,7 +101,7 @@ data:extend(
                         width = 176,
                         height = 180,
                         scale = 0.5,
-                        shift = util.by_pixel(16, 8),
+                        shift = util.by_pixel(16, 8)
                     },
                     {
                         filename = "__Annotorio__/graphics/entity/kiln_shadow.png",

@@ -1,5 +1,59 @@
 data:extend(
     {
+        --  distillery
+        {
+            type = "item",
+            name = "distillery",
+            icon = "__Annotorio__/graphics/icons/distillery_icon.png",
+            icon_size = 64,
+            subgroup = "advanced",
+            order = "b[building]-r[distillery]",
+            place_result = "distillery",
+            stack_size = 25
+        },
+        --Distillery
+        {
+            type = "recipe",
+            name = "distillery",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"wood", 12},
+                {"anno_tool", 3}
+            },
+            result = "distillery"
+        },
+        --cider
+        {
+            type = "tool",
+            name = "cider",
+            icon = "__Annotorio__/graphics/icons/cider_icon.png",
+            icon_size = 64,
+            subgroup = "advanced_item",
+            order = "d[cider]",
+            stack_size = 50,
+            durability = 1,
+            durability_description_key = "description.science-pack-remaining-amount-key",
+            durability_description_value = "description.science-pack-remaining-amount-value"
+        },
+        {
+            type = "recipe-category",
+            name = "distillery"
+        },
+        --Cider pressing
+        {
+            type = "recipe",
+            name = "press_cider",
+            enabled = true,
+            hidden = false,
+            energy_required = 4,
+            category = "distillery",
+            ingredients = {
+                {"apple", 4},
+                {"ceramics", 1}
+            },
+            result = "cider"
+        },
         --Distillery
         {
             type = "assembling-machine",

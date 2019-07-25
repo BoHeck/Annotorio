@@ -6,11 +6,90 @@ local anno_wodden_splitter = table.deepcopy(data.raw["splitter"]["splitter"])
 anno_wodden_splitter.name = "anno_wodden_splitter"
 anno_wodden_splitter.minable = {mining_time = 0.1, result = "anno_wodden_splitter"}
 
-
 data:extend(
     {
         anno_wooden_underground_belt,
         anno_wodden_splitter,
+        --wooden belt
+        {
+            type = "item",
+            name = "anno_wooden_belt",
+            icon = "__base__/graphics/icons/transport-belt.png",
+            icon_size = 32,
+            subgroup = "transport",
+            order = "b[building]-h[anno_wooden_belt]",
+            place_result = "anno_wooden_belt",
+            stack_size = 100
+        },
+        --anno_wooden_underground_belt
+        {
+            type = "item",
+            name = "anno_wooden_underground_belt",
+            icon = "__base__/graphics/icons/underground-belt.png",
+            icon_size = 32,
+            subgroup = "transport",
+            order = "b[building]-h[anno_wooden_underground_belt]",
+            place_result = "anno_wooden_underground_belt",
+            stack_size = 100
+        },
+        --anno_wodden_splitter
+        {
+            type = "item",
+            name = "anno_wodden_splitter",
+            icon = "__base__/graphics/icons/splitter.png",
+            icon_size = 32,
+            subgroup = "transport",
+            order = "b[building]-h[anno_wodden_splitter]",
+            place_result = "anno_wodden_splitter",
+            stack_size = 100
+        },
+        --  wooden belt
+        {
+            type = "recipe",
+            name = "anno_wooden_belt",
+            ingredients = {
+                {"wood", 1}
+            },
+            results = {
+                {"anno_wooden_belt", 1}
+            },
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --  anno wooden underground belt
+        {
+            type = "recipe",
+            name = "anno_wooden_underground_belt",
+            ingredients = {
+                {"wood", 8},
+                {"anno_tool", 2}
+            },
+            results = {
+                {"anno_wooden_underground_belt", 2}
+            },
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --  anno_wodden_splitter
+        {
+            type = "recipe",
+            name = "anno_wodden_splitter",
+            ingredients = {
+                {"wood", 4},
+                {"anno_tool", 2}
+            },
+            results = {
+                {"anno_wodden_splitter", 1}
+            },
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
         {
             type = "transport-belt",
             name = "anno_wooden_belt",

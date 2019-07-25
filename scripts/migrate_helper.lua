@@ -100,8 +100,14 @@ function migrate_0_3_3()
 end
 
 function migrate_0_3_4()
-    log("apply 0_3_4 to 0_3_5")
+    log("apply 0_3_4 to higher")
+    log("Migrating version 0_3_4 or lower can not be migrated to 0_4_0 or higher")
+    error("Migrating version 0_3_4 or lower can not be migrated to 0_4_0 or higher")
 end
+
+
+
+
 
 function allways_try_these()
     --Redo players gui

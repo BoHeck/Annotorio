@@ -1,5 +1,85 @@
 data:extend(
     {
+        --House1
+        {
+            type = "item",
+            name = "house_pioneer",
+            icon = "__Annotorio__/graphics/icons/house_pioneer_icon.png",
+            icon_size = 64,
+            subgroup = "house",
+            order = "a",
+            place_result = "house_pioneer",
+            stack_size = 25
+        },
+        --House2
+        {
+            type = "item",
+            name = "house_settler",
+            icon = "__Annotorio__/graphics/icons/house_settler_icon.png",
+            icon_size = 64,
+            subgroup = "house",
+            order = "b",
+            place_result = "house_settler",
+            stack_size = 25
+        },
+        --House3
+        {
+            type = "item",
+            name = "house_citizen",
+            icon = "__Annotorio__/graphics/icons/house_citizen_icon.png",
+            icon_size = 64,
+            subgroup = "house",
+            order = "c",
+            place_result = "house_citizen",
+            stack_size = 25
+        },
+        --House 1
+        {
+            type = "recipe",
+            name = "house_pioneer",
+            ingredients = {
+                {"wood", 6}
+            },
+            result = "house_pioneer",
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --House 2
+        {
+            type = "recipe",
+            name = "house_settler",
+            ingredients = {
+                {"wood", 9},
+                {"anno_tool", 2},
+                {"house_pioneer", 1}
+            },
+            result = "house_settler",
+            category = "not_in_build",
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --House 3
+        {
+            type = "recipe",
+            name = "house_citizen",
+            hidden = true,
+            ingredients = {
+                {"ceramics", 24},
+                {"wood", 18},
+                {"anno_tool", 12},
+                {"house_settler", 1}
+            },
+            result = "house_citizen",
+            category = "not_in_build",
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
         --house1
         {
             type = "assembling-machine",
@@ -15,7 +95,7 @@ data:extend(
             },
             energy_usage = "0.000001kW",
             -----------
-
+            fast_replaceable_group = "house",
             icon = "__Annotorio__/graphics/icons/house_pioneer_icon.png",
             icon_size = 64,
             flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -63,7 +143,7 @@ data:extend(
             },
             energy_usage = "0.000001kW",
             -----------
-
+            fast_replaceable_group = "house",
             icon = "__Annotorio__/graphics/icons/house_settler_icon.png",
             icon_size = 64,
             flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -114,7 +194,7 @@ data:extend(
             },
             energy_usage = "0.00001kW",
             -----------
-
+            fast_replaceable_group = "house",
             icon = "__Annotorio__/graphics/icons/house_citizen_icon.png",
             icon_size = 64,
             flags = {"placeable-neutral", "placeable-player", "player-creation"},

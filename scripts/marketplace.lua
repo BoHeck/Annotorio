@@ -3,6 +3,8 @@
 --function ifMarketRemoved()
 -------------------------------------------------------
 
+require("scripts.united_grid")
+
 if (global.markets == nil) then
     global.markets = {}
 end
@@ -34,6 +36,8 @@ function ifMarketBuild(event, entity_name)
             create_build_effect_smoke = false
         }
 
+        add_to_the_grid(ent3)
+
         global.markets[ent2.unit_number] = {
             pole = ent3,
             chest = ent2
@@ -46,7 +50,9 @@ end
 function ifMarketRemoved(event, entity_name)
     local ent = event.entity
     if (entity_name == "marketplace_chest") then
+        remove_from_grid(global.markets[ent.unit_number].pole)
+
         global.markets[ent.unit_number].pole.destroy()
-        global.markets[ent.unit_number]=nil
+        global.markets[ent.unit_number] = nil
     end
 end

@@ -1,6 +1,54 @@
 data:extend(
     {
-        --Woodcutter
+        -- tree planter
+        {
+            type = "item",
+            name = "tree_planter",
+            icon = "__Annotorio__/graphics/icons/tree_planter_icon.png",
+            icon_size = 64,
+            subgroup = "advanced",
+            order = "b[building]-r[tree_planter]",
+            place_result = "tree_planter",
+            stack_size = 25
+        },
+        --tree planter
+        {
+            type = "recipe",
+            name = "tree_planter",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"wood", 3},
+                {"anno_tool", 1}
+            },
+            result = "tree_planter"
+        },
+        --young tree
+        {
+            type = "item",
+            name = "young_tree",
+            icon = "__Annotorio__/graphics/icons/young_tree_icon.png",
+            icon_size = 64,
+            subgroup = "misc",
+            order = "f[young_tree]",
+            place_result = "young_tree",
+            stack_size = 100
+        },
+        --young tree
+        {
+            type = "recipe",
+            name = "young_tree",
+            enabled = true,
+            hidden = false,
+            energy_required = 1,
+            subgroup = "misc",
+            category = "predetermined",
+            ingredients = {
+                {"seedling", 1}
+            },
+            result = "young_tree"
+        },
+        --tree planter
         {
             type = "assembling-machine",
             ------------------

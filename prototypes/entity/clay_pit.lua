@@ -33,6 +33,54 @@ data:extend(
             type = "resource-category",
             name = "anno_clay"
         },
+        --Clay Pit
+        {
+            type = "item",
+            name = "clay_pit_dummy",
+            icon = "__Annotorio__/graphics/icons/clay_pit_icon.png",
+            icon_size = 64,
+            subgroup = "basic",
+            order = "b[building]-f[clay_pit]",
+            place_result = "clay_pit_dummy",
+            stack_size = 25
+        },
+        -- Clay Pit dummy
+        {
+            type = "recipe",
+            name = "clay_pit_dummy",
+            ingredients = {
+                {"wood", 8},
+                {"anno_tool", 2}
+            },
+            result = "clay_pit_dummy",
+            energy_required = 0.1,
+            --5
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --clay
+        {
+            type = "item",
+            name = "clay",
+            icon = "__Annotorio__/graphics/icons/clay_icon.png",
+            icon_size = 64,
+            subgroup = "anno_raw",
+            order = "f[clay]",
+            stack_size = 50
+        },
+        --clay
+        {
+            type = "recipe",
+            name = "clay",
+            enabled = true,
+            hidden = false,
+            energy_required = 3,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {},
+            result = "clay"
+        },
         --clay pit
         {
             type = "assembling-machine",
@@ -145,7 +193,6 @@ data:extend(
                 height = 10
             },
             monitor_visualization_tint = {r = 78, g = 173, b = 255},
-            fast_replaceable_group = "mining-drill",
             circuit_wire_connection_points = circuit_connector_definitions["electric-mining-drill"].points,
             circuit_connector_sprites = circuit_connector_definitions["electric-mining-drill"].sprites,
             circuit_wire_max_distance = default_circuit_wire_max_distance

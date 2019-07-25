@@ -1,6 +1,95 @@
 data:extend(
     {
-        --
+        --  smelter
+        {
+            type = "item",
+            name = "smelter",
+            icon = "__Annotorio__/graphics/icons/smelter_icon.png",
+            icon_size = 64,
+            subgroup = "advanced",
+            order = "b[building]-r[smelter]",
+            place_result = "smelter",
+            stack_size = 25
+        },
+        --Smelter
+        {
+            type = "recipe",
+            name = "smelter",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"ceramics", 9}
+            },
+            result = "smelter"
+        },
+        {
+            type = "recipe-category",
+            name = "smelter"
+        },
+        -- iron-plate 1
+        {
+            type = "recipe",
+            name = "anno_iron_1",
+            enabled = true,
+            hidden = false,
+            energy_required = 3,
+            subgroup = "smelter",
+            category = "smelter",
+            ingredients = {
+                {"wood", 1},
+                {"iron-ore", 2}
+            },
+            result = "iron-plate",
+            allow_as_intermediate = true
+        },
+        -- iron-plate 2
+        {
+            type = "recipe",
+            name = "anno_iron_2",
+            enabled = true,
+            hidden = false,
+            energy_required = 3,
+            subgroup = "smelter",
+            category = "smelter",
+            ingredients = {
+                {"coal", 1},
+                {"iron-ore", 2}
+            },
+            result = "iron-plate",
+            allow_as_intermediate = true
+        },
+        -- copper-plate 1
+        {
+            type = "recipe",
+            name = "anno_copper_1",
+            enabled = true,
+            hidden = false,
+            energy_required = 3,
+            subgroup = "smelter",
+            category = "smelter",
+            ingredients = {
+                {"wood", 1},
+                {"copper-ore", 2}
+            },
+            result = "copper-plate",
+            allow_as_intermediate = true
+        },
+        -- copper-plate 2
+        {
+            type = "recipe",
+            name = "anno_copper_2",
+            enabled = true,
+            hidden = false,
+            energy_required = 3,
+            subgroup = "smelter",
+            category = "smelter",
+            ingredients = {
+                {"coal", 1},
+                {"copper-ore", 2}
+            },
+            result = "copper-plate",
+            allow_as_intermediate = true
+        },
         {
             type = "assembling-machine",
             ------------------

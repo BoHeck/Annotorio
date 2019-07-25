@@ -107,6 +107,67 @@ data:extend(
             type = "resource-category",
             name = "anno_coal"
         },
+        --  mine dummy
+        {
+            type = "item",
+            name = "mine_dummy",
+            icon = "__Annotorio__/graphics/icons/mine_icon.png",
+            icon_size = 64,
+            subgroup = "basic",
+            order = "b[building]-r[mine]",
+            place_result = "mine_dummy",
+            stack_size = 25
+        },
+        --  Mine dummy
+        {
+            type = "recipe",
+            name = "mine_dummy",
+            ingredients = {
+                {"wood", 14},
+                {"anno_tool", 4}
+            },
+            result = "mine_dummy",
+            energy_required = 0.1,
+            --5
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --coal mining
+        {
+            type = "recipe",
+            name = "coal_mining",
+            enabled = true,
+            hidden = false,
+            energy_required = 0.75,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {},
+            result = "coal"
+        }, --iron mining
+        {
+            type = "recipe",
+            name = "iron_mining",
+            enabled = true,
+            hidden = false,
+            energy_required = 3.75,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {},
+            result = "iron-ore"
+        },
+        --copper mining
+        {
+            type = "recipe",
+            name = "copper_mining",
+            enabled = true,
+            hidden = false,
+            energy_required = 3.75,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {},
+            result = "copper-ore"
+        },
         {
             type = "mining-drill",
             name = "mine_dummy",

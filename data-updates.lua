@@ -1,7 +1,15 @@
 --This file modifies all land resources and needs to be loaded after all resources are present
 require("prototypes.entity.fisher")
+----------------
 
--------
+--Disable all existing recipes
+for i, v in pairs(data.raw.recipe) do
+    v.hidden = false
+    v.enabled = false
+end
+
+data.raw.recipe["wood-wall"].enabled = false --TODO find out why this doesnt work
+----------------
 --All assemblers with a fixed recipe should have assembler.crafting_categories[1] == "predetermined"
 --They then get a new generated category so that the UI knows that only this one entity can make the recipe.
 local counter = 1

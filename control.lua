@@ -11,6 +11,8 @@ require("scripts.shared_inventory")
 require("scripts.marketplace")
 require("scripts.pipette")
 require("scripts.day_night_cycle")
+require("scripts.luxus_buildings")
+require("scripts.technology")
 
 require("scripts.gui")
 
@@ -32,14 +34,22 @@ function on_player_cursor_stack_changed_collection(event)
    dont_allow_inventory_placeholder_in_the_cursor(event)
 end
 
+function script_raised_built_collection(event)
+   local ent = event.entity
+   ifHouseBuild(ent, ent.name)
+end
+
 function on_built_entity_collection(event)
+   local ent = event.created_entity
    local entity_name = event.created_entity.name
 
+   if_luxus_build(event, entity_name)
    ifMarketBuild(event, entity_name)
    ifKontorBuild(event, entity_name)
-   ifHouseBuild(event, entity_name)
+   ifHouseBuild(ent, entity_name)
    ifWoodcutterBuild(event, entity_name)
    if_tree_planter_build(event, entity_name)
+
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
 end
@@ -47,6 +57,7 @@ end
 function on_entity_removed_collection(event)
    local entity_name = event.entity.name
 
+   if_luxus_removed(event, entity_name)
    ifMarketRemoved(event, entity_name)
    ifKontorRemoved(event, entity_name)
    ifHouseRemoved(event, entity_name)
@@ -101,10 +112,13 @@ function on_configuration_changed_collection(ConfigurationChangedData)
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.3.3") then
          migrate_0_3_3()
       end
-
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.3.4") then
+         migrate_0_3_4()
+      end
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
    allways_try_these()
+   setup_needs()
 end
 
 function on_player_created_collection(event)
@@ -123,12 +137,37 @@ end
 function on_init_collection()
    setup_needs()
    pipette_init()
-   day_night_cycle_init()
 end
 
 function on_runtime_mod_setting_changed_collection()
    day_night_cycle_init()
    setup_needs()
+end
+
+function on_selected_entity_changed_collection(event)
+   local player = game.players[event.player_index]
+
+   if
+      (global.anno_selection_overlay[event.player_index] ~= nil and
+         global.anno_selection_overlay[event.player_index] ~= -1)
+    then
+      rendering.destroy(global.anno_selection_overlay[event.player_index])
+      global.anno_selection_overlay[event.player_index] = -1
+   end
+
+   if_luxus_select(event)
+end
+
+function on_research_finished_collection(event)
+   change_banked_count("anno_tool", "anno_tool_placeholder", "banked_tool", 12)
+
+   for _, player in pairs(game.players) do
+      if player.connected then
+         player.print {"technology_finished_message", event.research.localised_name}
+      end
+   end
+
+   queue_technology(event.research.force)
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -146,8 +185,11 @@ function give_player_starting_items(player)
    player.force.recipes["iron-gear-wheel"].enabled = false
    player.force.recipes["electronic-circuit"].enabled = false
 
+   player.force.research_queue_enabled = false
+   queue_technology(player.force)
+
    give_player_starting_items_default(player)
-   --give_player_starting_items_debug(player) --TODO switch to default start items
+  -- give_player_starting_items_debug(player) --TODO switch to default start items
    print_intro_msg(player)
 end
 
@@ -177,6 +219,10 @@ function give_player_starting_items_debug(player)
 
    player.insert {name = "bow", count = 1}
    player.insert {name = "anno_arrow", count = 3}
+
+   player.insert {name = "anno_fish", count = 200}
+   player.insert {name = "cider", count = 200}
+   player.insert {name = "cloth", count = 200}
 
    player.insert {name = "anno_wooden_belt", count = 40}
    player.insert {name = "anno_tool", count = 40}
@@ -212,6 +258,7 @@ script.on_nth_tick(60, on_60_tick_Collection)
 script.on_nth_tick(180, on_180_tick_Collection)
 
 script.on_event({defines.events.on_built_entity}, on_built_entity_collection)
+script.on_event({defines.events.script_raised_built}, script_raised_built_collection)
 
 script.on_event({defines.events.on_entity_died}, on_entity_removed_collection)
 script.on_event({defines.events.on_player_mined_entity}, on_entity_removed_collection)
@@ -225,6 +272,8 @@ script.on_event(defines.events.on_pre_player_crafted_item, on_pre_player_crafted
 script.on_event(defines.events.on_player_cursor_stack_changed, on_player_cursor_stack_changed_collection)
 script.on_event(defines.events.on_player_pipette, on_player_pipette_collection)
 script.on_event(defines.events.on_runtime_mod_setting_changed, on_runtime_mod_setting_changed_collection)
+script.on_event(defines.events.on_selected_entity_changed, on_selected_entity_changed_collection)
+script.on_event(defines.events.on_research_finished, on_research_finished_collection)
 
 script.on_configuration_changed(on_configuration_changed_collection)
 script.on_init(on_init_collection)

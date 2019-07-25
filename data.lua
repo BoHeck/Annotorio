@@ -4,12 +4,6 @@ for i, v in pairs(data.raw.technology) do
   v.enabled = false
 end
 
---Disable all existing recipes
-for i, v in pairs(data.raw.recipe) do
-  v.hidden = false
-  v.enabled = false
-end
-
 for i, v in pairs(data.raw.tree) do
   v.minable = {
     mining_particle = "wooden-particle",

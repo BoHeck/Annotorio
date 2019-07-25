@@ -2,6 +2,80 @@ data:extend(
     {
         --Woodcutter
         {
+            type = "item",
+            name = "woodcutter",
+            icon = "__Annotorio__/graphics/icons/woodcutter_icon.png",
+            icon_size = 64,
+            subgroup = "basic",
+            order = "b[building]-r[woodcutter]",
+            place_result = "woodcutter",
+            stack_size = 25
+        },
+        --Woodcutter
+        {
+            type = "recipe",
+            name = "woodcutter",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"wood", 3},
+                {"anno_tool", 2}
+            },
+            result = "woodcutter"
+        },
+        --Wood
+        {
+            type = "recipe",
+            name = "tree_trunk_to_wood",
+            enabled = true,
+            hidden = false,
+            energy_required = 4,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {
+                {
+                    type = "item",
+                    name = "tree_trunk",
+                    amount = 1
+                }
+            },
+            icon = "__Annotorio__/graphics/icons/wood_icon.png",
+            icon_size = 64,
+            results = {
+                {
+                    type = "item",
+                    name = "wood",
+                    amount = 4
+                },
+                {
+                    type = "item",
+                    name = "seedling",
+                    amount = 1
+                }
+            }
+        },
+        -- seedling
+        {
+            type = "item",
+            name = "seedling",
+            icon = "__Annotorio__/graphics/icons/seedling_icon.png",
+            icon_size = 64,
+            subgroup = "anno_raw",
+            order = "f[seedling]",
+            stack_size = 50
+        },
+        --Tree Trunk
+        {
+            type = "item",
+            name = "tree_trunk",
+            icon = "__base__/graphics/icons/tree-03.png",
+            icon_size = 32,
+            subgroup = "anno_raw",
+            order = "f[tree_trunk]",
+            stack_size = 50
+        },
+        --Woodcutter
+        {
             type = "assembling-machine",
             ------------------
             fixed_recipe = "tree_trunk_to_wood",

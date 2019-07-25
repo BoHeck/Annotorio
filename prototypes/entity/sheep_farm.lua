@@ -1,4 +1,52 @@
-data:extend({
+data:extend(
+    {
+        -- sheep farm
+        {
+            type = "item",
+            name = "sheep_farm",
+            icon = "__Annotorio__/graphics/icons/sheep_farm_icon.png",
+            icon_size = 64,
+            subgroup = "pasture",
+            order = "b[building]-r[sheep_farm]",
+            place_result = "sheep_farm",
+            stack_size = 25
+        },
+        -- sheep farm
+        {
+            type = "recipe",
+            name = "sheep_farm",
+            ingredients = {
+                {"wood", 6},
+                {"anno_tool", 2}
+            },
+            result = "sheep_farm",
+            energy_required = 0.1,
+            enabled = true,
+            hidden = false,
+            allow_as_intermediate = true
+        },
+        --Wool
+        {
+            type = "item",
+            name = "wool",
+            icon = "__Annotorio__/graphics/icons/wool_icon.png",
+            icon_size = 64,
+            subgroup = "anno_raw",
+            order = "f[wool]",
+            stack_size = 50
+        },
+        --Wool recipe
+        {
+            type = "recipe",
+            name = "sheep_wool",
+            enabled = true,
+            hidden = false,
+            energy_required = 4,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {},
+            result = "wool"
+        },
         --Sheep farm
         {
             type = "assembling-machine",
@@ -62,4 +110,5 @@ data:extend({
                 apparent_volume = 1.5
             }
         }
-})
+    }
+)

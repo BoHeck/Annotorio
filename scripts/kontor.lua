@@ -8,6 +8,7 @@
 --This is achieved by creating an invisible accumulator under it when it is placed (and removing it on death)
 
 require("scripts.shared_inventory")
+require("scripts.technology")
 
 if (global.kontors == nil) then
     global.kontors = {}
@@ -102,8 +103,17 @@ function ifKontorBuild(event, entity_name)
 
         ent2.energy = global.banked_gold
         global.banked_gold = 0
+        ------------------------------------------
+
+        add_to_the_grid(ent3)
 
         ------------------------------------------
+        local f = game.players[event.player_index].force
+        if (f.technologies["settle_island"].researched == false) then
+            f.technologies["settle_island"].researched = true
+        end
+        ------------------------------------------
+
         global.kontor_count = global.kontor_count + 1
     --------------------------------------------
     end
@@ -118,6 +128,8 @@ function ifKontorRemoved(event, entity_name)
         global.banked_gold = global.banked_gold + global.kontors[ent.unit_number].accumulator.energy --the gold is stored in a global variable until another kontor is build
 
         global.kontor_count = global.kontor_count - 1
+        -----------------------------------------------------------
+        remove_from_grid(global.kontors[ent.unit_number].pole)
         -----------------------------------------------------------
 
         global.kontors[ent.unit_number].accumulator.destroy()

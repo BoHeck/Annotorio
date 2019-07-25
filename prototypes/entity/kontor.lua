@@ -1,5 +1,33 @@
 data:extend(
   {
+    --Kontor
+    {
+      type = "item",
+      name = "kontor",
+      icon = "__Annotorio__/graphics/icons/kontor_icon.png",
+      icon_size = 64,
+      subgroup = "administration",
+      order = "a",
+      place_result = "kontor",
+      stack_size = 25
+    },
+    --Kontor
+    {
+      type = "recipe",
+      name = "kontor",
+      ingredients = {
+        {"wood", 16},
+        {"ceramics", 24},
+        {"anno_tool", 10}
+      },
+      result = "kontor",
+      energy_required = 0.1,
+      --5
+      enabled = true,
+      hidden = false,
+      allow_as_intermediate = true
+    },
+
     {
       type = "container",
       name = "kontor",
@@ -121,7 +149,7 @@ data:extend(
       -- selection_box = {{-0, -0}, {0, 0}},
       selection_box = {{0, -3}, {3, -0.5}},
       --selectable_in_game = false,
-      maximum_wire_distance = 64,
+      maximum_wire_distance = 1,
       supply_area_distance = 36,
       vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
       pictures = {
@@ -135,6 +163,7 @@ data:extend(
           }
         }
       },
+      draw_copper_wires=false,
       connection_points = {
         {
           shadow = {
