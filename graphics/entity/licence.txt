@@ -1,4 +1,4 @@
------------------------
+﻿-----------------------
 the listed images are from "Unkown Horizons" (http://unknown-horizons.org/) or to be more clear rendered from blender files made for said game.
 My derivations are licenced under their original licence. A copy of the orininal files can be gotten from "git@github.com:unknown-horizons/gfx.git"
 
@@ -30,7 +30,7 @@ kiln.png + kiln_shadow.png
 ------------
 _tree_08_70000.png from "https://opengameart.org/content/tree-collection-v26-bleeds-game-art"   by "Bleed - http://remusprites.carbonmade.com/" under  "https://creativecommons.org/licenses/by/3.0/"
 
-house_citizen.png  from "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
+house_citizen.png + tavern.png  from "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
 "Bleed's Game Art - https://www.patreon.com/bleed" 
 
 house_pioneer.png  from "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/"

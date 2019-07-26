@@ -38,8 +38,10 @@ marketplace_icon.png by "janexx" from "uh_sailor_main_square-BLENDER_v277.blend"
 sheep_farm_icon.png by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
 and "Daniel Eddeland" from  "sheep_walk_by_daneeklu.png" from "https://opengameart.org/content/lpc-style-farm-animals" under reative Commons Attribution Sharealike 3.0 Unported License 
 
-apple_orchard_icon.png TODO
-blacksmith_icon.png TODO
+apple_orchard_icon.png a)  from  "uh_farm_pioneer-BLENDER_v249.blend"  by "kaschte"
+		       b) from "cacao_field-BLENDER-v276.blend" by "janexx" under "Creative Commons Attribution Sharealike 3.0 Unported License"
+
+blacksmith_icon.png by "unknownscribe" from "blacksmith.blend" under http://creativecommons.org/licenses/by-sa/3.0/legalcode also contains
 
 
 weaver_icon.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"
@@ -60,6 +62,7 @@ smelter_icon.png
 wood_barrel_icon.png
 wool_icon.png
 burned_brick_icon.png
+chapel_icon.png
 ---------------
 
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
@@ -69,7 +72,7 @@ house_pioneer_icon.png is based on "Medieval_Building_06" by "Bleed -http://remu
 
 house_settler_icon.png is based on "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/"
 
-house_citizen_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
+house_citizen_icon.png + tavern_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
 "Bleed's Game Art - https://www.patreon.com/bleed" 
 
 ---------------
