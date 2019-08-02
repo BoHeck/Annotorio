@@ -64,7 +64,6 @@ function setup_needs()
         luxus_buildings = 2
     }
 
-
     global.luxus_buildings = {}
     global.luxus_buildings[1] = {name = "chapel", range = 24}
     global.luxus_buildings[2] = {name = "tavern", range = 36}
@@ -215,15 +214,40 @@ function upgrade(house, upgrade_table, houses)
     change_banked_count("anno_tool", "anno_tool_placeholder", "banked_tool", -upgrade_table.cost_tools)
     change_banked_count("ceramics", "ceramics_placeholder", "banked_brick", -upgrade_table.cost_bricks)
 
-    house.surface.create_entity {
+    --store input resources
+    local inv = house.get_inventory(defines.inventory.assembling_machine_input)
+
+    local res = {}
+    local index = 0
+
+    while (index < #inv) do
+        index = index + 1
+        if (inv[index].valid_for_read) then
+            res[inv[index].name] = {amount = inv[index].count, durability = inv[index].durability}
+        end
+    end
+
+    ent =
+        house.surface.create_entity {
         name = upgrade_table.next_house,
         position = house.position,
         force = house.force,
-        fast_replace = true,
+        --  fast_replace = true,
         spill = false,
         raise_built = true,
         create_build_effect_smoke = true
     }
+
+    --inserting stored resources
+    --ent.set_recipe("settler_needs")
+    --TODO this is a hack , instead it needs to be set dynamicly
+    inv = ent.get_inventory(defines.inventory.assembling_machine_input)
+
+    for item_name, value in pairs(res) do
+        inv.insert {name = item_name, count = value.amount, durability = value.durability}
+    end
+
+    house.destroy()
     houses[unit_number] = nil
     return true
 end

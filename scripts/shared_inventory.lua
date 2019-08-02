@@ -40,26 +40,26 @@ end
 
 --If the inventory changed in some way then we need to find out if (wood,tool,brick) has changed and then update accordingly
 function inventory_changed_sync(player)
-    log("inventory_changed_sync")
+    --log("inventory_changed_sync")
     check(player, "wood", "banked_wood", "wood_placeholder")
     check(player, "anno_tool", "banked_tool", "anno_tool_placeholder")
     check(player, "ceramics", "banked_brick", "ceramics_placeholder")
 end
 
 function check(player, item_name, global_name, placeholder_name)
-    log(item_name)
+    --log(item_name)
     local reference_value = math.min(resource_freshhold, global[global_name])
     local difference = player.get_main_inventory().get_item_count(item_name) - reference_value
 
-    log(reference_value)
-    log(difference)
+    --log(reference_value)
+    -- log(difference)
 
     if (difference ~= 0) then
         global[global_name] = global[global_name] + difference
         local insert_amount = math.min(resource_freshhold, global[global_name])
 
         if (reference_value ~= insert_amount) then
-            log(insert_amount)
+            -- log(insert_amount)
             sync_inventory_all(item_name, placeholder_name, insert_amount)
             check(player, item_name, global_name, placeholder_name)
         else
@@ -71,14 +71,14 @@ end
 
 --This function needs to be called for every new player so his starting resources get banked
 function init_shared_resources(player)
-    log("Init player")
+    --  log("Init player")
     --Move relevant items into the bank
     global.banked_wood = global.banked_wood + player.get_main_inventory().get_item_count("wood")
     global.banked_tool = global.banked_tool + player.get_main_inventory().get_item_count("anno_tool")
     global.banked_brick = global.banked_brick + player.get_main_inventory().get_item_count("ceramics")
-    log(global.banked_wood)
-    log(global.banked_tool)
-    log(global.banked_brick)
+    --log(global.banked_wood)
+    --log(global.banked_tool)
+    -- log(global.banked_brick)
 
     local min = math.min(resource_freshhold, global.banked_wood)
     sync_inventory(player, "wood", "wood_placeholder", min)
@@ -97,7 +97,7 @@ end
 
 function sync_inventory_all(item_name, placeholder_name, insert_amount)
     for _, player in pairs(game.players) do
-        log(insert_amount)
+        --  log(insert_amount)
         sync_inventory(player, item_name, placeholder_name, insert_amount)
     end
 end
@@ -105,8 +105,8 @@ end
 function sync_inventory(player, item_name, placeholder_name, insert_amount)
     remove_all(item_name, player.get_main_inventory())
     remove_all(placeholder_name, player.get_main_inventory())
-    log(insert_amount)
-    log("insert " .. insert_amount)
+    -- log(insert_amount)
+    -- log("insert " .. insert_amount)
     if (insert_amount > 0) then
         player.insert {name = item_name, count = insert_amount}
     else
