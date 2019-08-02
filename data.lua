@@ -1,3 +1,6 @@
+
+debug_on  = settings.startup["debug_mode"].value
+
 --Hiding all existing technologies
 for i, v in pairs(data.raw.technology) do
   v.hidden = false
@@ -24,6 +27,14 @@ for i, v in pairs(data.raw.tree) do
 end
 
 data.raw.furnace["electric-furnace"].crafting_categories = {"none"}
+
+if (debug_on == true) then
+  --Disable all existing recipes
+  for i, v in pairs(data.raw.recipe) do
+    v.hidden = false
+    v.enabled = false
+  end
+end
 
 require("prototypes.entity.entity")
 require("prototypes.item")

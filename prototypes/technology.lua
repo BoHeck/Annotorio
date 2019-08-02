@@ -176,7 +176,7 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
-                    recipe = "distillery"
+                    recipe = "press"
                 },
                 {
                     type = "unlock-recipe",
@@ -250,6 +250,10 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
+                    recipe = "copperwares"
+                },
+                {
+                    type = "unlock-recipe",
                     recipe = "smelter"
                 },
                 {
@@ -275,15 +279,53 @@ data:extend(
                 time = 1
             },
             order = "0006"
+        },
+        {
+            type = "technology",
+            name = "provide_luxus_1",
+            icon = "__Annotorio__/graphics/icons/copperwares_icon.png",
+            icon_size = 64,
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "kontor"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "distillery"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "distil_rum"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sugar_cane_plantation_dummy"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "grow_sugar_cane"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "wood_barrel"
+                }
+            },
+            unit = {
+                count = 26,
+                ingredients = {{"provide_luxus_1", 1}},
+                time = 1
+            },
+            order = "0007"
         }
     }
 )
 --[[
 {
     --blacksmith,
-    wood_barrel,
+    --wood_barrel,
     --anno_tool,
-    copperwares,
+    --copperwares,
     --anno_arrow,
     --bow,
     ----------------------
@@ -308,6 +350,8 @@ data:extend(
     --------------------
     --apple_orchard_dummy,
     --grow_apples,
+    --sugar_cane_plantation_dummy,
+    --grow_sugar_cane,
     --------------------
     --mine_dummy,
     --coal_mining,
@@ -315,7 +359,7 @@ data:extend(
     --copper_mining,
     ---------------------
     --marketplace_dummy,
-    kontor,
+    --kontor,
     -------------------------
     --kiln,
     --ceramics_1,
@@ -336,6 +380,8 @@ data:extend(
     citizen_needs
     --------------------------------
     --distillery,
+    --distil_rum
+    ------------------------------
     --press_cider,
     -------------------------------
     --woodcutter,

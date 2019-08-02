@@ -80,14 +80,14 @@ data:extend(
             hidden = false,
             allow_as_intermediate = true
         },
-        --house1
+        --house_pioneer
         {
             type = "assembling-machine",
             name = "house_pioneer",
             ------------------
             fixed_recipe = "pioneer_needs",
             crafting_categories = {"people_needs"},
-            ingredient_count = 5,
+            ingredient_count = 4,
             crafting_speed = 1,
             ---------------------
             energy_source = {
@@ -127,15 +127,15 @@ data:extend(
             close_sound = {filename = "__base__/sound/machine-close.ogg", volume = 0.75},
             vehicle_impact_sound = {filename = "__base__/sound/car-wood-impact.ogg", volume = 0.8}
         },
-        --house2
+        --house_settler
         {
             type = "assembling-machine",
             name = "house_settler",
             placeable_by = {item = "house_pioneer", count = 1},
             ------------------
-            fixed_recipe = "pioneer_needs",
-            crafting_categories = {"people_needs"},
-            ingredient_count = 5,
+            fixed_recipe = "settler_needs",
+            crafting_categories = {"people_needs2"},
+            ingredient_count = 7,
             crafting_speed = 1,
             ---------------------
             energy_source = {
@@ -175,15 +175,15 @@ data:extend(
             close_sound = {filename = "__base__/sound/machine-close.ogg", volume = 0.75},
             vehicle_impact_sound = {filename = "__base__/sound/car-wood-impact.ogg", volume = 0.8}
         },
-        --house3
+        --house_citizen
         {
             type = "assembling-machine",
             name = "house_citizen",
             placeable_by = {item = "house_pioneer", count = 1},
             ------------------
-            --fixed_recipe = "pioneer_needs",
-            crafting_categories = {"people_needs"},
-            ingredient_count = 5,
+            fixed_recipe = "citizen_needs",
+            crafting_categories = {"people_needs3"},
+            ingredient_count = 7,
             crafting_speed = 1,
             ---------------------
             energy_source = {

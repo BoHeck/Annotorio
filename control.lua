@@ -188,8 +188,11 @@ function give_player_starting_items(player)
    player.force.research_queue_enabled = false
    queue_technology(player.force)
 
-   give_player_starting_items_default(player)
-  -- give_player_starting_items_debug(player) --TODO switch to default start items
+   if (settings.startup["debug_mode"].value) then
+      give_player_starting_items_debug(player)
+   else
+      give_player_starting_items_default(player)
+   end
    print_intro_msg(player)
 end
 

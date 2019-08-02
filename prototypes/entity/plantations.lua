@@ -69,9 +69,30 @@ apple_orchard_dummy.animations = {
 apple_orchard_dummy.collision_box = {{-2.7, -1.7}, {2.7, 1.7}}
 apple_orchard_dummy.selection_box = {{-3, -2}, {3, 2}}
 
+local sugar_cane_plantation_dummy = table.deepcopy(template)
+sugar_cane_plantation_dummy.name = "sugar_cane_plantation_dummy"
+sugar_cane_plantation_dummy.resource_categories = {"warm_climate_fertile_soil"}
+sugar_cane_plantation_dummy.icon = "__Annotorio__/graphics/icons/sugar_cane_plantation_icon.png"
+sugar_cane_plantation_dummy.icon_size = 64
+sugar_cane_plantation_dummy.animations = {
+    layers = {
+        {
+            filename = "__Annotorio__/graphics/entity/sugar_cane_plantation.png",
+            priority = "extra-high",
+            width = 523,
+            height = 381,
+            scale = 0.5,
+            shift = util.by_pixel(32, 16)
+        }
+    }
+}
+sugar_cane_plantation_dummy.collision_box = {{-2.7, -2.2}, {2.7, 2.2}}
+sugar_cane_plantation_dummy.selection_box = {{-3, -2.5}, {3, 2.5}}
+
 data:extend(
     {
-        apple_orchard_dummy
+        apple_orchard_dummy,
+        sugar_cane_plantation_dummy
     }
 )
 --------------------------------------------------
@@ -167,6 +188,121 @@ data:extend(
                 drain = "3.33kW"
             },
             energy_usage = "6.64kW",
+            open_sound = {filename = "__base__/sound/machine-open.ogg", volume = 0.85},
+            close_sound = {filename = "__base__/sound/machine-close.ogg", volume = 0.75},
+            vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+            working_sound = {
+                sound = {
+                    {
+                        filename = "__base__/sound/assembling-machine-t1-1.ogg",
+                        volume = 0.8
+                    },
+                    {
+                        filename = "__base__/sound/assembling-machine-t1-2.ogg",
+                        volume = 0.8
+                    }
+                },
+                idle_sound = {filename = "__base__/sound/idle1.ogg", volume = 0.6},
+                apparent_volume = 1.5
+            }
+        }
+    }
+)
+--------------------------------------------------
+data:extend(
+    {
+        --  sugar_cane_plantation_dummy
+        {
+            type = "item",
+            name = "sugar_cane_plantation_dummy",
+            icon = "__Annotorio__/graphics/icons/sugar_cane_plantation_icon.png",
+            icon_size = 64,
+            subgroup = "plantation",
+            order = "b[building]-r[sugar_cane_plantation]",
+            place_result = "sugar_cane_plantation_dummy",
+            stack_size = 25
+        },
+        -- sugar_cane_plantation_dummy recipe
+        {
+            type = "recipe",
+            name = "sugar_cane_plantation_dummy",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"wood", 6},
+                {"ceramics", 6},
+                {"anno_tool", 2}
+            },
+            result = "sugar_cane_plantation_dummy"
+        },
+        --sugar_cane
+        {
+            type = "item",
+            name = "sugar_cane",
+            icon = "__Annotorio__/graphics/icons/sugar_cane_icon.png",
+            icon_size = 64,
+            subgroup = "anno_raw",
+            order = "f[sugar_cane]",
+            stack_size = 50
+        },
+        -- grow_sugar_cane
+        {
+            type = "recipe",
+            name = "grow_sugar_cane",
+            enabled = true,
+            hidden = false,
+            energy_required = 3.333333,
+            category = "predetermined",
+            ingredients = {},
+            result = "sugar_cane"
+        },
+        --sugar_cane_plantation
+        {
+            type = "assembling-machine",
+            ------------------
+            fixed_recipe = "grow_sugar_cane",
+            crafting_categories = {"predetermined"},
+            ingredient_count = 1,
+            crafting_speed = 1,
+            ---------------------
+
+            name = "sugar_cane_plantation",
+            placeable_by = {item = "sugar_cane_plantation_dummy", count = 1},
+            icon = "__Annotorio__/graphics/icons/sugar_cane_plantation_icon.png",
+            icon_size = 64,
+            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            minable = {mining_time = 0.2, result = "sugar_cane_plantation_dummy"},
+            max_health = 300,
+            dying_explosion = "medium-explosion",
+            corpse = "medium-remnants",
+            resistances = {
+                {
+                    type = "fire",
+                    percent = 70
+                }
+            },
+            collision_box = {{-2.7, -2.2}, {2.7, 2.2}},
+            selection_box = {{-3, -2.5}, {3, 2.5}},
+            alert_icon_shift = util.by_pixel(-3, -12),
+            animation = {
+                layers = {
+                    {
+                        filename = "__Annotorio__/graphics/entity/sugar_cane_plantation.png",
+                        priority = "extra-high",
+                        width = 523,
+                        height = 381,
+                        scale = 0.5,
+                        shift = util.by_pixel(32, 16)
+                    }
+                }
+            },
+            energy_source = {
+                type = "electric",
+                usage_priority = "secondary-input",
+                emissions_per_minute = 16,
+                drain = "5kW"
+            },
+            energy_usage = "15kW",
             open_sound = {filename = "__base__/sound/machine-open.ogg", volume = 0.85},
             close_sound = {filename = "__base__/sound/machine-close.ogg", volume = 0.75},
             vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},

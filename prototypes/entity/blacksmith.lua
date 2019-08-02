@@ -73,7 +73,7 @@ data:extend(
             name = "wood_barrel",
             icon = "__Annotorio__/graphics/icons/wood_barrel_icon.png",
             icon_size = 64,
-            subgroup = "advanced_item",
+            subgroup = "barreled_item",
             order = "f[wood_barrel]",
             stack_size = 50
         },

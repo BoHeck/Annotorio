@@ -5,6 +5,20 @@ data:extend(
         -------Ingredients--------
 
         -------Consumables--------
+        
+        --bacon_omelet
+        {
+            type = "tool",
+            name = "bacon_omelet",
+            icon = "__Annotorio__/graphics/icons/bacon_omelet_icon.png",
+            icon_size = 64,
+            subgroup = "advanced_item",
+            order = "f[bacon_omelet]",
+            stack_size = 50,
+            durability = 1,
+            durability_description_key = "description.science-pack-remaining-amount-key",
+            durability_description_value = "description.science-pack-remaining-amount-value"
+        },
 
         -------Technology---------
         --technology_settle_island
@@ -74,6 +88,17 @@ data:extend(
             stack_size = 1,
             flags = {"hidden"}
         },
+        {
+            type = "tool",
+            name = "provide_luxus_1",
+            durability = 1,
+            icon = "__Annotorio__/graphics/entity/empty.png",
+            icon_size = 1,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 1,
+            flags = {"hidden"}
+        },
         -----------Special-------------
 
         --inventory_placeholder
@@ -127,7 +152,7 @@ data:extend(
             icon = "__base__/graphics/icons/signal/signal_P.png",
             icon_size = 32,
             subgroup = "raw-resource",
-            order = "aaa",
+            order = "a1",
             stack_size = 50
         },
         --settler Information
@@ -137,7 +162,7 @@ data:extend(
             icon = "__base__/graphics/icons/signal/signal_S.png",
             icon_size = 32,
             subgroup = "raw-resource",
-            order = "aaa",
+            order = "a2",
             stack_size = 50
         },
         --Citizen Information
@@ -147,7 +172,7 @@ data:extend(
             icon = "__base__/graphics/icons/signal/signal_C.png",
             icon_size = 32,
             subgroup = "raw-resource",
-            order = "aaa",
+            order = "a3",
             stack_size = 50
         },
         --unobtainable_dummy

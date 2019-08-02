@@ -25,12 +25,6 @@ local intermediate_subgroup_people_needs = {
     group = "intermediate-products",
     order = "aa"
 }
-local intermediate_subgroup_advanced_item = {
-    type = "item-subgroup",
-    name = "advanced_item",
-    group = "intermediate-products",
-    order = "ee"
-}
 
 local intermediate_subgroup_anno_raw = {
     type = "item-subgroup",
@@ -51,13 +45,33 @@ local intermediate_subgroup_blacksmith = {
     group = "intermediate-products",
     order = "dd"
 }
-local intermediate_subgroup_misc = {
+
+local intermediate_subgroup_advanced_item = {
     type = "item-subgroup",
-    name = "misc",
+    name = "advanced_item",
+    group = "intermediate-products",
+    order = "ee"
+}
+
+local intermediate_subgroup_press = {
+    type = "item-subgroup",
+    name = "press",
     group = "intermediate-products",
     order = "ff"
 }
 
+local intermediate_subgroup_misc = {
+    type = "item-subgroup",
+    name = "misc",
+    group = "intermediate-products",
+    order = "gg"
+}
+local barreled_item = {
+    type = "item-subgroup",
+    name = "barreled_item",
+    group = "intermediate-products",
+    order = "z"
+}
 local luxus_building = {
     type = "item-subgroup",
     name = "luxus_building",
@@ -95,8 +109,9 @@ local advanced = {
     type = "item-subgroup",
     name = "advanced",
     group = "production",
-    order = "z"
+    order = "x"
 }
+
 local pasture = {
     type = "item-subgroup",
     name = "pasture",
@@ -127,6 +142,7 @@ data:extend(
         fishing,
         basic,
         advanced,
+        barreled_item,
         pasture,
         plantation
     }

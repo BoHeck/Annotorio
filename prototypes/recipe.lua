@@ -43,6 +43,14 @@ data:extend(
             type = "recipe-category",
             name = "people_needs"
         },
+        {
+            type = "recipe-category",
+            name = "people_needs2"
+        },
+        {
+            type = "recipe-category",
+            name = "people_needs3"
+        },
         --pioneer_needs
         {
             type = "recipe",
@@ -66,11 +74,14 @@ data:extend(
             type = "recipe",
             name = "settler_needs",
             subgroup = "people_needs",
-            category = "people_needs",
+            category = "people_needs2",
             ingredients = {
                 {"anno_fish", 1},
                 {"cloth", 1},
                 {"cider", 1},
+                {"copperwares", 1},
+                {"bacon_omelet", 1},
+                {"barreled_rum", 1},
                 {"preventingCraftToGoForwardDummy", 1}
             },
             result = "settler_information",
@@ -79,12 +90,12 @@ data:extend(
             hidden = false,
             allow_as_intermediate = false
         },
-        --pioneer_needs
+        --citizen_needs
         {
             type = "recipe",
             name = "citizen_needs",
             subgroup = "people_needs",
-            category = "people_needs",
+            category = "people_needs3",
             ingredients = {
                 {"anno_fish", 1},
                 {"cloth", 1},

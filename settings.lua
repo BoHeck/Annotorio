@@ -13,8 +13,13 @@ data:extend(
             name = "tax_multiplier",
             setting_type = "runtime-global",
             default_value = 2,
-            minimum_value = 1,
+            minimum_value = 1
+        },
+        {
+            type = "bool-setting",
+            name = "debug_mode",
+            setting_type = "startup",
+            default_value = false
         }
-
     }
 )

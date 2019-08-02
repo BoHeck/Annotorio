@@ -15,6 +15,7 @@ trade_category_icon.png
 weapon_category_icon.png
 intermediate_category_icon.png
 production_category_icon.png
+cake_icon.png
 ------------------------------------------
 
 bow_icon.png by "DYCHA / Ravenmore - http://dycha.net" from "RavenmoreIconPack.02.2014" under https://creativecommons.org/licenses/by/3.0/    
@@ -49,7 +50,7 @@ woodcutter_icon.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
 distillery_icon.png  by "manthus" from "destilliry-BLENDER_v256.blend"
 
 ----------------
-Made by me "TheFunnySide" (from assets of the public domain) released under the main licence of this mod 
+Made by me "TheFunnySide" (some from assets of the public domain) released under the main licence of this mod 
 
 anno_tool_icon.png
 apple_icon.png
@@ -59,10 +60,11 @@ cloth_icon.png
 copperwares_icon.png
 kiln_icon.png
 smelter_icon.png
-wood_barrel_icon.png
+
 wool_icon.png
 burned_brick_icon.png
 chapel_icon.png
+press_icon.png 
 ---------------
 
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
@@ -76,6 +78,22 @@ house_citizen_icon.png + tavern_icon.png is based on "https://opengameart.org/co
 "Bleed's Game Art - https://www.patreon.com/bleed" 
 
 ---------------
+
 clay_icon.png is a tinted version of "stone.png" from Factorio
 clay_pit_icon.png contains a tinted version of "stone.png" from Factorio
 mine_icon.png contains resource icon parts from Factorio
+
+---------------
+
+sugar_icon.png from 7164573186_22a39ac51e_o.jpg  by "david pacey" under https://creativecommons.org/licenses/by/2.0/
+sugar_cane_icon.png , sugar_cane_syrup.png and barreled_sugar_cane_syrup.png  from Sugar_Cane.jpg by P.K.Niyogi under https://commons.wikimedia.org/wiki/Commons:GNU_Free_Documentation_License,_version_1.2
+Sugarcane_7419.JPG by "Gangulybiswarup" under "https://commons.wikimedia.org/wiki/Commons:GNU_Free_Documentation_License,_version_1.2"
+sugar_caneplantation_icon from sugar_cane_icon.png and sugar_caneplantation.png 
+---------------
+wood_barrel_icon.png from barrel-2609786.png from https://pixabay.com/photos/barrel-wine-barrel-winemaker-wine-2609786/    Free for commercial use , No attribution required 
+rum_barrel_icon.png from wood_barrel_icon.png and mug-4ea409-1600.jpg from https://picryl.com/media/mug-4ea409 by ??? under public domain
+---------------
+bacon_omelet_icon.png from 8573256414_6efce72c28_o.jpg  from https://www.flickr.com/photos/californiaavocados/8573256414 by "California Avocados" under https://creativecommons.org/licenses/by/2.0/
+---------------
+egg_icon.png from Egg.psd by Blodyavenger. Not to be shared outside this mod. I have this licence https://www.gamedevmarket.net/terms-conditions/#pro-licence
+---------------

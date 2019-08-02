@@ -7,9 +7,10 @@ Please give attribution to "Annotorio by TheFunnySide" you may also link to the 
 My source code is licensed under the main licence.
 
 But since this mod contains the works of many different artists, it is not possible to release under a unified licence.
-So in every relevant folder there is a licence document compiling licence-information. If something is not listed do not assume that it can be shared.
+So in every relevant folder there is a licence document compiling licence-information. The listed licence is allways the original licence.
+If i made changes to a file of another creator, then the new artwork is allways released under the same original licence.
+If something is not listed with a shareable licence then do not assume otherwise.
 
 All licences do not include the right to use the name "Annotorio" in any derivative work except when giving attribution.
-
 
 Special thanks to the developers of "Unkown Horizons" http://unknown-horizons.org/ . If possible give this game a shot , it is open source and free!

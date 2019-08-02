@@ -28,4 +28,5 @@ function if_something_build(event,entity_name)
 end
 
 add_dummy_replacement_pair("apple_orchard_dummy", "apple_orchard")
+add_dummy_replacement_pair("sugar_cane_plantation_dummy", "sugar_cane_plantation")
 add_dummy_replacement_pair("clay_pit_dummy", "clay_pit")

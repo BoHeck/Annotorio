@@ -2,10 +2,12 @@
 require("prototypes.entity.fisher")
 ----------------
 
---Disable all existing recipes
-for i, v in pairs(data.raw.recipe) do
-    v.hidden = false
-    v.enabled = false
+if (debug_on == false) then
+    --Disable all existing recipes
+    for i, v in pairs(data.raw.recipe) do
+        v.hidden = false
+        v.enabled = false
+    end
 end
 
 data.raw.recipe["wood-wall"].enabled = false --TODO find out why this doesnt work

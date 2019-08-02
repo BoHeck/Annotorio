@@ -23,36 +23,40 @@ data:extend(
             },
             result = "distillery"
         },
-        --cider
+        --distil_rum
+        {
+            type = "recipe",
+            name = "distil_rum",
+            icon = "__Annotorio__/graphics/icons/rum_barrel_icon.png",
+            icon_size = 64,
+            enabled = true,
+            hidden = false,
+            energy_required = 6,
+            subgroup = "advanced_item",
+            category = "distillery",
+            ingredients = {
+                {"barreled_sugar_cane_syrup", 2}
+            },
+            results = {{"barreled_rum", 1}, {"wood_barrel", 1}}
+        },
+        --barreled_rum
         {
             type = "tool",
-            name = "cider",
-            icon = "__Annotorio__/graphics/icons/cider_icon.png",
+            name = "barreled_rum",
+            icon = "__Annotorio__/graphics/icons/rum_barrel_icon.png",
             icon_size = 64,
             subgroup = "advanced_item",
-            order = "d[cider]",
+            order = "e[barreled_rum]",
             stack_size = 50,
             durability = 1,
             durability_description_key = "description.science-pack-remaining-amount-key",
             durability_description_value = "description.science-pack-remaining-amount-value"
         },
+
+
         {
             type = "recipe-category",
             name = "distillery"
-        },
-        --Cider pressing
-        {
-            type = "recipe",
-            name = "press_cider",
-            enabled = true,
-            hidden = false,
-            energy_required = 4,
-            category = "distillery",
-            ingredients = {
-                {"apple", 4},
-                {"ceramics", 1}
-            },
-            result = "cider"
         },
         --Distillery
         {

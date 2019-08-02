@@ -47,6 +47,23 @@ function setup_needs()
         DurabilityLossPerTick = 0.01,
         luxus_buildings = 2
     }
+    global.settler_needs["copperwares"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 95.76,
+        DurabilityLossPerTick = 0.01111111111,
+        luxus_buildings = 2
+    }
+    global.settler_needs["barreled_rum"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 160.34,
+        DurabilityLossPerTick = 0.003703703704,
+        luxus_buildings = 2
+    }
+    --TODO  bacon_omelet
+    global.settler_needs["bacon_omelet"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 67.5,
+        DurabilityLossPerTick = 0.01,
+        luxus_buildings = 2
+    }
+
 
     global.luxus_buildings = {}
     global.luxus_buildings[1] = {name = "chapel", range = 24}
