@@ -309,6 +309,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "wood_barrel"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "press_sugar_cane"
                 }
             },
             unit = {

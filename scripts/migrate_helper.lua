@@ -105,14 +105,14 @@ function migrate_0_3_4()
     error("Migrating version 0_3_4 or lower can not be migrated to 0_4_0 or higher")
 end
 
-
-
-
-
 function allways_try_these()
     --Redo players gui
     for _, player in pairs(game.players) do
         create_gui_for_player(player)
+    end
+
+    for _, force in pairs(game.forces) do
+        force.reset_technology_effects()
     end
 
     --Migrade tables
