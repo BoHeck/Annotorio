@@ -13,6 +13,9 @@ require("scripts.pipette")
 require("scripts.day_night_cycle")
 require("scripts.luxus_buildings")
 require("scripts.technology")
+require("prototypes.map.voroni_noise")
+require("prototypes.map.hole_islands")
+require("prototypes.map.island_naming")
 
 require("scripts.gui")
 
@@ -82,8 +85,13 @@ function on_180_tick_Collection()
 end
 
 function on_chunk_generated_collection(event)
-   map_generation_fish_resource(event, 1)
+   --generate_chunk(event)
+   -- generate_veroni_chunk(event)
+
+   generate_hole_islands_on_chunk(event)
+
    --Generate them on surface 1
+   map_generation_fish_resource(event, 1)
 end
 
 function on_pre_player_crafted_item_collection()
@@ -168,6 +176,10 @@ function on_research_finished_collection(event)
    end
 
    queue_technology(event.research.force)
+end
+
+function on_force_created_collection(event)
+   name_islands_on_force_created(event)
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -277,6 +289,7 @@ script.on_event(defines.events.on_player_pipette, on_player_pipette_collection)
 script.on_event(defines.events.on_runtime_mod_setting_changed, on_runtime_mod_setting_changed_collection)
 script.on_event(defines.events.on_selected_entity_changed, on_selected_entity_changed_collection)
 script.on_event(defines.events.on_research_finished, on_research_finished_collection)
+script.on_event(defines.events.on_force_created, on_force_created_collection)
 
 script.on_configuration_changed(on_configuration_changed_collection)
 script.on_init(on_init_collection)

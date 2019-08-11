@@ -1,4 +1,12 @@
 --Note nothing is actually mining these soils. They are only meant to limit the places where certain plantations can be build
+local noise = require("noise")
+
+local dont_place =
+    noise.define_noise_function(
+    function(x, y, tile, map)
+        return 0
+    end
+)
 
 data:extend(
     {
@@ -63,6 +71,7 @@ data:extend(
             },
             collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
             selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+            --[[
             autoplace = resource_autoplace.resource_autoplace_settings {
                 name = "cold_climate_fertile_soil",
                 order = "g",
@@ -73,6 +82,10 @@ data:extend(
                 random_spot_size_maximum = 4,
                 patch_set_name = "cold_climate_fertile_soil",
                 regular_rq_factor_multiplier = 1
+            },
+            ]]
+            autoplace = {
+                probability_expression = dont_place
             },
             stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50},
             stages = {
@@ -141,6 +154,10 @@ data:extend(
             },
             collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
             selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+            autoplace = {
+                probability_expression = dont_place
+            },
+            --[[
             autoplace = resource_autoplace.resource_autoplace_settings {
                 name = "warm_climate_fertile_soil",
                 order = "h",
@@ -152,6 +169,7 @@ data:extend(
                 patch_set_name = "warm_climate_fertile_soil",
                 regular_rq_factor_multiplier = 1
             },
+            ]]
             stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50},
             stages = {
                 sheet = {

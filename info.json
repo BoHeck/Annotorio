@@ -6,6 +6,6 @@
     "contact": "boheck52@gmail.com",
     "homepage": "",
     "factorio_version": "0.17",
-    "dependencies": ["base >= 0.17.56", "Wooden_Walls >= 1.0.0"],
+    "dependencies": ["base >= 0.17.56", "Wooden_Walls >= 1.0.0", "stdlib >= 1.2.2"],
     "description": "Settle your island and grow your settlement. A total conversion mod for Factorio."
 }
