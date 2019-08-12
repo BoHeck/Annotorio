@@ -68,6 +68,14 @@ function on_entity_removed_collection(event)
    if_tree_planter_removed(event, entity_name)
 end
 
+function on_tick_collection()
+   log(game.tick)
+   if (game.tick == 12) then
+      script.on_event({defines.events.on_tick}, nil)
+      catch_up_on_tick()
+   end
+end
+
 function on_12_tick_Collection()
    search_in_kontor_on_every_x_ticks()
    --search before refreshing gui
@@ -267,10 +275,10 @@ global.created_items = {}
 global.respawn_items = {}
 --------------------------------------------------
 
---script.on_event({defines.events.on_tick}, on_tick_Collection)
 script.on_nth_tick(12, on_12_tick_Collection)
 script.on_nth_tick(60, on_60_tick_Collection)
 script.on_nth_tick(180, on_180_tick_Collection)
+script.on_event({defines.events.on_tick}, on_tick_collection)
 
 script.on_event({defines.events.on_built_entity}, on_built_entity_collection)
 script.on_event({defines.events.script_raised_built}, script_raised_built_collection)

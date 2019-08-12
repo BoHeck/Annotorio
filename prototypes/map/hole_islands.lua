@@ -15,6 +15,29 @@ local ground_collision_mask = {"ground-tile"}
 --global.called_from = {}
 global.connected_to = {}
 global.allready_checked = {}
+global.chunks_for_later = {}
+------------------------------------------------------
+local offset = {}
+local offset2 = {}
+offset[1] = {}
+offset[0] = {}
+offset[-1] = {}
+offset2[1] = {}
+offset2[0] = {}
+offset2[-1] = {}
+
+offset[1][0] = Area.construct(31, 0, 0, 0)
+offset2[1][0] = Area.construct(32, 0, 1, 0)
+
+offset[-1][0] = Area.construct(0, 0, -31, 0)
+offset2[-1][0] = Area.construct(-1, 0, -32, 0)
+
+offset[0][1] = Area.construct(0, 31, 0, 0)
+offset2[0][1] = Area.construct(0, 32, 0, 1)
+
+offset[0][-1] = Area.construct(0, 0, 0, -31)
+offset2[0][-1] = Area.construct(0, -1, 0, -32)
+------------------------------------------------------
 
 function chart_chunk(surface, pos_x, pos_y)
     local area = Area.construct(pos_x, pos_y, pos_x + 31, pos_y + 31)
@@ -23,19 +46,72 @@ function chart_chunk(surface, pos_x, pos_y)
     end
 end
 
-function keep_track(chunk_pos, index)
+function keep_track(chunk_pos, index, flag)
     if (global.connected_to[chunk_pos.x] == nil) then
         global.connected_to[chunk_pos.x] = {}
     end
     if (global.connected_to[chunk_pos.x][chunk_pos.y] == nil) then
         global.connected_to[chunk_pos.x][chunk_pos.y] = {}
-        global.connected_to[chunk_pos.x][chunk_pos.y][1] = false
-        global.connected_to[chunk_pos.x][chunk_pos.y][2] = false
-        global.connected_to[chunk_pos.x][chunk_pos.y][3] = false
-        global.connected_to[chunk_pos.x][chunk_pos.y][4] = false
+        global.connected_to[chunk_pos.x][chunk_pos.y][8] = false
+        global.connected_to[chunk_pos.x][chunk_pos.y][12] = false
+        global.connected_to[chunk_pos.x][chunk_pos.y][5] = false
+        global.connected_to[chunk_pos.x][chunk_pos.y][15] = false
     end
 
-    global.connected_to[chunk_pos.x][chunk_pos.y][index] = true
+    global.connected_to[chunk_pos.x][chunk_pos.y][index] = flag
+end
+
+--Returns false if there is a connection to a chunk which is not generated
+--Main function is to record connections between chunks
+--Chunks are considered connected if there is at least one land tile on either side of the edge
+--This might not find a connection if the other chunk has not been generated but it will request the generation of the chunk
+-- x,y state the direction
+-- area is the is the area of the chunk specified by chunk_pos
+function check_in_direction(surface, chunk_pos, area, x, y)
+    local own_edge =
+        check_edge(
+        surface,
+        Area.construct(
+            area.left_top.x + offset[x][y].left_top.x,
+            area.left_top.y + offset[x][y].left_top.y,
+            area.right_bottom.x + offset[x][y].right_bottom.x,
+            area.right_bottom.y + offset[x][y].right_bottom.y
+        )
+    )
+
+    if (own_edge) then
+        keep_track(chunk_pos, 10 + x * 2 + 5 * y, true)
+        keep_track(chunk_pos + Position.construct(x, y), 10 - x * 2 - 5 * y, true)
+
+        if (not surface.is_chunk_generated(chunk_pos + Position.construct(x, y))) then
+            surface.request_to_generate_chunks({area.left_top.x + x * 32, area.left_top.y + y * 32}, 0)
+            chart_chunk(surface, area.left_top.x + x * 32, area.left_top.y + y * 32)
+
+            return false
+        else
+            return true
+        end
+    end
+
+    if (surface.is_chunk_generated(chunk_pos + Position.construct(x, y))) then
+        if
+            (check_edge(
+                surface,
+                Area.construct(
+                    area.left_top.x + offset2[x][y].left_top.x,
+                    area.left_top.y + offset2[x][y].left_top.y,
+                    area.right_bottom.x + offset2[x][y].right_bottom.x,
+                    area.right_bottom.y + offset2[x][y].right_bottom.y
+                )
+            ))
+         then
+            keep_track(chunk_pos, 10 + x * 2 + 5 * y, true)
+            keep_track(chunk_pos + Position.construct(x, y), 10 - x * 2 - 5 * y, true)
+        end
+        return true
+    else
+        return true
+    end
 end
 
 --This function is called on chunk generated event
@@ -43,7 +119,7 @@ end
 --This means an island will be generated completely (but not instantaneously)
 -- b) It keeps track of land connections
 -- c) It charts the requested chunks for all players
--- d) It checks when the island is ready  and calls finish(surface, chunk_pos)
+-- d) It checks when the island is ready  and calls finish_island_group(surface, chunk_pos)
 function generate_hole_islands_on_chunk(event)
     local surface = event.surface
     local area = event.area
@@ -56,81 +132,43 @@ function generate_hole_islands_on_chunk(event)
 
     local chunk_pos = Position.to_chunk_position(area.left_top)
 
-    if
-        (check_edge(
-            surface,
-            Area.construct(area.left_top.x, area.left_top.y + 31, area.right_bottom.x, area.right_bottom.y),
-            Area.construct(area.left_top.x, area.left_top.y + 32, area.right_bottom.x, area.right_bottom.y + 1)
-        ))
-     then
-        keep_track(chunk_pos, 1)
-        if (not surface.is_chunk_generated(chunk_pos + Position.construct(0, 1))) then
-            finish_ready = false
-            surface.request_to_generate_chunks({area.left_top.x, area.left_top.y + 32}, 0)
-            chart_chunk(surface, area.left_top.x, area.left_top.y + 32)
-        end
-    end
+    local right = check_in_direction(surface, chunk_pos, area, 1, 0)
+    local left = check_in_direction(surface, chunk_pos, area, -1, 0)
+    local up = check_in_direction(surface, chunk_pos, area, 0, 1)
+    local down = check_in_direction(surface, chunk_pos, area, 0, -1)
 
-    if
-        (check_edge(
-            surface,
-            Area.construct(area.left_top.x, area.left_top.y, area.right_bottom.x, area.right_bottom.y - 31),
-            Area.construct(area.left_top.x, area.left_top.y - 1, area.right_bottom.x, area.right_bottom.y - 32)
-        ))
-     then
-        keep_track(chunk_pos, 2)
-        if (not surface.is_chunk_generated(chunk_pos + Position.construct(0, -1))) then
-            finish_ready = false
-            surface.request_to_generate_chunks({area.left_top.x, area.left_top.y - 32}, 0)
-            chart_chunk(surface, area.left_top.x, area.left_top.y - 32)
-        end
-    end
+    --log("left " .. tostring(left) .. " right " .. tostring(right) .. " up " .. tostring(up) .. " down " .. tostring(down))
 
-    if
-        (check_edge(
-            surface,
-            Area.construct(area.left_top.x + 31, area.left_top.y, area.right_bottom.x, area.right_bottom.y),
-            Area.construct(area.left_top.x + 32, area.left_top.y, area.right_bottom.x + 1, area.right_bottom.y)
-        ))
-     then
-        keep_track(chunk_pos, 3)
-        if (not surface.is_chunk_generated(chunk_pos + Position.construct(1, 0))) then
-            finish_ready = false
-            surface.request_to_generate_chunks({area.left_top.x + 32, area.left_top.y}, 0)
-            chart_chunk(surface, area.left_top.x + 32, area.left_top.y)
-        end
-    end
-
-    if
-        (check_edge(
-            surface,
-            Area.construct(area.left_top.x, area.left_top.y, area.right_bottom.x - 31, area.right_bottom.y),
-            Area.construct(area.left_top.x - 1, area.left_top.y, area.right_bottom.x - 32, area.right_bottom.y)
-        ))
-     then
-        keep_track(chunk_pos, 4)
-        if (not surface.is_chunk_generated(chunk_pos + Position.construct(-1, 0))) then
-            finish_ready = false
-            surface.request_to_generate_chunks({area.left_top.x - 32, area.left_top.y}, 0)
-            chart_chunk(surface, area.left_top.x - 32, area.left_top.y)
-        end
-    end
+    finish_ready = finish_ready and right
+    finish_ready = finish_ready and left
+    finish_ready = finish_ready and up
+    finish_ready = finish_ready and down
 
     ----------------------------------------------------------------------------
     if (finish_ready) then
         local allready_checked = {}
         if (check_all_connected(surface, chunk_pos, allready_checked)) then
-            finish(surface, chunk_pos)
+            if (game.tick > 10) then
+                finish_island_group(surface, chunk_pos)
+            else
+                table.insert(global.chunks_for_later, {surface = surface, position = chunk_pos})
+            end
         end
     end
 end
---For the sake of simplicity : 2 chunks are connected if there is at least 1 land tile on the edge area
-function check_edge(surface, edge_area, edge_area2)
-    return 1 == surface.count_tiles_filtered {area = edge_area, limit = 1, collision_mask = ground_collision_mask} and
-        1 == surface.count_tiles_filtered {area = edge_area2, limit = 1, collision_mask = ground_collision_mask}
+
+function catch_up_on_tick()
+    for i, v in pairs(global.chunks_for_later) do
+        finish_island_group(v.surface, v.position)
+    end
 end
 
---returns true if all chunks reachable from given chunk over any number of connections are generated
+--Returns true if there is at least one land tile in the area
+function check_edge(surface, edge_area)
+    return 1 == surface.count_tiles_filtered {area = edge_area, limit = 1, collision_mask = ground_collision_mask}
+end
+
+--Returns true if all chunks reachable from given chunk over any number of connections are generated
 function check_all_connected(surface, chunk_pos, allready_checked)
     if (allready_checked[chunk_pos.x] ~= nil and allready_checked[chunk_pos.x][chunk_pos.y] == true) then
         return true
@@ -151,12 +189,12 @@ function check_all_connected(surface, chunk_pos, allready_checked)
         return true
     end
 
-    return ((not global.connected_to[chunk_pos.x][chunk_pos.y][1]) or
+    return ((not global.connected_to[chunk_pos.x][chunk_pos.y][15]) or
         check_all_connected(surface, chunk_pos + Position.construct(0, 1), allready_checked)) and
-        ((not global.connected_to[chunk_pos.x][chunk_pos.y][2]) or
+        ((not global.connected_to[chunk_pos.x][chunk_pos.y][5]) or
             check_all_connected(surface, chunk_pos + Position.construct(0, -1), allready_checked)) and
-        ((not global.connected_to[chunk_pos.x][chunk_pos.y][3]) or
+        ((not global.connected_to[chunk_pos.x][chunk_pos.y][12]) or
             check_all_connected(surface, chunk_pos + Position.construct(1, 0), allready_checked)) and
-        ((not global.connected_to[chunk_pos.x][chunk_pos.y][4]) or
+        ((not global.connected_to[chunk_pos.x][chunk_pos.y][8]) or
             check_all_connected(surface, chunk_pos + Position.construct(-1, 0), allready_checked))
 end

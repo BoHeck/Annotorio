@@ -108,11 +108,11 @@ function name_island(surface, island)
 end
 
 function add_chart_tag_for_all_forces(surface, position, text)
-    log("tag_all")
+    --log("tag_all")
     for i, force in pairs(game.forces) do
-        log("tag")
-        log(force.name)
-        log(text)
+        --log("tag")
+        --log(force.name)
+        --log(text)
         force.chart(surface, {{position[1] - 16, position[2] - 16}, {position[1] + 16, position[2] + 16}})
 
         force.add_chart_tag(surface, {position = position, text = text})

@@ -83,7 +83,7 @@ local function divide_per_island(surface, tiles)
 end
 
 local function finish_island(surface, island)
-    log("finish_island")
+    log("finish_island..size " .. #island)
     --------------------------------------
     --to small islands get destroyed
     if (#island < minimal_island_size) then
@@ -97,17 +97,54 @@ local function finish_island(surface, island)
         return
     end
     --------------------------------------
+    --to small islands get destroyed
+
+    tile_changes = {}
+
+    for i, tile_position in pairs(island) do
+        table.insert(tile_changes, {name = "concrete", position = tile_position})
+    end
+
+    surface.set_tiles(tile_changes)
+
+    --------------------------------------
     name_island(surface, island)
     --------------------------------------
     local soils = roll_soils()
     local ores = roll_ores()
-    place_resources(surface, island, soils, ores)
+    --place_resources(surface, island, soils, ores)
 end
 
-function finish(surface, chunk_pos)
-    log("finish")
+--This function is mainly for debugging
+--It writes tile changes into a table to be used in surface.set_tiles(tile_changes)
+--Land tiles will be changed with concrete, water tiles with green water
+--i,j are the chunk_position
+--some_table is the table which will be filled
+function debug_color_island_group(surface, some_table, i, j)
+    local buffer =
+        surface.find_tiles_filtered {
+        area = Chunk.to_area(Position.construct(i, j)),
+        collision_mask = ground_collision_mask
+    }
+
+    for k, tile in pairs(buffer) do
+        table.insert(some_table, {name = "concrete", position = tile.position})
+    end
+
+    buffer =
+        surface.find_tiles_filtered {
+        area = Chunk.to_area(Position.construct(i, j)),
+        collision_mask = water_collision_mask
+    }
+
+    for k, tile in pairs(buffer) do
+        table.insert(some_table, {name = "water-green", position = tile.position})
+    end
+end
+
+function finish_island_group(surface, chunk_pos)
+    log("finish " .. chunk_pos.x .. "|" .. chunk_pos.y .. "---------------")
     --Last check if this has allready been generated
-    log(chunk_pos.x .. "|" .. chunk_pos.y)
     if (global.mapped_chunks[chunk_pos.x] ~= nil and global.mapped_chunks[chunk_pos.x][chunk_pos.y]) then
         return
     end
@@ -115,8 +152,11 @@ function finish(surface, chunk_pos)
     local chunks = get_connected_chunks(chunk_pos)
     local tiles = {}
 
+    tile_changes = {}
     for i, v in pairs(chunks) do
         for j, w in pairs(chunks[i]) do
+            --debug_color_island_group(surface, tile_changes, i, j)
+
             --------------------------------------
             --Record that this chunk has been mapped
             if (global.mapped_chunks[i] == nil) then
@@ -130,30 +170,41 @@ function finish(surface, chunk_pos)
                 area = Chunk.to_area(Position.construct(i, j)),
                 collision_mask = ground_collision_mask
             }
-
+            --log(#buffer)
             for i, tile in pairs(buffer) do
                 table.insert(tiles, tile)
             end
         end
     end
+    --surface.set_tiles(tile_changes)
+
     local islands = divide_per_island(surface, tiles)
-    
+
     for i, island in pairs(islands) do
         finish_island(surface, island)
     end
 end
 
 local function get_connected_chunks_helper(chunk_pos, chunks)
+    -------------------------------
+    --if the chunk has already been mapped (which can happen if a newly generated chunk connects to an already generated island group)
+    if (global.mapped_chunks[chunk_pos.x] ~= nil and global.mapped_chunks[chunk_pos.x][chunk_pos.y]) then
+        return
+    end
+    -------------------------------
+    --initialize so we dont have any crashes
     if (chunks[chunk_pos.x] == nil) then
         chunks[chunk_pos.x] = {}
     end
     -------------------------------
+    --if this has allready been visited then return
     if (chunks[chunk_pos.x][chunk_pos.y] == true) then
         return chunks
     end
 
     chunks[chunk_pos.x][chunk_pos.y] = true
     -------------------------------
+    --return in case check these tables dont exist (Not sure if this can be removed in the current state)
     if (global.connected_to[chunk_pos.x] == nil) then
         return chunks
     end
@@ -161,16 +212,16 @@ local function get_connected_chunks_helper(chunk_pos, chunks)
         return chunks
     end
     -------------------------------
-    if (global.connected_to[chunk_pos.x][chunk_pos.y][1]) then
+    if (global.connected_to[chunk_pos.x][chunk_pos.y][15]) then
         get_connected_chunks_helper(chunk_pos + Position.construct(0, 1), chunks)
     end
-    if (global.connected_to[chunk_pos.x][chunk_pos.y][2]) then
+    if (global.connected_to[chunk_pos.x][chunk_pos.y][5]) then
         get_connected_chunks_helper(chunk_pos + Position.construct(0, -1), chunks)
     end
-    if (global.connected_to[chunk_pos.x][chunk_pos.y][3]) then
+    if (global.connected_to[chunk_pos.x][chunk_pos.y][12]) then
         get_connected_chunks_helper(chunk_pos + Position.construct(1, 0), chunks)
     end
-    if (global.connected_to[chunk_pos.x][chunk_pos.y][4]) then
+    if (global.connected_to[chunk_pos.x][chunk_pos.y][8]) then
         get_connected_chunks_helper(chunk_pos + Position.construct(-1, 0), chunks)
     end
     -------------------------------
