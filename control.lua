@@ -13,6 +13,9 @@ require("scripts.pipette")
 require("scripts.day_night_cycle")
 require("scripts.luxus_buildings")
 require("scripts.technology")
+--require("prototypes.map.voroni_noise")
+require("prototypes.map.hole_islands")
+require("prototypes.map.island_naming")
 
 require("scripts.gui")
 
@@ -65,6 +68,13 @@ function on_entity_removed_collection(event)
    if_tree_planter_removed(event, entity_name)
 end
 
+function on_tick_collection()
+   if (game.tick == 12) then
+      script.on_event({defines.events.on_tick}, nil)
+      catch_up_on_tick()
+   end
+end
+
 function on_12_tick_Collection()
    search_in_kontor_on_every_x_ticks()
    --search before refreshing gui
@@ -82,8 +92,10 @@ function on_180_tick_Collection()
 end
 
 function on_chunk_generated_collection(event)
-   map_generation_fish_resource(event, 1)
+   generate_hole_islands_on_chunk(event)
+
    --Generate them on surface 1
+   map_generation_fish_resource(event, 1)
 end
 
 function on_pre_player_crafted_item_collection()
@@ -128,6 +140,27 @@ function on_player_created_collection(event)
    create_gui_for_player(player)
    --This should be run after give_player_starting_items()
    init_shared_resources(player)
+   start_player_in_ship(player)
+end
+
+function start_player_in_ship(player)
+   local ship =
+      player.surface.create_entity {
+      name = "carrack",
+      position = player.position,
+      force = player.force,
+      fast_replace = false,
+      player = player,
+      spill = false,
+      raise_built = false,
+      create_build_effect_smoke = false
+   }
+   if (settings.startup["debug_mode"].value) then
+      ship.insert {name = "cannon_ball", count = 100}
+   else
+      ship.insert {name = "cannon_ball", count = 8}
+   end
+   ship.set_driver(player)
 end
 
 function on_player_pipette_collection(event)
@@ -168,6 +201,10 @@ function on_research_finished_collection(event)
    end
 
    queue_technology(event.research.force)
+end
+
+function on_force_created_collection(event)
+   name_islands_on_force_created(event)
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -255,10 +292,10 @@ global.created_items = {}
 global.respawn_items = {}
 --------------------------------------------------
 
---script.on_event({defines.events.on_tick}, on_tick_Collection)
 script.on_nth_tick(12, on_12_tick_Collection)
 script.on_nth_tick(60, on_60_tick_Collection)
 script.on_nth_tick(180, on_180_tick_Collection)
+script.on_event({defines.events.on_tick}, on_tick_collection)
 
 script.on_event({defines.events.on_built_entity}, on_built_entity_collection)
 script.on_event({defines.events.script_raised_built}, script_raised_built_collection)
@@ -277,6 +314,7 @@ script.on_event(defines.events.on_player_pipette, on_player_pipette_collection)
 script.on_event(defines.events.on_runtime_mod_setting_changed, on_runtime_mod_setting_changed_collection)
 script.on_event(defines.events.on_selected_entity_changed, on_selected_entity_changed_collection)
 script.on_event(defines.events.on_research_finished, on_research_finished_collection)
+script.on_event(defines.events.on_force_created, on_force_created_collection)
 
 script.on_configuration_changed(on_configuration_changed_collection)
 script.on_init(on_init_collection)

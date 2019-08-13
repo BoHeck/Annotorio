@@ -1,5 +1,4 @@
-
-debug_on  = settings.startup["debug_mode"].value
+debug_on = settings.startup["debug_mode"].value
 
 --Hiding all existing technologies
 for i, v in pairs(data.raw.technology) do
@@ -42,7 +41,7 @@ require("prototypes.weapons")
 require("prototypes.recipe")
 require("prototypes.technology")
 require("prototypes.gui")
-require("prototypes.map_presets")
+require("prototypes.map.map")
 require("prototypes.groups")
 
 --Enabling the recipes we need
@@ -51,17 +50,17 @@ require("prototypes.groups")
 
 -------
 data.raw.fish["fish"].minable = {mining_time = 0.4, result = "anno_fish", count = 5}
-data.raw.fish["fish"].collision_mask = {"ground-tile"}
+data.raw.fish["fish"].collision_mask = {"layer-14"}
 -------
 data.raw.item["wood"].icon = "__Annotorio__/graphics/icons/wood_icon.png"
 data.raw.item["wood"].icon_size = 64
 -------
-data.raw.resource["crude-oil"] = nil
-data.raw.resource["uranium-ore"] = nil
-data.raw["autoplace-control"]["crude-oil"] = nil
-data.raw["autoplace-control"]["uranium-ore"] = nil
--------
 data.raw["simple-entity"]["rock-big"].minable.results = {{"clay", 8}}
 data.raw["simple-entity"]["rock-huge"].minable.results = {{"clay", 16}}
 data.raw["simple-entity"]["sand-rock-big"].minable.results = {{"clay", 10}}
+-------
+--data.raw.tile["water-shallow"].map_color = {r = 0.257, g = 0.425, b = 0.472}
+data.raw.tile["water-shallow"].map_color = {r = 0.212, g = 0.351, b = 0.390}
+-------
+data.raw.character.character.enter_vehicle_distance = 5
 -------
