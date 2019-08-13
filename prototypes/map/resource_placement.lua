@@ -51,10 +51,10 @@ function place_resources(surface, island, soils, ores)
 
     local position_elevation_pairs = {}
 
-    log(#elevation["elevation"])
-    log(ore_count)
-    log(seperation_count)
-    log(soil_count)
+    --log(#elevation["elevation"])
+    --log(ore_count)
+    --log(seperation_count)
+    --log(soil_count)
 
     for i, v in pairs(elevation["elevation"]) do
         table.insert(position_elevation_pairs, {elev = v, position = island[i]})
@@ -62,7 +62,7 @@ function place_resources(surface, island, soils, ores)
 
     table.sort(position_elevation_pairs, sort_by_elev)
 
-    log(#position_elevation_pairs)
+    --log(#position_elevation_pairs)
 
     for index = 1, ore_count do
         surface.create_entity {

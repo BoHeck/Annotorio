@@ -13,7 +13,7 @@ require("scripts.pipette")
 require("scripts.day_night_cycle")
 require("scripts.luxus_buildings")
 require("scripts.technology")
-require("prototypes.map.voroni_noise")
+--require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
 require("prototypes.map.island_naming")
 
@@ -92,9 +92,6 @@ function on_180_tick_Collection()
 end
 
 function on_chunk_generated_collection(event)
-   --generate_chunk(event)
-   -- generate_veroni_chunk(event)
-
    generate_hole_islands_on_chunk(event)
 
    --Generate them on surface 1
