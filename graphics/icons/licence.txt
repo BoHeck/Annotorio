@@ -22,7 +22,7 @@ bow_icon.png by "DYCHA / Ravenmore - http://dycha.net" from "RavenmoreIconPack.0
 
 ------------------------------------------
 
-cold_climate_fertile_soil_icon.png and warm_climate_fertile_soil_icon.png  made by combining 
+apple_soil_icon.png and sugar_cane_soil_icon.png  made by combining 
 "grass_and_water_0.png" from "Clint Bellanger" under  https://creativecommons.org/licenses/by/3.0/
 and "snowflake.png" from "mkwong98" under public domain
 

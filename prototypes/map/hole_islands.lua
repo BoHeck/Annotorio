@@ -12,10 +12,13 @@ local ground_collision_mask = {"ground-tile"}
 --This means if there is an island than all chunks containing the iland will be generated.
 --There is a failsave if the map_gen is not set to anno_noise_expression
 
---global.called_from = {}
-global.connected_to = {}
-global.allready_checked = {}
-global.chunks_for_later = {}
+if (global.connected_to == nil) then
+    global.connected_to = {}
+end
+if (global.chunks_for_later == nil) then
+    global.chunks_for_later = {}
+end
+
 ------------------------------------------------------
 local offset = {}
 local offset2 = {}
@@ -38,13 +41,6 @@ offset2[0][1] = Area.construct(0, 32, 0, 1)
 offset[0][-1] = Area.construct(0, 0, 0, -31)
 offset2[0][-1] = Area.construct(0, -1, 0, -32)
 ------------------------------------------------------
-
-function chart_chunk(surface, pos_x, pos_y)
-    local area = Area.construct(pos_x, pos_y, pos_x + 31, pos_y + 31)
-    for i, player in pairs(game.players) do
-        player.force.chart(surface, area)
-    end
-end
 
 function keep_track(chunk_pos, index, flag)
     if (global.connected_to[chunk_pos.x] == nil) then
@@ -124,9 +120,13 @@ function generate_hole_islands_on_chunk(event)
     local surface = event.surface
     local area = event.area
 
+    generate_hole_islands_on_chunk2(surface, area)
+end
+
+function generate_hole_islands_on_chunk2(surface, area)
     local finish_ready = true
 
-    if (surface.map_gen_settings.property_expression_names.elevation ~= "kap-islands-world2") then
+    if (surface.map_gen_settings.property_expression_names.elevation ~= "anno_noise_expression") then
         return
     end
 
@@ -157,9 +157,12 @@ function generate_hole_islands_on_chunk(event)
     end
 end
 
+--This function is supposed to be called only once.
+--It calls finish_island_group for all the chunks which were generated in the first 10 ticks.
 function catch_up_on_tick()
     for i, v in pairs(global.chunks_for_later) do
-        finish_island_group(v.surface, v.position)
+        generate_hole_islands_on_chunk2(v.surface, Chunk.to_area(v.position))
+        --finish_island_group(v.surface, v.position)
     end
 end
 

@@ -125,6 +125,13 @@ local plantation = {
     order = "e"
 }
 
+local ships = {
+    type = "item-subgroup",
+    name = "ships",
+    group = "logistics",
+    order = "e"
+}
+
 data:extend(
     {
         trade_group,
@@ -144,7 +151,8 @@ data:extend(
         advanced,
         barreled_item,
         pasture,
-        plantation
+        plantation,
+        ships
     }
 )
 

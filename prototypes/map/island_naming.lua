@@ -89,18 +89,18 @@ function island_center(island)
 end
 
 function name_island(surface, island)
-    log("name_island")
+    --log("name_island")
     if (#global.available_island_names < 1) then
         return
     end
 
     local position = island_center(island)
-    log(position[1] .. "|" .. position[2])
+    --log(position[1] .. "|" .. position[2])
 
     local index = math.random(1, #global.available_island_names)
 
-    --local text = table.remove(global.available_island_names, index)
-    text = global.available_island_names[index]
+    local text = table.remove(global.available_island_names, index)
+    --local text = global.available_island_names[index]
 
     table.insert(global.used_island_names, {surface = surface, position = position, text = text})
 
@@ -108,13 +108,8 @@ function name_island(surface, island)
 end
 
 function add_chart_tag_for_all_forces(surface, position, text)
-    --log("tag_all")
     for i, force in pairs(game.forces) do
-        --log("tag")
-        --log(force.name)
-        --log(text)
         force.chart(surface, {{position[1] - 16, position[2] - 16}, {position[1] + 16, position[2] + 16}})
-
         force.add_chart_tag(surface, {position = position, text = text})
     end
 end

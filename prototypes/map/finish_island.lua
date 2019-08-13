@@ -15,6 +15,13 @@ if (global.mapped_chunks == nil) then
     global.mapped_chunks = {}
 end
 
+function chart_chunk(surface, pos_x, pos_y)
+    local area = Area.construct(pos_x, pos_y, pos_x + 31, pos_y + 31)
+    for i, player in pairs(game.players) do
+        player.force.chart(surface, area)
+    end
+end
+
 function init_ground_tiles()
     if (ground_tiles == nil) then
         ground_tiles = {}
@@ -83,7 +90,7 @@ local function divide_per_island(surface, tiles)
 end
 
 local function finish_island(surface, island)
-    log("finish_island..size " .. #island)
+    --log("finish_island..size " .. #island)
     --------------------------------------
     --to small islands get destroyed
     if (#island < minimal_island_size) then
@@ -97,8 +104,7 @@ local function finish_island(surface, island)
         return
     end
     --------------------------------------
-    --to small islands get destroyed
-
+    --[[
     tile_changes = {}
 
     for i, tile_position in pairs(island) do
@@ -106,13 +112,14 @@ local function finish_island(surface, island)
     end
 
     surface.set_tiles(tile_changes)
-
+    ]]
     --------------------------------------
     name_island(surface, island)
     --------------------------------------
-    local soils = roll_soils()
-    local ores = roll_ores()
-    --place_resources(surface, island, soils, ores)
+    local soils = roll_soils(1)
+    local ores = roll_ores(1)
+    log("---------------------------------------------------------" .. ores[1])
+    place_resources(surface, island, soils, ores)
 end
 
 --This function is mainly for debugging
@@ -143,7 +150,7 @@ function debug_color_island_group(surface, some_table, i, j)
 end
 
 function finish_island_group(surface, chunk_pos)
-    log("finish " .. chunk_pos.x .. "|" .. chunk_pos.y .. "---------------")
+    --log("finish " .. chunk_pos.x .. "|" .. chunk_pos.y .. "---------------")
     --Last check if this has allready been generated
     if (global.mapped_chunks[chunk_pos.x] ~= nil and global.mapped_chunks[chunk_pos.x][chunk_pos.y]) then
         return
@@ -163,7 +170,7 @@ function finish_island_group(surface, chunk_pos)
                 global.mapped_chunks[i] = {}
             end
             global.mapped_chunks[i][j] = true
-            log(i .. "|" .. j)
+            --log(i .. "|" .. j)
             --------------------------------------
             local buffer =
                 surface.find_tiles_filtered {
@@ -182,6 +189,12 @@ function finish_island_group(surface, chunk_pos)
 
     for i, island in pairs(islands) do
         finish_island(surface, island)
+    end
+
+    for i, v in pairs(chunks) do
+        for j, w in pairs(chunks[i]) do
+            chart_chunk(surface, i * 32, j * 32)
+        end
     end
 end
 

@@ -1,9 +1,10 @@
 data.raw["map-gen-presets"]["default"]["anno_map_preset_beta"] = {
-	order = "a",
+	order = "b",
 	basic_settings = {
 		property_expression_names = {
-			elevation = "kap-islands-world2"
-		},
+			elevation = "anno_noise_expression"
+		}
+		--[[
 		autoplace_controls = {
 			["iron-ore"] = {
 				frequency = "high",
@@ -21,15 +22,15 @@ data.raw["map-gen-presets"]["default"]["anno_map_preset_beta"] = {
 				frequency = "high",
 				size = "high"
 			},
-			["warm_climate_fertile_soil"] = {
+			["sugar_cane_soil"] = {
 				frequency = "very-high",
 				size = "very-high"
 			},
-			["cold_climate_fertile_soil"] = {
+			["apple_soil"] = {
 				frequency = "very-high",
 				size = "very-high"
 			}
-		}
+		}]]
 	}
 }
 

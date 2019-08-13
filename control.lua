@@ -69,7 +69,6 @@ function on_entity_removed_collection(event)
 end
 
 function on_tick_collection()
-   log(game.tick)
    if (game.tick == 12) then
       script.on_event({defines.events.on_tick}, nil)
       catch_up_on_tick()
@@ -144,6 +143,27 @@ function on_player_created_collection(event)
    create_gui_for_player(player)
    --This should be run after give_player_starting_items()
    init_shared_resources(player)
+   start_player_in_ship(player)
+end
+
+function start_player_in_ship(player)
+   local ship =
+      player.surface.create_entity {
+      name = "carrack",
+      position = player.position,
+      force = player.force,
+      fast_replace = false,
+      player = player,
+      spill = false,
+      raise_built = false,
+      create_build_effect_smoke = false
+   }
+   if (settings.startup["debug_mode"].value) then
+      ship.insert {name = "cannon_ball", count = 100}
+   else
+      ship.insert {name = "cannon_ball", count = 8}
+   end
+   ship.set_driver(player)
 end
 
 function on_player_pipette_collection(event)

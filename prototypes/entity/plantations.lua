@@ -6,7 +6,7 @@ local template = {
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.3, result = "unobtainable_dummy"},
     max_health = 300,
-    resource_categories = {"cold_climate_fertile_soil"},
+    resource_categories = {"apple_soil"},
     corpse = "medium-remnants",
     collision_box = {{-2.7, -1.7}, {2.7, 1.7}},
     selection_box = {{-3, -2}, {3, 2}},
@@ -71,7 +71,7 @@ apple_orchard_dummy.selection_box = {{-3, -2}, {3, 2}}
 
 local sugar_cane_plantation_dummy = table.deepcopy(template)
 sugar_cane_plantation_dummy.name = "sugar_cane_plantation_dummy"
-sugar_cane_plantation_dummy.resource_categories = {"warm_climate_fertile_soil"}
+sugar_cane_plantation_dummy.resource_categories = {"sugar_cane_soil"}
 sugar_cane_plantation_dummy.icon = "__Annotorio__/graphics/icons/sugar_cane_plantation_icon.png"
 sugar_cane_plantation_dummy.icon_size = 64
 sugar_cane_plantation_dummy.animations = {

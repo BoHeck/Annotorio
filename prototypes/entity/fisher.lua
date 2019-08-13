@@ -1,7 +1,7 @@
 collision_maskForWaterTiles = {
     "water-tile",
     "item-layer",
-    "player-layer",
+    --"player-layer",
     "doodad-layer",
     "layer-15"
 }
@@ -15,6 +15,8 @@ collision_mask_for_land_resources = {
 for i, v in pairs(data.raw.tile) do
     if (v.draw_in_water_layer) then --This should be the clear sign of a water tile
         v.collision_mask = collision_maskForWaterTiles
+    else
+        table.insert(v.collision_mask, "layer-14")
     end
 end
 
@@ -382,7 +384,7 @@ data:extend(
             icon_size = 64,
             flags = {"placeable-neutral"},
             category = "fish_fluid",
-            collision_mask = {"resource-layer", "ground-tile"},
+            collision_mask = {"resource-layer", "layer-14"},
             order = "a-b-a",
             infinite = true,
             highlight = true,
