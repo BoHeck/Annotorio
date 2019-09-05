@@ -30,7 +30,7 @@ data:extend(
             icon_size = 64,
             subgroup = "advanced_item",
             order = "a[bricks]",
-            stack_size = 50
+            stack_size = 500
         },
         {
             type = "recipe-category",

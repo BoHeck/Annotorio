@@ -1,30 +1,3 @@
-collision_maskForWaterTiles = {
-    "water-tile",
-    "item-layer",
-    --"player-layer",
-    "doodad-layer",
-    "layer-15"
-}
-
-collision_mask_for_land_resources = {
-    "resource-layer",
-    "layer-15"
-}
-
---Change collision of water tiles
-for i, v in pairs(data.raw.tile) do
-    if (v.draw_in_water_layer) then --This should be the clear sign of a water tile
-        v.collision_mask = collision_maskForWaterTiles
-    else
-        table.insert(v.collision_mask, "layer-14")
-    end
-end
-
---Change collision of Resources
-for i, v in pairs(data.raw.resource) do
-    v.collision_mask = collision_mask_for_land_resources
-end
-
 --long list of pictures needed for the fishing route aka fish pipe
 fishing_route_pictures = function()
     return {
@@ -384,6 +357,7 @@ data:extend(
             icon_size = 64,
             flags = {"placeable-neutral"},
             category = "fish_fluid",
+            selection_priority=49,
             collision_mask = {"resource-layer", "layer-14"},
             order = "a-b-a",
             infinite = true,
@@ -497,7 +471,8 @@ data:extend(
             dying_explosion = "medium-explosion",
             collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
             selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-            collision_mask = {"object-layer", "train-layer"},
+            selection_priority = 51,
+            collision_mask = {"object-layer","player-layer", "train-layer"},
             energy_source = {
                 type = "void",
                 emissions_per_minute = 12,

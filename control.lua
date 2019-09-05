@@ -13,6 +13,7 @@ require("scripts.pipette")
 require("scripts.day_night_cycle")
 require("scripts.luxus_buildings")
 require("scripts.technology")
+require("scripts.shore_placement")
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
 require("prototypes.map.island_naming")
@@ -48,11 +49,11 @@ function on_built_entity_collection(event)
 
    if_luxus_build(event, entity_name)
    ifMarketBuild(event, entity_name)
-   ifKontorBuild(event, entity_name)
    ifHouseBuild(ent, entity_name)
    ifWoodcutterBuild(event, entity_name)
    if_tree_planter_build(event, entity_name)
-
+   if_shipyard_build(event, entity_name)
+   if_kontor_build(event, entity_name)
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
 end
@@ -141,6 +142,13 @@ function on_player_created_collection(event)
    --This should be run after give_player_starting_items()
    init_shared_resources(player)
    start_player_in_ship(player)
+   --[[
+   for i, tile in pairs(game.tile_prototypes) do
+      log(tile.name)
+      for j, layer in pairs(tile.collision_mask) do
+         log(j)
+      end
+   end]]
 end
 
 function start_player_in_ship(player)

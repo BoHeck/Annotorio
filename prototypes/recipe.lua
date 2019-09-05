@@ -18,6 +18,19 @@ data:extend(
             type = "recipe-category",
             name = "predetermined"
         },
+        {
+            type = "recipe",
+            name = "anno_repair_kit",
+            enabled = true,
+            hidden = false,
+            energy_required = 1,
+            result = "repair-pack",
+            ingredients = {
+                {"wood", 1},
+                {"ceramics", 1},
+                {"anno_tool", 1}
+            }
+        },
         ------------- Weapons ----------------
 
         ------------- Trade --------------

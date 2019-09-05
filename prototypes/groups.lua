@@ -6,6 +6,16 @@ local trade_group = {
     icon = "__Annotorio__/graphics/icons/trade_category_icon.png",
     icon_size = 128
 }
+
+local ship_group = {
+    type = "item-group",
+    name = "ships",
+    order = "x_ships",
+    inventory_order = "todo",
+    icon = "__Annotorio__/graphics/icons/ship_category_icon.png",
+    icon_size = 128
+}
+
 local trade_subgroup_sell = {
     type = "item-subgroup",
     name = "trade_sell",
@@ -17,6 +27,31 @@ local trade_subgroup_buy = {
     name = "trade_buy",
     group = "trade",
     order = "b"
+}
+
+local ships_subgroup = {
+    type = "item-subgroup",
+    name = "ships",
+    group = "ships",
+    order = "b"
+}
+local ships_subgroup_to_loc = {
+    type = "item-subgroup",
+    name = "ships_to_loc",
+    group = "ships",
+    order = "c"
+}
+local ships_subgroup_from_loc = {
+    type = "item-subgroup",
+    name = "ships_from_loc",
+    group = "ships",
+    order = "d"
+}
+local ships_misc = {
+    type = "item-subgroup",
+    name = "ships_misc",
+    group = "ships",
+    order = "a"
 }
 
 local intermediate_subgroup_people_needs = {
@@ -125,16 +160,10 @@ local plantation = {
     order = "e"
 }
 
-local ships = {
-    type = "item-subgroup",
-    name = "ships",
-    group = "logistics",
-    order = "e"
-}
-
 data:extend(
     {
         trade_group,
+        ship_group,
         trade_subgroup_sell,
         trade_subgroup_buy,
         intermediate_subgroup_people_needs,
@@ -152,7 +181,10 @@ data:extend(
         barreled_item,
         pasture,
         plantation,
-        ships
+        ships_subgroup,
+        ships_subgroup_to_loc,
+        ships_subgroup_from_loc,
+        ships_misc
     }
 )
 

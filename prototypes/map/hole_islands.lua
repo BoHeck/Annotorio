@@ -1,4 +1,6 @@
 require("prototypes.map.finish_island")
+require("scripts.util")
+
 
 local Area = require("__stdlib__/stdlib/area/area")
 local Position = require("__stdlib__/stdlib/area/position")
@@ -127,6 +129,7 @@ function generate_hole_islands_on_chunk2(surface, area)
     local finish_ready = true
 
     if (surface.map_gen_settings.property_expression_names.elevation ~= "anno_noise_expression") then
+        debug_print("Warning: You are not using the Annotorio Map Preset")
         return
     end
 

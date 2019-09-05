@@ -12,7 +12,7 @@
 
 require("scripts.util")
 
-local resource_freshhold = 50 --The system aims to place this many resources into every players inventory.
+local resource_freshhold = 150 --The system aims to place this many resources into every players inventory.
 
 if (global.banked_wood == nil) then
     global.banked_wood = 0
