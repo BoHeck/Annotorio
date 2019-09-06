@@ -36,6 +36,24 @@ data.raw.tile["water-shallow"].map_color = {r = 0.212, g = 0.351, b = 0.390}
 --to counteract changed made by Noxys_Swimming_0.1.2
 for i, water_tile in pairs({"water", "water-green", "deepwater", "deepwater-green"}) do
     data.raw.tile[water_tile].vehicle_friction_modifier = 1
- --todo what about shallow water?
+    --todo what about shallow water?
 end
 -------
+
+for i, v in pairs(data.raw["optimized-decorative"]) do
+    if (v.collision_mask == nil) then
+        v.collision_mask = {"layer-15", "colliding-with-tiles-only"}
+    else
+        table.insert(v.collision_mask, "layer-15")
+        table.insert(v.collision_mask, "colliding-with-tiles-only")
+    end
+end
+
+for i, v in pairs(data.raw.decorative) do
+    if (v.collision_mask == nil) then
+        v.collision_mask = {"layer-15", "colliding-with-tiles-only"}
+    else
+        table.insert(v.collision_mask, "layer-15")
+        table.insert(v.collision_mask, "colliding-with-tiles-only")
+    end
+end

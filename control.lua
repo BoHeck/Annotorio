@@ -12,6 +12,7 @@ require("scripts.marketplace")
 require("scripts.pipette")
 require("scripts.day_night_cycle")
 require("scripts.luxus_buildings")
+require("scripts.ship_placement")
 require("scripts.technology")
 require("scripts.shore_placement")
 --require("prototypes.map.voroni_noise")
@@ -56,6 +57,7 @@ function on_built_entity_collection(event)
    if_kontor_build(event, entity_name)
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
+   if_ship_build(event, entity_name)
 end
 
 function on_entity_removed_collection(event)
@@ -67,6 +69,7 @@ function on_entity_removed_collection(event)
    ifHouseRemoved(event, entity_name)
    ifWoodcutterRemoved(event, entity_name)
    if_tree_planter_removed(event, entity_name)
+   if_ship_removed(event, entity_name)
 end
 
 function on_tick_collection()
