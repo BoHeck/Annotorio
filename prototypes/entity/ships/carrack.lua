@@ -175,6 +175,8 @@ local carrack = {
 -------------------------------------------------------------
 local carrack_loc = table.deepcopy(data.raw["locomotive"]["locomotive"])
 carrack_loc.name = "carrack_loc"
+carrack_loc.max_health = 3000
+
 carrack_loc.flags = {"not-blueprintable", "placeable-neutral", "player-creation"}
 carrack_loc.burner = nil
 carrack_loc.energy_source = {
@@ -355,7 +357,7 @@ data:extend(
             energy_required = 0.1,
             enabled = true,
             hidden = false,
-            allow_as_intermediate = true
+            allow_as_intermediate = false
         },
         -- locomotive to carrack
         {
@@ -371,7 +373,7 @@ data:extend(
             energy_required = 0.1,
             enabled = true,
             hidden = false,
-            allow_as_intermediate = true
+            allow_as_intermediate = false
         }
     }
 )

@@ -33,6 +33,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "buy_anno_tool"
+                };
+                {
+                    type = "unlock-recipe",
+                    recipe = "wooden-chest"
                 }
             },
             unit = {
@@ -151,6 +155,22 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "ceramics_1"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "water_rail_straight"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "rail_chain_signal"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "rail_signal"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "anno_crane_2"
                 }
             },
             unit = {
@@ -197,6 +217,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "tavern"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "anno_repair_kit"
                 }
             },
             unit = {
@@ -313,6 +337,22 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "press_sugar_cane"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "shipyard"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "carrack"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "carrack_to_loc"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "carrack_from_loc"
                 }
             },
             unit = {

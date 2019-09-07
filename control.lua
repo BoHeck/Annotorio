@@ -131,6 +131,12 @@ function on_configuration_changed_collection(ConfigurationChangedData)
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.3.4") then
          migrate_0_3_4()
       end
+
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.5.0") then
+         migrate_0_5_0()
+      end
+
+
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
    allways_try_these()
@@ -145,6 +151,10 @@ function on_player_created_collection(event)
    --This should be run after give_player_starting_items()
    init_shared_resources(player)
    start_player_in_ship(player)
+
+   --set stack_inserter bonus --TODO remove this once the game allowes us to set this in another way
+   player.force.stack_inserter_capacity_bonus = 200
+
    --[[
    for i, tile in pairs(game.tile_prototypes) do
       log(tile.name)

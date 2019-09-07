@@ -102,7 +102,40 @@ end
 function migrate_0_3_4()
     log("apply 0_3_4 to higher")
     log("Migrating version 0_3_4 or lower can not be migrated to 0_4_0 or higher")
-    error("Migrating version 0_3_4 or lower can not be migrated to 0_4_0 or higher")
+    error("Version 0_3_4 or lower can not be migrated to 0_4_0 or higher")
+end
+
+function migrate_0_5_0()
+    log("apply 0_5_0 to 0_6_0")
+
+    if (global.anno_ships == nil) then
+        global.anno_ships = {}
+    end
+
+    --Destroy all existing Kontors and give the player a Kontor item as compensation
+    game.players[1].insert {name = "kontor", count = global.kontor_count}
+
+    for i, kontor in pairs(global.kontors) do
+        -----------------------------------------------------------
+        global.banked_gold = global.banked_gold + kontor.accumulator.energy --the gold is stored in a global variable until another kontor is build
+
+        global.kontor_count = global.kontor_count - 1
+        -----------------------------------------------------------
+        remove_from_grid(kontor.pole)
+        -----------------------------------------------------------
+
+        kontor.accumulator.destroy()
+        kontor.pole.destroy()
+        kontor.generator_for_pioneers.destroy()
+        kontor.generator_for_settlers.destroy()
+        kontor.generator_for_citizens.destroy()
+        kontor.tradepost.destroy()
+        kontor.kontor.destroy()
+
+        global.kontors[i] = nil
+
+        -----------------------------------------------------------
+    end
 end
 
 function allways_try_these()
@@ -113,6 +146,11 @@ function allways_try_these()
 
     for _, force in pairs(game.forces) do
         force.reset_technology_effects()
+    end
+
+    for i, player in ipairs(game.players) do
+        --set stack_inserter bonus --TODO remove this once the game allowes us to set this in another way
+        player.force.stack_inserter_capacity_bonus = 200
     end
 
     --Migrade tables
