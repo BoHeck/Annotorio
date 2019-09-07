@@ -52,7 +52,7 @@ data:extend(
             icon_size = 64,
             subgroup = "advanced_item",
             order = "a[anno_tool]",
-            stack_size = 50
+            stack_size = 250
         },
         --copperwares
         {

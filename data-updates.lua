@@ -32,9 +32,8 @@ for i, assembler in pairs(data.raw["assembling-machine"]) do
         counter = counter + 1
     end
 end
+
 -------
---to counteract changed made by Noxys_Swimming_0.1.2
-for i,water_tile in pairs({"water", "water-green", "deepwater", "deepwater-green"}) do
-    data.raw.tile[water_tile].vehicle_friction_modifier = 1
-end
+--This is called a second time here to counteract other mods
+require("prototypes.entity.tile_changes")
 -------

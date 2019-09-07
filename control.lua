@@ -12,7 +12,9 @@ require("scripts.marketplace")
 require("scripts.pipette")
 require("scripts.day_night_cycle")
 require("scripts.luxus_buildings")
+require("scripts.ship_placement")
 require("scripts.technology")
+require("scripts.shore_placement")
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
 require("prototypes.map.island_naming")
@@ -48,13 +50,14 @@ function on_built_entity_collection(event)
 
    if_luxus_build(event, entity_name)
    ifMarketBuild(event, entity_name)
-   ifKontorBuild(event, entity_name)
    ifHouseBuild(ent, entity_name)
    ifWoodcutterBuild(event, entity_name)
    if_tree_planter_build(event, entity_name)
-
+   if_shipyard_build(event, entity_name)
+   if_kontor_build(event, entity_name)
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
+   if_ship_build(event, entity_name)
 end
 
 function on_entity_removed_collection(event)
@@ -66,6 +69,7 @@ function on_entity_removed_collection(event)
    ifHouseRemoved(event, entity_name)
    ifWoodcutterRemoved(event, entity_name)
    if_tree_planter_removed(event, entity_name)
+   if_ship_removed(event, entity_name)
 end
 
 function on_tick_collection()
@@ -127,6 +131,12 @@ function on_configuration_changed_collection(ConfigurationChangedData)
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.3.4") then
          migrate_0_3_4()
       end
+
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.5.0") then
+         migrate_0_5_0()
+      end
+
+
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
    allways_try_these()
@@ -141,6 +151,17 @@ function on_player_created_collection(event)
    --This should be run after give_player_starting_items()
    init_shared_resources(player)
    start_player_in_ship(player)
+
+   --set stack_inserter bonus --TODO remove this once the game allowes us to set this in another way
+   player.force.stack_inserter_capacity_bonus = 200
+
+   --[[
+   for i, tile in pairs(game.tile_prototypes) do
+      log(tile.name)
+      for j, layer in pairs(tile.collision_mask) do
+         log(j)
+      end
+   end]]
 end
 
 function start_player_in_ship(player)

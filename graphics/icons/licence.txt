@@ -60,11 +60,12 @@ cloth_icon.png
 copperwares_icon.png
 kiln_icon.png
 smelter_icon.png
-
+crane_icon.png
 wool_icon.png
 burned_brick_icon.png
 chapel_icon.png
 press_icon.png 
+shipyard_icon.png
 ---------------
 
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
@@ -97,3 +98,9 @@ bacon_omelet_icon.png from 8573256414_6efce72c28_o.jpg  from https://www.flickr.
 ---------------
 egg_icon.png from Egg.psd by Blodyavenger. Not to be shared outside this mod. I have this licence https://www.gamedevmarket.net/terms-conditions/#pro-licence
 ---------------
+carrack_icon.png + carrack_convert_icon.png + carrack_loc_icon.png  from an origninal model by "9of9" https://sketchfab.com/3d-models/santa-maria-de-colombo-f7d1489031ce475084e3260a0d0ba289 under Attribution 4.0 International (CC BY 4.0) 
+---------------
+water_rail_icon.png from PIXNIO-252949-5198x3465.jpg by "stevepb" from https://pixnio.com/objects/toys/ship-model-tree-sail-cross under CC0
+ship_category_icon.png from PIXNIO-252949-5198x3465.jpg by "stevepb" from https://pixnio.com/objects/toys/ship-model-tree-sail-cross under CC0
+
+
