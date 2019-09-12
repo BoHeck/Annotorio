@@ -308,7 +308,7 @@ function determine_kontor_data(direction, position)
         rail_4_pos = {x = position.x + 3, y = position.y - 3}
 
         harbor_1_pos = {x = position.x - 3, y = position.y - 5}
-        harbor_2_pos = {x = position.x + 3, y = position.y - 2}
+        harbor_2_pos = {x = position.x + 3, y = position.y - 1.5}
         harbor_1_rot = 6
         harbor_2_rot = 2
     end

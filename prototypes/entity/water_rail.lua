@@ -1,3 +1,137 @@
+--------------------------------------------------------------
+-----------Begin Water Rail Pictures from Cargo Ships by schnurrebutz permission granted by author
+--------------------------------------------------------------
+railpictures = function(invisible)
+    return railpicturesinternal(
+        {
+            {"metals", "metals", mipmap = true},
+            {"backplates", "backplates", mipmap = true},
+            {"ties", "ties"},
+            {"stone_path", "stone-path"},
+            {"segment_visualisation_middle", "segment-visualisation-middle"},
+            {"segment_visualisation_ending_front", "segment-visualisation-ending-1"},
+            {"segment_visualisation_ending_back", "segment-visualisation-ending-2"},
+            {"segment_visualisation_continuing_front", "segment-visualisation-continuing-1"},
+            {"segment_visualisation_continuing_back", "segment-visualisation-continuing-2"}
+        },
+        invisible
+    )
+end
+
+railpicturesinternal = function(elems, invisible)
+    local railBlockKeys = {
+        segment_visualisation_middle = true,
+        segment_visualisation_ending_front = true,
+        segment_visualisation_ending_back = true,
+        segment_visualisation_continuing_front = true,
+        segment_visualisation_continuing_back = true
+    }
+
+    local keys = {
+        {"straight_rail", "horizontal", 64, 64, 0, 0},
+        {"straight_rail", "vertical", 64, 64, 0, 0},
+        {"straight_rail", "diagonal-left-top", 64, 64, 0, 0},
+        {"straight_rail", "diagonal-right-top", 64, 64, 0, 0},
+        {"straight_rail", "diagonal-right-bottom", 64, 64, 0, 0},
+        {"straight_rail", "diagonal-left-bottom", 64, 64, 0, 0},
+        {"curved_rail", "vertical-left-top", 128, 256, 0, 0},
+        {"curved_rail", "vertical-right-top", 128, 256, 0, 0},
+        {"curved_rail", "vertical-right-bottom", 128, 256, 0, 0},
+        {"curved_rail", "vertical-left-bottom", 128, 256, 0, 0},
+        {"curved_rail", "horizontal-left-top", 256, 128, 0, 0},
+        {"curved_rail", "horizontal-right-top", 256, 128, 0, 0},
+        {"curved_rail", "horizontal-right-bottom", 256, 128, 0, 0},
+        {"curved_rail", "horizontal-left-bottom", 256, 128, 0, 0}
+    }
+    local res = {}
+
+    postfix = ""
+    --settings.startup["use_dark_blue_waterways"].value
+    if false then
+        postfix = "-dark"
+    end
+
+    for _, key in ipairs(keys) do
+        part = {}
+        dashkey = key[1]:gsub("_", "-")
+        for _, elem in ipairs(elems) do
+            if (elem[1] == "metals" and not invisible) then
+                part[elem[1]] = {
+                    sheet = {
+                        filename = string.format(
+                            "__Annotorio__/graphics/entity/%s%s/%s-%s-%s.png",
+                            dashkey,
+                            postfix,
+                            dashkey,
+                            key[2],
+                            elem[2]
+                        ),
+                        priority = "extra-high",
+                        flags = elem.mipmap and {"icon"},
+                        width = key[3],
+                        height = key[4],
+                        shift = {key[5], key[6]},
+                        variation_count = 1
+                    }
+                }
+            elseif (railBlockKeys[elem[1]] ~= nil) then
+                part[elem[1]] = {
+                    filename = string.format(
+                        "__Annotorio__/graphics/entity/%s/%s-%s-%s.png",
+                        dashkey,
+                        dashkey,
+                        key[2],
+                        elem[2]
+                    ),
+                    priority = "extra-high",
+                    flags = elem.mipmap and {"icon"},
+                    width = key[3],
+                    height = key[4],
+                    shift = {key[5], key[6]},
+                    variation_count = 1
+                }
+            else
+                part[elem[1]] = {
+                    sheet = {
+                        filename = string.format("__Annotorio__/graphics/blank.png", dashkey, dashkey, key[2], elem[2]),
+                        priority = "extra-high",
+                        flags = elem.mipmap and {"icon"},
+                        width = 2,
+                        height = 2,
+                        shift = {0, 0},
+                        variation_count = 1
+                    }
+                }
+            end
+        end
+
+        dashkey2 = key[2]:gsub("-", "_")
+        res[key[1] .. "_" .. dashkey2] = part
+    end
+    res["rail_endings"] = {
+        sheets = {
+            {
+                filename = "__Annotorio__/graphics/blank.png",
+                priority = "high",
+                width = 4,
+                height = 4
+            },
+            {
+                filename = "__Annotorio__/graphics/blank.png",
+                priority = "high",
+                flags = {"icon"},
+                width = 4,
+                height = 4
+            }
+        }
+    }
+    return res
+end
+
+--------------------------------------------------------------
+-----------End Water Rail Pictures ---------------------------
+--------------------------------------------------------------
+
 local water_rail_straight = table.deepcopy(data.raw["straight-rail"]["straight-rail"])
 local water_rail_curved = table.deepcopy(data.raw["curved-rail"]["curved-rail"])
 
@@ -16,11 +150,54 @@ water_rail_straight.placeable_by = {item = "water_rail_straight", count = 1}
 water_rail_curved.selection_priority = 49
 water_rail_straight.selection_priority = 49
 
+water_rail_curved.pictures = railpictures()
+water_rail_straight.pictures = railpictures()
+
 local harbor = table.deepcopy(data.raw["train-stop"]["train-stop"])
 harbor.name = "anno_harbor"
 harbor.flags = {"filter-directions"}
 harbor.collision_mask = {}
 harbor.minable = nil
+harbor.animations = {
+    north = {
+        filename = "__Annotorio__/graphics/entity/buoy.png",
+        priority = "extra-high",
+        width = 81,
+        height = 137,
+        scale = 0.5,
+        shift = util.by_pixel(-1, -8)
+    },
+    south = {
+        filename = "__Annotorio__/graphics/entity/buoy.png",
+        priority = "extra-high",
+        width = 81,
+        height = 137,
+        scale = 0.5,
+        shift = util.by_pixel(-1, -8)
+    },
+    east = {
+        filename = "__Annotorio__/graphics/entity/buoy.png",
+        priority = "extra-high",
+        width = 81,
+        height = 137,
+        scale = 0.5,
+        shift = util.by_pixel(-1, -8)
+    },
+    west = {
+        filename = "__Annotorio__/graphics/entity/buoy.png",
+        priority = "extra-high",
+        width = 81,
+        height = 137,
+        scale = 0.5,
+        shift = util.by_pixel(-1, -8)
+    }
+}
+
+harbor.rail_overlay_animations = nil
+harbor.top_animations = nil
+harbor.working_sound = nil
+harbor.light1 = nil
+harbor.light2 = nil
 
 local rail_chain_signal = table.deepcopy(data.raw["rail-chain-signal"]["rail-chain-signal"])
 rail_chain_signal.name = "rail_chain_signal"
