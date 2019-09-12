@@ -136,7 +136,6 @@ function on_configuration_changed_collection(ConfigurationChangedData)
          migrate_0_5_0()
       end
 
-
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
    allways_try_these()
@@ -145,6 +144,8 @@ end
 
 function on_player_created_collection(event)
    local player = game.players[event.player_index]
+
+   day_night_cycle_init()
 
    give_player_starting_items(player)
    create_gui_for_player(player)
