@@ -146,11 +146,9 @@ function allways_try_these()
 
     for _, force in pairs(game.forces) do
         force.reset_technology_effects()
-    end
-
-    for i, player in ipairs(game.players) do
-        --set stack_inserter bonus --TODO remove this once the game allowes us to set this in another way
-        player.force.stack_inserter_capacity_bonus = 200
+        --set stack_inserter bonus
+        force.stack_inserter_capacity_bonus = 200
+     --TODO remove this once the game allowes us to set this in another way
     end
 
     --Migrade tables
