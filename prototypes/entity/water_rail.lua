@@ -153,45 +153,44 @@ water_rail_straight.selection_priority = 49
 water_rail_curved.pictures = railpictures()
 water_rail_straight.pictures = railpictures()
 
+function buoy_stripes()
+    local result = {}
+
+    for index = 30, 90, 1 do
+        table.insert(
+            result,
+            {
+                filename = "__Annotorio__/graphics/entity/buoy/" .. "00" .. tostring(index) .. ".png",
+                width_in_frames = 1,
+                height_in_frames = 1
+            }
+        )
+    end
+    return result
+end
+
+local buoy_anim = {
+    frame_count = 61,
+    stripes = buoy_stripes(),
+    priority = "high",
+    width = 81,
+    height = 137,
+    scale = 0.5,
+    shift = util.by_pixel(-1, -8),
+}
+
 local harbor = table.deepcopy(data.raw["train-stop"]["train-stop"])
 harbor.name = "anno_harbor"
 harbor.flags = {"filter-directions"}
 harbor.collision_mask = {}
 harbor.minable = nil
 harbor.animations = {
-    north = {
-        filename = "__Annotorio__/graphics/entity/buoy.png",
-        priority = "extra-high",
-        width = 81,
-        height = 137,
-        scale = 0.5,
-        shift = util.by_pixel(-1, -8)
-    },
-    south = {
-        filename = "__Annotorio__/graphics/entity/buoy.png",
-        priority = "extra-high",
-        width = 81,
-        height = 137,
-        scale = 0.5,
-        shift = util.by_pixel(-1, -8)
-    },
-    east = {
-        filename = "__Annotorio__/graphics/entity/buoy.png",
-        priority = "extra-high",
-        width = 81,
-        height = 137,
-        scale = 0.5,
-        shift = util.by_pixel(-1, -8)
-    },
-    west = {
-        filename = "__Annotorio__/graphics/entity/buoy.png",
-        priority = "extra-high",
-        width = 81,
-        height = 137,
-        scale = 0.5,
-        shift = util.by_pixel(-1, -8)
-    }
+    north = buoy_anim,
+    south = buoy_anim,
+    east = buoy_anim,
+    west = buoy_anim
 }
+harbor.animation_ticks_per_frame=2
 
 harbor.rail_overlay_animations = nil
 harbor.top_animations = nil

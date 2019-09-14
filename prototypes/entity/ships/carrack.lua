@@ -69,7 +69,7 @@ local carrack = {
     rotation_speed = 0.005,
     weight = 70000,
     effectivity = 1,
-    braking_power = "400kW",
+    braking_power = "1000kW",
     consumption = "1000kW",
     friction = 1e-3,
     corpse = "big-remnants",
@@ -187,7 +187,7 @@ carrack_loc.minable = nil
 carrack_loc.max_speed = 1.2
 carrack_loc.max_power = "1000kW"
 --carrack_loc.braking_power = "600kW"
-carrack_loc.braking_force = 40
+carrack_loc.braking_force = 60
 carrack_loc.reversing_power_modifier = 0.75
 carrack_loc.weight = 70000
 carrack_loc.friction_force = nil
@@ -244,7 +244,7 @@ carrack_cargo.icon = "__Annotorio__/graphics/icons/carrack_icon.png"
 carrack_cargo.icon_size = 64
 carrack_cargo.minable = {mining_time = 0.75, result = "carrack_cargo"}
 
-carrack_cargo.inventory_size = 80
+carrack_cargo.inventory_size = 25
 
 carrack_cargo.max_speed = 1.2
 carrack_cargo.air_resistance = 0

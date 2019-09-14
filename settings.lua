@@ -20,6 +20,18 @@ data:extend(
             name = "debug_mode",
             setting_type = "startup",
             default_value = false
+        },
+        {
+            type = "bool-setting",
+            name = "kontors_function_like_markets",
+            setting_type = "runtime-global",
+            default_value = false
+        },
+        {
+            type = "int-setting",
+            name = "do_not_send_more_resources_after_limit",
+            setting_type = "runtime-global",
+            default_value = -1
         }
     }
 )
