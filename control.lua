@@ -80,7 +80,7 @@ function on_tick_collection()
 end
 
 function on_12_tick_Collection()
-   search_in_kontor_on_every_x_ticks()
+   search_in_storage_on_every_x_ticks()
    --search before refreshing gui
    refresh_gui_on_every_x_ticks()
 end

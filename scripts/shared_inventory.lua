@@ -1,5 +1,5 @@
 ---------include these in the event collection-----------
---function search_in_kontor_on_every_x_ticks()   script.on_nth_tick(everyXticks, search_in_kontor_on_every_x_ticks)
+--function search_in_storage_on_every_x_ticks()   script.on_nth_tick(everyXticks, search_in_storage_on_every_x_ticks)
 --function init_shared_resources(PLAYER) in on_player_created_collection
 --function inventory_changed_sync(player) in  on_player_main_inventory_changed_collection
 --function dont_allow_inventory_placeholder_in_the_cursor(event) in on_player_cursor_stack_changed_collection
@@ -114,10 +114,10 @@ function sync_inventory(player, item_name, placeholder_name, insert_amount)
     end
 end
 
-function search_in_kontor_on_every_x_ticks()
-    deliver_kontor_resource_to_bank("wood", "wood_placeholder", "banked_wood")
-    deliver_kontor_resource_to_bank("anno_tool", "anno_tool_placeholder", "banked_tool")
-    deliver_kontor_resource_to_bank("ceramics", "ceramics_placeholder", "banked_brick")
+function search_in_storage_on_every_x_ticks()
+    deliver_resource_to_bank("wood", "wood_placeholder", "banked_wood")
+    deliver_resource_to_bank("anno_tool", "anno_tool_placeholder", "banked_tool")
+    deliver_resource_to_bank("ceramics", "ceramics_placeholder", "banked_brick")
 
     --------------------technlogy--------------------
     local index
@@ -213,7 +213,7 @@ function search(name, amount)
         return math.min(amount, global.banked_brick)
     end
 
-    return math.min(search_resources_in_kontors(name), amount)
+    return math.min(search_resources_in_storage(name), amount)
 end
 
 function get_gold_count()
@@ -225,7 +225,7 @@ function get_gold_count()
     return gold + global.banked_gold
 end
 
-function search_resources_in_kontors(item_name)
+function search_resources_in_storage(item_name)
     local new_res = 0
 
     for i, kontor in pairs(global.kontors) do
@@ -239,12 +239,21 @@ function search_resources_in_kontors(item_name)
     return new_res
 end
 
-function deliver_kontor_resource_to_bank(item_name, placeholder_name, global_name)
+function deliver_resource_to_bank(item_name, placeholder_name, global_name)
     local new_res = 0
+    local limit = settings.global["do_not_send_more_resources_after_limit"]["value"]
 
-    for i, kontor in pairs(global.kontors) do
-        new_res = new_res + kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
-        remove_all(item_name, kontor.kontor.get_inventory(defines.inventory.chest))
+    if (limit >= 0) then
+        if (global[global_name] >= limit) then
+            return
+        end
+    end
+
+    if (settings.global["kontors_function_like_markets"]["value"]) then
+        for i, kontor in pairs(global.kontors) do
+            new_res = new_res + kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
+            remove_all(item_name, kontor.kontor.get_inventory(defines.inventory.chest))
+        end
     end
 
     for i, market in pairs(global.markets) do

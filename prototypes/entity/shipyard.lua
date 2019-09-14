@@ -91,7 +91,7 @@ local shipyard = {
         type = "electric",
         usage_priority = "secondary-input",
         emissions_per_minute = 6,
-        drain = "5kW"
+        drain = "0kW"
     },
     energy_usage = "150kW",
     open_sound = {filename = "__base__/sound/machine-open.ogg", volume = 0.85},
