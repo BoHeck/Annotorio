@@ -37,7 +37,7 @@ end
 
 require("prototypes.entity.entity")
 require("prototypes.item")
-require("prototypes.weapons")
+require("prototypes.weapons.weapons")
 require("prototypes.recipe")
 require("prototypes.technology")
 require("prototypes.gui")

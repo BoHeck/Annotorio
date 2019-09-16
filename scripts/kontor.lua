@@ -36,7 +36,7 @@ function if_kontor_build(event, entity_name)
         fast_replace = false,
         player = game.players[player_index],
         spill = false,
-        raise_built = true,
+        raise_built = false,
         create_build_effect_smoke = false
     }
 

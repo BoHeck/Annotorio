@@ -15,10 +15,12 @@ require("scripts.luxus_buildings")
 require("scripts.ship_placement")
 require("scripts.technology")
 require("scripts.shore_placement")
+require("scripts.castle")
+----------------------------------------------
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
 require("prototypes.map.island_naming")
-
+----------------------------------------------
 require("scripts.gui")
 
 require("scripts.migrate_helper")
@@ -58,6 +60,7 @@ function on_built_entity_collection(event)
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
    if_ship_build(event, entity_name)
+   if_castle_build(event, entity_name)
 end
 
 function on_entity_removed_collection(event)
@@ -70,6 +73,7 @@ function on_entity_removed_collection(event)
    ifWoodcutterRemoved(event, entity_name)
    if_tree_planter_removed(event, entity_name)
    if_ship_removed(event, entity_name)
+   if_castle_removed(event, entity_name)
 end
 
 function on_tick_collection()

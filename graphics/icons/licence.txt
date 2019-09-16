@@ -66,6 +66,9 @@ burned_brick_icon.png
 chapel_icon.png
 press_icon.png 
 shipyard_icon.png
+blunderbuss_shot_icon.png
+musket_balls_icon.png
+blunderbuss_icon.png
 ---------------
 
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
@@ -102,5 +105,11 @@ carrack_icon.png + carrack_convert_icon.png + carrack_loc_icon.png  from an orig
 ---------------
 water_rail_icon.png from PIXNIO-252949-5198x3465.jpg by "stevepb" from https://pixnio.com/objects/toys/ship-model-tree-sail-cross under CC0
 ship_category_icon.png from PIXNIO-252949-5198x3465.jpg by "stevepb" from https://pixnio.com/objects/toys/ship-model-tree-sail-cross under CC0
-
+---------------
+castle_icon.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/western-european-castle-isometric-25d
+tower_stone_icon.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-stone-guard-tower-isometric-25d
+tower_wood_icon.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-wooden-guard-tower-isometric-25d
+---------------
+musket_icon.png  from Charleville_1866.jpg by Antique Military Rifles - https://www.flickr.com/photos/36224933@N07/3435262636/in/photostream/  under  https://creativecommons.org/licenses/by-sa/2.0/
+---------------
 

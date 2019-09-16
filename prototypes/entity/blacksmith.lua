@@ -120,6 +120,36 @@ data:extend(
             result = "bow",
             allow_as_intermediate = true
         },
+        -- blunderbuss
+        {
+            type = "recipe",
+            name = "blunderbuss",
+            enabled = true,
+            energy_required = 10,
+            category = "blacksmith",
+            ingredients = {
+                {"steel-plate", 2},
+                {"wood", 1},
+                {"anno_tool", 2}
+            },
+            result = "blunderbuss",
+            allow_as_intermediate = true
+        },
+        -- musket
+        {
+            type = "recipe",
+            name = "musket",
+            enabled = true,
+            energy_required = 10,
+            category = "blacksmith",
+            ingredients = {
+                {"steel-plate", 2},
+                {"wood", 1},
+                {"anno_tool", 2}
+            },
+            result = "musket",
+            allow_as_intermediate = true
+        },
         --copperwares
         {
             type = "recipe",
