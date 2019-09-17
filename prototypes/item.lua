@@ -5,7 +5,7 @@ data:extend(
         -------Ingredients--------
 
         -------Consumables--------
-        
+
         --bacon_omelet
         {
             type = "tool",
@@ -19,7 +19,6 @@ data:extend(
             durability_description_key = "description.science-pack-remaining-amount-key",
             durability_description_value = "description.science-pack-remaining-amount-value"
         },
-
         -------Technology---------
         --technology_settle_island
         {
@@ -91,6 +90,17 @@ data:extend(
         {
             type = "tool",
             name = "provide_luxus_1",
+            durability = 1,
+            icon = "__Annotorio__/graphics/entity/empty.png",
+            icon_size = 1,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 1,
+            flags = {"hidden"}
+        },
+        {
+            type = "tool",
+            name = "drink_for_the_people_2",
             durability = 1,
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,

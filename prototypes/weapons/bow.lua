@@ -4,6 +4,33 @@ data:extend(
             type = "ammo-category",
             name = "anno_arrow"
         },
+        -- anno_arrow
+        {
+            type = "recipe",
+            name = "anno_arrow",
+            enabled = true,
+            energy_required = 3,
+            category = "blacksmith",
+            ingredients = {
+                {"wood", 2},
+                {"iron-plate", 1}
+            },
+            result = "anno_arrow",
+            allow_as_intermediate = true
+        },
+        -- bow
+        {
+            type = "recipe",
+            name = "bow",
+            enabled = true,
+            energy_required = 6,
+            category = "blacksmith",
+            ingredients = {
+                {"wood", 1}
+            },
+            result = "bow",
+            allow_as_intermediate = true
+        },
         {
             type = "gun",
             name = "bow",
@@ -60,7 +87,7 @@ data:extend(
             type = "projectile",
             name = "anno_arrow",
             flags = {"not-on-map"},
-            force_condition =  "not-same",
+            force_condition = "not-same",
             collision_box = {{-0.25, -0.25}, {0.25, 0.25}},
             acceleration = 0,
             direction_only = true,

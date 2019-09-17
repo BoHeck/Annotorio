@@ -50,6 +50,29 @@ data:extend(
             result = "anno_tool",
             ingredients = {}
         },
+        {
+            type = "recipe",
+            name = "buy_anno_arrow",
+            subgroup = "trade_buy",
+            enabled = true,
+            hidden = false,
+            energy_required = 12,
+            category = "trade",
+            result = "anno_arrow",
+            ingredients = {}
+        },
+        {
+            type = "recipe",
+            name = "buy_bow",
+            subgroup = "trade_buy",
+            enabled = true,
+            hidden = false,
+            energy_required = 9,
+            category = "trade",
+            result = "bow",
+            ingredients = {}
+        },
+        
         ------------- Special -------------
         --Category for the various citizen needs
         {

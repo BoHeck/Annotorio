@@ -10,6 +10,7 @@ local castle = {
 
     name = "castle",
     icon = "__Annotorio__/graphics/icons/castle_icon.png",
+    placeable_by = {item = "castle", count = 1},
     icon_size = 64,
     flags = {"player-creation"},
     minable = nil,
@@ -93,7 +94,7 @@ data:extend(
             icon = "__Annotorio__/graphics/icons/castle_icon.png",
             icon_size = 64,
             subgroup = "defensive-structure",
-            order = "c",
+            order = "i",
             place_result = "castle_dummy",
             stack_size = 25
         },

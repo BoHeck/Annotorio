@@ -16,6 +16,7 @@ require("scripts.ship_placement")
 require("scripts.technology")
 require("scripts.shore_placement")
 require("scripts.castle")
+require("scripts.towers")
 ----------------------------------------------
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
@@ -61,6 +62,7 @@ function on_built_entity_collection(event)
    if_mine_build(event, entity_name)
    if_ship_build(event, entity_name)
    if_castle_build(event, entity_name)
+   if_tower_build(event, entity_name)
 end
 
 function on_entity_removed_collection(event)
@@ -74,6 +76,7 @@ function on_entity_removed_collection(event)
    if_tree_planter_removed(event, entity_name)
    if_ship_removed(event, entity_name)
    if_castle_removed(event, entity_name)
+   if_tower_removed(event, entity_name)
 end
 
 function on_tick_collection()
@@ -97,6 +100,7 @@ end
 
 function on_180_tick_Collection()
    HarvestOnEveryXTicks()
+   castle_on_every_x_ticks()
 end
 
 function on_chunk_generated_collection(event)

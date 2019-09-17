@@ -21,12 +21,34 @@ data:extend(
                 range = 20,
                 sound = {
                     {
-                        filename = "__base__/sound/pump-shotgun.ogg",
+                        filename = "__Annotorio__/sound/SE_Shot_Gun.wav",
                         volume = 0.5
                     }
                 }
             },
             stack_size = 25
+        },
+        {
+            type = "recipe",
+            name = "blunderbuss",
+            enabled = true,
+            hidden = false,
+            energy_required = 1,
+            result = "blunderbuss",
+            ingredients = {
+                {"musket", 1}
+            }
+        },
+        {
+            type = "recipe",
+            name = "blunderbuss_shot",
+            enabled = true,
+            hidden = false,
+            energy_required = 1,
+            result = "blunderbuss_shot",
+            ingredients = {
+                {"musket_ball", 1}
+            }
         },
         {
             type = "ammo",
@@ -73,7 +95,7 @@ data:extend(
             type = "projectile",
             name = "blunderbuss_shot",
             flags = {"not-on-map"},
-            force_condition =  "not-same",
+            force_condition = "not-same",
             collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
             acceleration = 0,
             direction_only = true,

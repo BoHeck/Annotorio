@@ -93,33 +93,6 @@ data:extend(
             hidden = false,
             allow_as_intermediate = true
         },
-        -- anno_arrow
-        {
-            type = "recipe",
-            name = "anno_arrow",
-            enabled = true,
-            energy_required = 3,
-            category = "blacksmith",
-            ingredients = {
-                {"wood", 2},
-                {"iron-plate", 1}
-            },
-            result = "anno_arrow",
-            allow_as_intermediate = true
-        },
-        -- bow
-        {
-            type = "recipe",
-            name = "bow",
-            enabled = true,
-            energy_required = 6,
-            category = "blacksmith",
-            ingredients = {
-                {"wood", 1}
-            },
-            result = "bow",
-            allow_as_intermediate = true
-        },
         -- blunderbuss
         {
             type = "recipe",
