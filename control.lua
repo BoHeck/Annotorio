@@ -145,6 +145,16 @@ function on_configuration_changed_collection(ConfigurationChangedData)
          migrate_0_5_0()
       end
 
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.0") then
+         migrate_0_6_0()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.1") then
+         migrate_0_6_1()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.2") then
+         migrate_0_6_2()
+      end
+
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
    allways_try_these()

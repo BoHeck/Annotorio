@@ -112,6 +112,17 @@ data:extend(
             stack_size = 1,
             flags = {"hidden"}
         },
+        {
+            type = "tool",
+            name = "feed_your_people_2",
+            durability = 1,
+            icon = "__Annotorio__/graphics/entity/empty.png",
+            icon_size = 1,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 1,
+            flags = {"hidden"}
+        },
         -----------Special-------------
 
         --inventory_placeholder

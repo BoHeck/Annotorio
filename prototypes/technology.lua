@@ -382,6 +382,56 @@ data:extend(
             effects = {
                 {
                     type = "unlock-recipe",
+                    recipe = "castle"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "pig_farm"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "pig"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "chicken_pen"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "egg"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "wheat_field"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "wheat"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "bakery"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "bacon_omelet"
+                }
+            },
+            unit = {
+                count = 38,
+                ingredients = {{"drink_for_the_people_2", 1}},
+                time = 1
+            },
+            order = "0008"
+        },
+        {
+            type = "technology",
+            name = "feed_your_people_2",
+            icon = "__Annotorio__/graphics/icons/bacon_omelet_icon.png",
+            icon_size = 64,
+            effects = {
+                {
+                    type = "unlock-recipe",
                     recipe = "blunderbuss"
                 },
                 {
@@ -402,15 +452,23 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
-                    recipe = "castle"
+                    recipe = "anno_steel"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "buy_gun_powder"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "powder_keg"
                 }
             },
             unit = {
                 count = 38,
-                ingredients = {{"drink_for_the_people_2", 1}},
+                ingredients = {{"feed_your_people_2", 1}},
                 time = 1
             },
-            order = "0008"
+            order = "0009"
         }
     }
 )
