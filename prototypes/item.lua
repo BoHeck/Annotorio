@@ -1,24 +1,26 @@
+local powder_keg = table.deepcopy(data.raw["capsule"]["cliff-explosives"])
+powder_keg.icon = "__Annotorio__/graphics/icons/powder_keg_icon.png"
+powder_keg.icon_size = 64
+powder_keg.name = "powder_keg"
+powder_keg.subgroup = "gun"
+
 data:extend(
     {
         -------Buldings----------
 
         -------Ingredients--------
-
-        -------Consumables--------
-        
-        --bacon_omelet
+        --gun_powder item
         {
-            type = "tool",
-            name = "bacon_omelet",
-            icon = "__Annotorio__/graphics/icons/bacon_omelet_icon.png",
+            type = "item",
+            name = "gun_powder",
+            icon = "__Annotorio__/graphics/icons/gun_powder_icon.png",
             icon_size = 64,
             subgroup = "advanced_item",
-            order = "f[bacon_omelet]",
-            stack_size = 50,
-            durability = 1,
-            durability_description_key = "description.science-pack-remaining-amount-key",
-            durability_description_value = "description.science-pack-remaining-amount-value"
+            order = "a[gun_powder]",
+            stack_size = 50
         },
+        powder_keg,
+        -------Consumables--------
 
         -------Technology---------
         --technology_settle_island
@@ -91,6 +93,28 @@ data:extend(
         {
             type = "tool",
             name = "provide_luxus_1",
+            durability = 1,
+            icon = "__Annotorio__/graphics/entity/empty.png",
+            icon_size = 1,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 1,
+            flags = {"hidden"}
+        },
+        {
+            type = "tool",
+            name = "drink_for_the_people_2",
+            durability = 1,
+            icon = "__Annotorio__/graphics/entity/empty.png",
+            icon_size = 1,
+            subgroup = "raw-resource",
+            order = "x",
+            stack_size = 1,
+            flags = {"hidden"}
+        },
+        {
+            type = "tool",
+            name = "feed_your_people_2",
             durability = 1,
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,

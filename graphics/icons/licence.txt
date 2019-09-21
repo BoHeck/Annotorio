@@ -16,6 +16,9 @@ weapon_category_icon.png
 intermediate_category_icon.png
 production_category_icon.png
 cake_icon.png
+bakery_icon.png
+wheat_icon.png
+wheat_field_icon.png also by by wentam
 ------------------------------------------
 
 bow_icon.png by "DYCHA / Ravenmore - http://dycha.net" from "RavenmoreIconPack.02.2014" under https://creativecommons.org/licenses/by/3.0/    
@@ -38,6 +41,16 @@ marketplace_icon.png by "janexx" from "uh_sailor_main_square-BLENDER_v277.blend"
 
 sheep_farm_icon.png by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
 and "Daniel Eddeland" from  "sheep_walk_by_daneeklu.png" from "https://opengameart.org/content/lpc-style-farm-animals" under reative Commons Attribution Sharealike 3.0 Unported License 
+
+pig_farm_icon a) from pigsty-BLENDER-v277.blend by "janexx" and "anonymous" and "Duion" and "Lamoot" under  Creative Commons Attribution Sharealike 3.0 Unported
+	      b) from pig_walk.png + pig_eat.png by daneeklu from https://opengameart.org/content/lpc-style-farm-animals  under https://creativecommons.org/licenses/by/3.0/
+
+chicken_pen_icon	
+a) pigsty-BLENDER-v277.blend by "janexx" and "anonymous" and "Duion" and "Lamoot" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+b) chicken by  "Čestmír Dammer" under CC0
+c) chicken coop by "TheFunnySide"
+d) "a-chicken-in-low-poly" by "Edward Chao" from https://sketchfab.com/3d-models/a-chicken-in-low-poly-04eae2077ed74f5fadde91ffb46b2085 under https://creativecommons.org/licenses/by/4.0/
+e) Chicken Sprite by Daniel Eddeland (daneeklu); https://opengameart.org/node/11629
 
 apple_orchard_icon.png a)  from  "uh_farm_pioneer-BLENDER_v249.blend"  by "kaschte"
 		       b) from "cacao_field-BLENDER-v276.blend" by "janexx" under "Creative Commons Attribution Sharealike 3.0 Unported License"
@@ -66,6 +79,9 @@ burned_brick_icon.png
 chapel_icon.png
 press_icon.png 
 shipyard_icon.png
+blunderbuss_shot_icon.png
+musket_balls_icon.png
+blunderbuss_icon.png
 ---------------
 
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
@@ -102,5 +118,15 @@ carrack_icon.png + carrack_convert_icon.png + carrack_loc_icon.png  from an orig
 ---------------
 water_rail_icon.png from PIXNIO-252949-5198x3465.jpg by "stevepb" from https://pixnio.com/objects/toys/ship-model-tree-sail-cross under CC0
 ship_category_icon.png from PIXNIO-252949-5198x3465.jpg by "stevepb" from https://pixnio.com/objects/toys/ship-model-tree-sail-cross under CC0
-
-
+---------------
+castle_icon.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/western-european-castle-isometric-25d
+tower_stone_icon.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-stone-guard-tower-isometric-25d
+tower_wood_icon.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-wooden-guard-tower-isometric-25d
+---------------
+musket_icon.png  from Charleville_1866.jpg by Antique Military Rifles - https://www.flickr.com/photos/36224933@N07/3435262636/in/photostream/  under  https://creativecommons.org/licenses/by-sa/2.0/
+---------------
+pig_icon.png from  by daneeklu from https://opengameart.org/content/lpc-style-farm-animals  under https://creativecommons.org/licenses/by/3.0/
+---------------
+gun_powder_icon.png from Black_Powder-1.JPG  by  "Lord Mountbatten"   from https://commons.wikimedia.org/wiki/File:Black_Powder-1.JPG under https://creativecommons.org/licenses/by-sa/3.0/deed.en
+powder_keg_icon.png from 7567668334_68df9cf400_o.jpg  by "shankar s." from  https://www.flickr.com/photos/shankaronline/7567668334 under https://creativecommons.org/licenses/by/2.0/
+---------------

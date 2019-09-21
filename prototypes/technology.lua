@@ -33,7 +33,7 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "buy_anno_tool"
-                };
+                },
                 {
                     type = "unlock-recipe",
                     recipe = "wooden-chest"
@@ -125,6 +125,18 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "marketplace_dummy"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "tower_wood"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "buy_anno_arrow"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "buy_bow"
                 }
             },
             unit = {
@@ -361,6 +373,102 @@ data:extend(
                 time = 1
             },
             order = "0007"
+        },
+        {
+            type = "technology",
+            name = "drink_for_the_people_2",
+            icon = "__Annotorio__/graphics/icons/rum_barrel_icon.png",
+            icon_size = 64,
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "castle"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "pig_farm"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "pig"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "chicken_pen"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "egg"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "wheat_field"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "wheat"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "bakery"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "bacon_omelet"
+                }
+            },
+            unit = {
+                count = 38,
+                ingredients = {{"drink_for_the_people_2", 1}},
+                time = 1
+            },
+            order = "0008"
+        },
+        {
+            type = "technology",
+            name = "feed_your_people_2",
+            icon = "__Annotorio__/graphics/icons/bacon_omelet_icon.png",
+            icon_size = 64,
+            effects = {
+                {
+                    type = "unlock-recipe",
+                    recipe = "blunderbuss"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "musket"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "blunderbuss_shot"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "musket_ball"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "tower_stone"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "anno_steel"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "buy_gun_powder"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "powder_keg"
+                }
+            },
+            unit = {
+                count = 38,
+                ingredients = {{"feed_your_people_2", 1}},
+                time = 1
+            },
+            order = "0009"
         }
     }
 )

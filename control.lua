@@ -15,10 +15,14 @@ require("scripts.luxus_buildings")
 require("scripts.ship_placement")
 require("scripts.technology")
 require("scripts.shore_placement")
+require("scripts.castle")
+require("scripts.towers")
+require("scripts.range_overlay")
+----------------------------------------------
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
 require("prototypes.map.island_naming")
-
+----------------------------------------------
 require("scripts.gui")
 
 require("scripts.migrate_helper")
@@ -58,6 +62,8 @@ function on_built_entity_collection(event)
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
    if_ship_build(event, entity_name)
+   if_castle_build(event, entity_name)
+   if_tower_build(event, entity_name)
 end
 
 function on_entity_removed_collection(event)
@@ -70,6 +76,8 @@ function on_entity_removed_collection(event)
    ifWoodcutterRemoved(event, entity_name)
    if_tree_planter_removed(event, entity_name)
    if_ship_removed(event, entity_name)
+   if_castle_removed(event, entity_name)
+   if_tower_removed(event, entity_name)
 end
 
 function on_tick_collection()
@@ -93,6 +101,7 @@ end
 
 function on_180_tick_Collection()
    HarvestOnEveryXTicks()
+   castle_on_every_x_ticks()
 end
 
 function on_chunk_generated_collection(event)
@@ -134,6 +143,16 @@ function on_configuration_changed_collection(ConfigurationChangedData)
 
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.5.0") then
          migrate_0_5_0()
+      end
+
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.0") then
+         migrate_0_6_0()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.1") then
+         migrate_0_6_1()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.2") then
+         migrate_0_6_2()
       end
 
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -211,6 +230,7 @@ function on_selected_entity_changed_collection(event)
    end
 
    if_luxus_select(event)
+   if_building_selected(event)
 end
 
 function on_research_finished_collection(event)

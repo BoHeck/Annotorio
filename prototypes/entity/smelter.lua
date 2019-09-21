@@ -26,6 +26,22 @@ data:extend(
             type = "recipe-category",
             name = "smelter"
         },
+        -- anno_steel
+        {
+            type = "recipe",
+            name = "anno_steel",
+            enabled = true,
+            hidden = false,
+            energy_required = 5,
+            subgroup = "smelter",
+            category = "smelter",
+            ingredients = {
+                {"coal", 10},
+                {"iron-plate", 2}
+            },
+            result = "steel-plate",
+            allow_as_intermediate = true
+        },
         -- iron-plate 1
         {
             type = "recipe",

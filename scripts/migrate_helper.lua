@@ -136,6 +136,37 @@ function migrate_0_5_0()
 
         -----------------------------------------------------------
     end
+
+    migrate_0_6_0()
+end
+
+function migrate_0_6_0()
+    log("apply 0_6_0 to 0_6_1")
+    migrate_0_6_1()
+end
+
+function migrate_0_6_1()
+    log("apply 0_6_1 to 0_6_2")
+    migrate_0_6_2()
+end
+
+function migrate_0_6_2()
+    log("apply 0_6_2 to 0_6_3")
+
+    if (global.towers == nil) then
+        global.towers = {}
+        global.towers[1] = {}
+        global.towers[2] = {}
+        global.towers[3] = {}
+    end
+    --This was forgotten in a previous migration
+    if (global.anno_ships == nil) then
+        global.anno_ships = {}
+    end
+
+    if (global.castles == nil) then
+        global.castles = {}
+    end
 end
 
 function allways_try_these()
@@ -148,7 +179,7 @@ function allways_try_these()
         force.reset_technology_effects()
         --set stack_inserter bonus
         force.stack_inserter_capacity_bonus = 200
-     --TODO remove this once the game allowes us to set this in another way
+        --TODO remove this once the game allowes us to set this in another way
     end
 
     --Migrade tables

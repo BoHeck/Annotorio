@@ -93,31 +93,34 @@ data:extend(
             hidden = false,
             allow_as_intermediate = true
         },
-        -- anno_arrow
+        -- blunderbuss
         {
             type = "recipe",
-            name = "anno_arrow",
+            name = "blunderbuss",
             enabled = true,
-            energy_required = 3,
+            energy_required = 10,
             category = "blacksmith",
             ingredients = {
-                {"wood", 2},
-                {"iron-plate", 1}
+                {"steel-plate", 2},
+                {"wood", 1},
+                {"anno_tool", 2}
             },
-            result = "anno_arrow",
+            result = "blunderbuss",
             allow_as_intermediate = true
         },
-        -- bow
+        -- musket
         {
             type = "recipe",
-            name = "bow",
+            name = "musket",
             enabled = true,
-            energy_required = 6,
+            energy_required = 10,
             category = "blacksmith",
             ingredients = {
-                {"wood", 1}
+                {"steel-plate", 2},
+                {"wood", 1},
+                {"anno_tool", 2}
             },
-            result = "bow",
+            result = "musket",
             allow_as_intermediate = true
         },
         --copperwares

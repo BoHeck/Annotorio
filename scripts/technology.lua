@@ -26,6 +26,14 @@ function queue_technology(force)
     if (force.add_research("provide_luxus_1")) then
         return
     end
+
+    if (force.add_research("drink_for_the_people_2")) then
+        return
+    end
+
+    if (force.add_research("feed_your_people_2")) then
+        return
+    end
 end
 
 function set_progress(force, technology, progress)
@@ -43,6 +51,8 @@ if (global.anno_technology_requierements == nil) then
     global.anno_technology_requierements["dress_your_people_1"] = {amount = 18, different_goods = 2}
     global.anno_technology_requierements["drink_for_the_people_1"] = {amount = 22, different_goods = 3}
     global.anno_technology_requierements["provide_luxus_1"] = {amount = 26, different_goods = 4}
+    global.anno_technology_requierements["drink_for_the_people_2"] = {amount = 38, different_goods = 5}
+    global.anno_technology_requierements["feed_your_people_2"] = {amount = 38, different_goods = 6}
 end
 
 if (global.anno_technology_building_requierements == nil) then
