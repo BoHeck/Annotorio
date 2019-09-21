@@ -27,8 +27,7 @@ data:extend(
             energy_required = 4,
             result = "musket_ball",
             ingredients = {
-                {"coal", 1},
-                {"sulfur", 1},
+                {"gun_powder", 1},
                 {"iron-plate", 1}
             }
         },

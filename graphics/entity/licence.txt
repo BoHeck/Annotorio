@@ -22,6 +22,13 @@ woodcutter.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
 blacksmith.png by "unknownscribe" from "blacksmith.blend" under http://creativecommons.org/licenses/by-sa/3.0/legalcode also contains
 model and artwork from "Clint Bellanger"(CC-BY-SA 3.0) and Riidom (CC-BY 3.0)
 
+pig_farm.png from pigsty-BLENDER-v277.blend by "janexx" and "anonymous" and "Duion" and "Lamoot" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+wheat_field.png by wentam
+chicken_pen.png combination of  
+a) pigsty-BLENDER-v277.blend by "janexx" and "anonymous" and "Duion" and "Lamoot" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+b) chicken by  "Čestmír Dammer" under CC0
+c) chicken coop by "TheFunnySide"
+d) "a-chicken-in-low-poly" by "Edward Chao" from https://sketchfab.com/3d-models/a-chicken-in-low-poly-04eae2077ed74f5fadde91ffb46b2085 under https://creativecommons.org/licenses/by/4.0/
 -----------------
 Made by me "TheFunnySide" (some from assets of the public domain) released under the main licence of this mod 
 
@@ -34,6 +41,7 @@ kiln.png + kiln_shadow.png
 press.png
 crane_*.png
 shipyard_*.png
+bakery.png
 
 ------------
 _tree_08_70000.png from "https://opengameart.org/content/tree-collection-v26-bleeds-game-art"   by "Bleed - http://remusprites.carbonmade.com/" under  "https://creativecommons.org/licenses/by/3.0/"

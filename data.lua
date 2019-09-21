@@ -35,13 +35,13 @@ if (debug_on == true) then
   end
 end
 
-require("prototypes.entity.entity")
+require("prototypes.entity")
 require("prototypes.item")
-require("prototypes.weapons.weapons")
+require("prototypes.weapons")
 require("prototypes.recipe")
 require("prototypes.technology")
 require("prototypes.gui")
-require("prototypes.map.map")
+require("prototypes.map")
 require("prototypes.groups")
 
 --Enabling the recipes we need

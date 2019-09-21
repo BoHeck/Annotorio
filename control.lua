@@ -17,6 +17,7 @@ require("scripts.technology")
 require("scripts.shore_placement")
 require("scripts.castle")
 require("scripts.towers")
+require("scripts.range_overlay")
 ----------------------------------------------
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
@@ -219,6 +220,7 @@ function on_selected_entity_changed_collection(event)
    end
 
    if_luxus_select(event)
+   if_building_selected(event)
 end
 
 function on_research_finished_collection(event)

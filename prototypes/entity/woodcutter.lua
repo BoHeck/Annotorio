@@ -51,6 +51,12 @@ data:extend(
                     type = "item",
                     name = "seedling",
                     amount = 1
+                },
+                {
+                    type = "item",
+                    name = "seedling",
+                    amount = 1,
+                    probability = 0.25
                 }
             }
         },

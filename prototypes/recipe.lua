@@ -31,6 +31,21 @@ data:extend(
                 {"anno_tool", 1}
             }
         },
+        {
+            type = "recipe",
+            name = "powder_keg",
+            enabled = true,
+            hidden = false,
+            --category = "blacksmith",
+            energy_required = 4,
+            result = "powder_keg",
+            ingredients = {
+                {"gun_powder", 10},
+                {"wood_barrel", 1}
+            }
+        },
+        
+
         ------------- Weapons ----------------
 
         ------------- Trade --------------
@@ -72,7 +87,20 @@ data:extend(
             result = "bow",
             ingredients = {}
         },
+        {
+            type = "recipe",
+            name = "buy_gun_powder",
+            subgroup = "trade_buy",
+            enabled = true,
+            hidden = false,
+            energy_required = 14,
+            category = "trade",
+            result = "gun_powder",
+            ingredients = {}
+        },
         
+
+
         ------------- Special -------------
         --Category for the various citizen needs
         {

@@ -57,10 +57,9 @@ function setup_needs()
         DurabilityLossPerTick = 0.003703703704,
         luxus_buildings = 2
     }
-    --TODO  bacon_omelet
     global.settler_needs["bacon_omelet"] = {
-        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 67.5,
-        DurabilityLossPerTick = 0.01,
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 140.8854167,
+        DurabilityLossPerTick = 0.003125,
         luxus_buildings = 2
     }
 
@@ -69,6 +68,10 @@ function setup_needs()
     global.luxus_buildings[2] = {name = "tavern", range = 36}
     global.luxus_buildings[3] = {name = "doctor", range = 24}
     global.luxus_buildings[4] = {name = "school", range = 24}
+
+    global.buildings_with_overlay = {}
+    global.buildings_with_overlay[1] = {name = "woodcutter", range = 14}
+    global.buildings_with_overlay[2] = {name = "tree_planter", range = 24}
 
     global.upgrade_tables = {}
     global.upgrade_tables["pioneers"] = {

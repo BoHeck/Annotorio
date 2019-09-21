@@ -32,6 +32,19 @@ data:extend(
             subgroup = "ammo",
             order = "d[cannon-shell]-c[explosive]",
             stack_size = 200
+        },
+        {
+            type = "recipe",
+            name = "cannon_ball",
+            enabled = true,
+            hidden = false,
+            category = "blacksmith",
+            energy_required = 4,
+            result = "cannon_ball",
+            ingredients = {
+                {"gun_powder", 1},
+                {"iron-plate", 2}
+            }
         }
     }
 )

@@ -6,7 +6,7 @@ local tower_wood = {
     icon_size = 64,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "tower_wood"},
-    max_health = 4000,
+    max_health = 2000,
     corpse = "gun-turret-remnants",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1, -1}, {1, 1}},
@@ -80,7 +80,7 @@ local tower_wood = {
 local tower_stone = table.deepcopy(tower_wood)
 tower_stone.name = "tower_stone"
 tower_stone.minable = {mining_time = 0.5, result = "tower_stone"}
-tower_stone.max_health = 6000
+tower_stone.max_health = 3000
 
 tower_stone.base_picture = {
     layers = {
