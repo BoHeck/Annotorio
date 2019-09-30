@@ -92,7 +92,7 @@ data:extend(
             name = "press",
             icon = "__Annotorio__/graphics/icons/press_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "press"},
             max_health = 300,
             dying_explosion = "medium-explosion",

@@ -196,7 +196,7 @@ harbor.rail_overlay_animations = nil
 harbor.top_animations = nil
 harbor.working_sound = {
     sound = {
-        filename = "__Annotorio__/sound/Boat_Pier.ogg",
+        filename = "__Annotorio__/sound/Boat_Pier.wav",
         volume = 0.75
     }
 }

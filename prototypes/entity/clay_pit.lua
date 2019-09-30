@@ -94,7 +94,7 @@ data:extend(
             ---------------------
             icon = "__Annotorio__/graphics/icons/clay_pit_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "clay_pit_dummy"},
             max_health = 300,
             dying_explosion = "medium-explosion",
@@ -150,7 +150,7 @@ data:extend(
             --placeable_by = {item = "clay_pit_dummy", count = 1},
             icon = "__base__/graphics/icons/electric-mining-drill.png",
             icon_size = 32,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             selection_priority = 51,
             minable = {mining_time = 0.3, result = "unobtainable_dummy"},
             max_health = 300,

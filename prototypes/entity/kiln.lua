@@ -79,7 +79,7 @@ data:extend(
             name = "kiln",
             icon = "__Annotorio__/graphics/icons/kiln_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "kiln"},
             max_health = 300,
             dying_explosion = "medium-explosion",
