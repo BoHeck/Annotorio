@@ -17,7 +17,7 @@ data:extend(
                 cooldown = 150,
                 movement_slow_down_factor = 0.1,
                 --  damage_modifier = 1.2,
-                projectile_creation_distance = 1.125,
+                projectile_creation_distance = 0.825,
                 range = 20,
                 sound = {
                     {
@@ -96,7 +96,7 @@ data:extend(
             name = "blunderbuss_shot",
             flags = {"not-on-map"},
             force_condition = "not-same",
-            collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
+            collision_box = {{-0.25, -0.25}, {0.25, 0.25}},
             acceleration = 0,
             direction_only = true,
             action = {

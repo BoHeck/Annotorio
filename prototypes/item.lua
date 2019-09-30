@@ -31,7 +31,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "001",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -42,7 +42,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "002",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -53,7 +53,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "003",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -64,7 +64,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "004",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -75,7 +75,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "005",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -86,7 +86,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "006",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -97,7 +97,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "007",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -108,7 +108,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "008",
             stack_size = 1,
             flags = {"hidden"}
         },
@@ -119,7 +119,7 @@ data:extend(
             icon = "__Annotorio__/graphics/entity/empty.png",
             icon_size = 1,
             subgroup = "raw-resource",
-            order = "x",
+            order = "009",
             stack_size = 1,
             flags = {"hidden"}
         },

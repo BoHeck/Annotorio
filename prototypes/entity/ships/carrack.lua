@@ -151,12 +151,12 @@ local carrack = {
     turret_rotation_speed = 0.35 / 60,
     sound_minimum_speed = 0.2,
     vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
-    --[[
     working_sound = {
         sound = {
-            filename = "__base__/sound/car-engine.ogg",
-            volume = 0.6
+            filename = "__Annotorio__/sound/Boat_Moving.ogg",
+            volume = 1
         },
+        --[[
         activate_sound = {
             filename = "__base__/sound/car-engine-start.ogg",
             volume = 0.6
@@ -164,9 +164,9 @@ local carrack = {
         deactivate_sound = {
             filename = "__base__/sound/car-engine-stop.ogg",
             volume = 0.6
-        },
+        },]]
         match_speed_to_activity = true
-    },]]
+    },
     tank_driving = true,
     open_sound = {filename = "__base__/sound/car-door-open.ogg", volume = 0.7},
     close_sound = {filename = "__base__/sound/car-door-close.ogg", volume = 0.7}

@@ -14,6 +14,7 @@ require("scripts.technology")
 
 --Its fine to set these globals up on every load
 function setup_needs()
+    ----------------------------------------------------------
     global.pioneer_needs = {}
     global.pioneer_needs["anno_fish"] = {
         SellValuePerTick = settings.global["tax_multiplier"]["value"] * 21.18,
@@ -30,7 +31,7 @@ function setup_needs()
         DurabilityLossPerTick = 0.01,
         luxus_buildings = 2
     }
-
+    ----------------------------------------------------------
     global.settler_needs = {}
     global.settler_needs["anno_fish"] = {
         SellValuePerTick = settings.global["tax_multiplier"]["value"] * 21.18,
@@ -55,28 +56,60 @@ function setup_needs()
     global.settler_needs["barreled_rum"] = {
         SellValuePerTick = settings.global["tax_multiplier"]["value"] * 160.34,
         DurabilityLossPerTick = 0.003703703704,
-        luxus_buildings = 2
+        luxus_buildings = 3
     }
     global.settler_needs["bacon_omelet"] = {
         SellValuePerTick = settings.global["tax_multiplier"]["value"] * 140.8854167,
         DurabilityLossPerTick = 0.003125,
+        luxus_buildings = 4
+    }
+    ----------------------------------------------------------
+    global.citizen_needs = {}
+    global.settler_needs["anno_fish"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 21.18,
+        DurabilityLossPerTick = 0.02083333333,
+        luxus_buildings = 0
+    }
+    global.citizen_needs["cloth"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 77.92,
+        DurabilityLossPerTick = 0.025,
+        luxus_buildings = 1
+    }
+    global.citizen_needs["cider"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 67.5,
+        DurabilityLossPerTick = 0.01,
         luxus_buildings = 2
     }
-
+    global.citizen_needs["copperwares"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 95.76,
+        DurabilityLossPerTick = 0.01111111111,
+        luxus_buildings = 2
+    }
+    global.citizen_needs["barreled_rum"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 160.34,
+        DurabilityLossPerTick = 0.003703703704,
+        luxus_buildings = 3
+    }
+    global.citizen_needs["bacon_omelet"] = {
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 140.8854167,
+        DurabilityLossPerTick = 0.003125,
+        luxus_buildings = 4
+    }
+    ----------------------------------------------------------
     global.luxus_buildings = {}
     global.luxus_buildings[1] = {name = "chapel", range = 24}
     global.luxus_buildings[2] = {name = "tavern", range = 36}
-    global.luxus_buildings[3] = {name = "doctor", range = 24}
-    global.luxus_buildings[4] = {name = "school", range = 24}
-
+    global.luxus_buildings[3] = {name = "doctor", range = 38}
+    global.luxus_buildings[4] = {name = "school", range = 42}
+    ----------------------------------------------------------
     global.buildings_with_overlay = {}
     global.buildings_with_overlay[1] = {name = "woodcutter", range = 14}
     global.buildings_with_overlay[2] = {name = "tree_planter", range = 24}
-
+    ----------------------------------------------------------
     global.upgrade_tables = {}
     global.upgrade_tables["pioneers"] = {
         upgrade_progress = 0,
-        progress_needed = 10,
+        progress_needed = 15,
         needs_count = 3,
         next_house = "house_settler",
         cost_wood = 9,
@@ -85,12 +118,22 @@ function setup_needs()
     }
     global.upgrade_tables["settlers"] = {
         upgrade_progress = 0,
-        progress_needed = 10,
+        progress_needed = 20,
         needs_count = 6,
         next_house = "house_citizen",
         cost_wood = 18,
         cost_tools = 12,
         cost_bricks = 24
+    }
+    global.upgrade_tables["citizen"] = {
+        upgrade_progress = 0,
+        progress_needed = 40,
+        needs_count = 9,
+        next_house = "house_citizen",
+         --TODO
+        cost_wood = 36,
+        cost_tools = 25,
+        cost_bricks = 48
     }
 end
 
@@ -116,7 +159,9 @@ function ifHouseBuild(ent, entity_name)
         global.houses_pioneers[ent.unit_number] = {
             house = ent,
             chapel = find_luxus_building_in_range(ent, "chapel", global.luxus_buildings[1].range),
-            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range)
+            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range),
+            doctor = find_luxus_building_in_range(ent, "doctor", global.luxus_buildings[2].range),
+            school = find_luxus_building_in_range(ent, "school", global.luxus_buildings[2].range)
         }
     end
 
@@ -124,7 +169,9 @@ function ifHouseBuild(ent, entity_name)
         global.houses_settlers[ent.unit_number] = {
             house = ent,
             chapel = find_luxus_building_in_range(ent, "chapel", global.luxus_buildings[1].range),
-            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range)
+            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range),
+            doctor = find_luxus_building_in_range(ent, "doctor", global.luxus_buildings[2].range),
+            school = find_luxus_building_in_range(ent, "school", global.luxus_buildings[2].range)
         }
     end
 
@@ -132,7 +179,9 @@ function ifHouseBuild(ent, entity_name)
         global.houses_citizens[ent.unit_number] = {
             house = ent,
             chapel = find_luxus_building_in_range(ent, "chapel", global.luxus_buildings[1].range),
-            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range)
+            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range),
+            doctor = find_luxus_building_in_range(ent, "doctor", global.luxus_buildings[2].range),
+            school = find_luxus_building_in_range(ent, "school", global.luxus_buildings[2].range)
         }
     end
 end
@@ -286,6 +335,12 @@ function houses_on_every_x_ticks()
             global.settler_needs,
             global.upgrade_tables.settlers,
             global.kontors[index].generator_for_settlers
+        )
+        convert_goods_into_money(
+            global.houses_citizens,
+            global.citizen_needs,
+            global.upgrade_tables.citizen,
+            global.kontors[index].generator_for_citizens
         )
 
         ------------------------technology-------------------------

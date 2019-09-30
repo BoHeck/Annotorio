@@ -43,7 +43,7 @@ data:extend(
                 ammo_category = "anno_arrow",
                 cooldown = 75,
                 movement_slow_down_factor = 0.33,
-                projectile_creation_distance = 1.125,
+                projectile_creation_distance = 0.825,
                 range = 26.3,
                 min_range = 1,
                 sound = {

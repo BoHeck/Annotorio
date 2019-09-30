@@ -29,7 +29,7 @@ data:extend(
             placeable_by = {item = "chapel", count = 1},
             icon = "__Annotorio__/graphics/icons/chapel_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation","not-rotatable"},
             minable = {mining_time = 0.2, result = "chapel"},
             max_health = 900,
             collision_box = {{-1.8, -2.7}, {1.8, 2.7}},

@@ -305,16 +305,19 @@ function give_player_starting_items_debug(player)
    player.insert {name = "anno_fish", count = 200}
    player.insert {name = "cider", count = 200}
    player.insert {name = "cloth", count = 200}
+   player.insert {name = "copperwares", count = 200}
+   player.insert {name = "barreled_rum", count = 200}
+   player.insert {name = "bacon_omelet", count = 200}
+   
+
 
    player.insert {name = "anno_wooden_belt", count = 40}
-   player.insert {name = "anno_tool", count = 40}
-   player.insert {name = "wood", count = 80}
-   player.insert {name = "apple", count = 40}
+   player.insert {name = "anno_tool", count = 1000}
+   player.insert {name = "wood", count = 1000}
    player.insert {name = "kontor", count = 1}
-   player.insert {name = "cloth", count = 40}
    player.insert {name = "young_tree", count = 40}
-   player.insert {name = "ceramics", count = 40}
-   player.insert {name = "clay", count = 40}
+   player.insert {name = "ceramics", count = 1000}
+
 end
 
 function chart(player)

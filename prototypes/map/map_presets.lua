@@ -1,16 +1,12 @@
 data.raw["map-gen-presets"]["default"]["anno_map_preset_beta"] = {
-	order = "bb",
+	order = "#a",
 	basic_settings = {
 		property_expression_names = {
 			elevation = "anno_noise_expression"
 		},
-		autoplace_controls = {
-			["enemy-base"] = {
-				size = "none",
-				richness = "none",
-				frequency = "none"
-			}
-		}
+		starting_area = 4,
+		 --should be 400%
+		autoplace_controls = {}
 		--[[
 		autoplace_controls = {
 			["iron-ore"] = {

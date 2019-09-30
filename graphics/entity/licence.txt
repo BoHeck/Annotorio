@@ -18,6 +18,7 @@ sheep_farm.png  by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative
 tree_planter.png by "kaschte" from "uh_settler_lumberjack-BLENDER_v249.blend"
 weaver.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"
 woodcutter.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
+doctor_icon.png by "dauerflucher" from "uh_doctor.blend"
 
 blacksmith.png by "unknownscribe" from "blacksmith.blend" under http://creativecommons.org/licenses/by-sa/3.0/legalcode also contains
 model and artwork from "Clint Bellanger"(CC-BY-SA 3.0) and Riidom (CC-BY 3.0)
@@ -66,3 +67,4 @@ castle.png + castle_s.png from "Feudal Wars" feudalwars.net    https://opengamea
 tower_stone.png + tower_stone_s.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-stone-guard-tower-isometric-25d
 tower_wood.png + tower_wood_s.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-wooden-guard-tower-isometric-25d
 ---------------
+school.png + school_s.png  from  "Montana Hall MSU, USA" by "archeomatique" https://sketchfab.com/archeomatique

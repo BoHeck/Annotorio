@@ -1,6 +1,7 @@
 require("prototypes.weapons.bow")
 require("prototypes.weapons.musket")
 require("prototypes.weapons.blunderbuss")
+require("prototypes.weapons.armor")
 
 data:extend(
     {
