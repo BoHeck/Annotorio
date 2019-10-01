@@ -61,7 +61,7 @@ data:extend(
             name = "tree_planter",
             icon = "__Annotorio__/graphics/icons/tree_planter_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "tree_planter"},
             max_health = 300,
             dying_explosion = "medium-explosion",

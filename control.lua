@@ -120,6 +120,9 @@ function on_player_main_inventory_changed_collection(event)
 end
 
 function on_configuration_changed_collection(ConfigurationChangedData)
+   allways_try_these()
+   setup_needs()
+
    if (ConfigurationChangedData.mod_changes["Annotorio"]) then
       log("XXXXXXXXXXXXXXXXXXX_Annotorio_XXXXXXXXXXXXXXXXXXXX")
       log("old_version" .. ConfigurationChangedData.mod_changes["Annotorio"].old_version)
@@ -154,11 +157,11 @@ function on_configuration_changed_collection(ConfigurationChangedData)
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.2") then
          migrate_0_6_2()
       end
-
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.3") then
+         migrate_0_6_3()
+      end
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
-   allways_try_these()
-   setup_needs()
 end
 
 function on_player_created_collection(event)
@@ -211,6 +214,10 @@ end
 function on_init_collection()
    setup_needs()
    pipette_init()
+
+   remote.call("freeplay", "set_created_items", {})
+   remote.call("freeplay", "set_respawn_items", {})
+   remote.call("freeplay", "set_skip_intro", true)
 end
 
 function on_runtime_mod_setting_changed_collection()
@@ -305,16 +312,16 @@ function give_player_starting_items_debug(player)
    player.insert {name = "anno_fish", count = 200}
    player.insert {name = "cider", count = 200}
    player.insert {name = "cloth", count = 200}
+   player.insert {name = "copperwares", count = 200}
+   player.insert {name = "barreled_rum", count = 200}
+   player.insert {name = "bacon_omelet", count = 200}
 
    player.insert {name = "anno_wooden_belt", count = 40}
-   player.insert {name = "anno_tool", count = 40}
-   player.insert {name = "wood", count = 80}
-   player.insert {name = "apple", count = 40}
+   player.insert {name = "anno_tool", count = 1000}
+   player.insert {name = "wood", count = 1000}
    player.insert {name = "kontor", count = 1}
-   player.insert {name = "cloth", count = 40}
    player.insert {name = "young_tree", count = 40}
-   player.insert {name = "ceramics", count = 40}
-   player.insert {name = "clay", count = 40}
+   player.insert {name = "ceramics", count = 1000}
 end
 
 function chart(player)

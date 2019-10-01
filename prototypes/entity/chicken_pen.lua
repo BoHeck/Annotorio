@@ -63,7 +63,7 @@ data:extend(
             name = "chicken_pen",
             icon = "__Annotorio__/graphics/icons/chicken_pen_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "chicken_pen"},
             max_health = 300,
             dying_explosion = "medium-explosion",

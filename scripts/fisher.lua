@@ -36,11 +36,17 @@ function place_fish_resource(tiles, tiles_size, fish_amount, target_surface)
 
     local tile = tiles[math.floor(generator(1, tiles_size))]
 
-    target_surface.create_entity {
+    local ent =
+        target_surface.create_entity {
         name = "fish_fluid",
         position = tile.position,
         amount = fish_amount
     }
+
+    if (ent == nil) then
+        log("fish_fluid nil")
+    end
+
     target_surface.create_entity {
         name = "fish_fluid_animation_overlay",
         position = tile.position

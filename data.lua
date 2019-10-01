@@ -62,3 +62,9 @@ data.raw["simple-entity"]["sand-rock-big"].minable.results = {{"clay", 10}}
 
 data.raw.character.character.enter_vehicle_distance = 5
 -------
+data.raw["utility-sounds"]["default"]["research_completed"] = {
+  filename = "__Annotorio__/sound/research_sound.ogg",
+  volume = 1
+}
+
+-------

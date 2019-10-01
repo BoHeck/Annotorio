@@ -18,8 +18,9 @@ data:extend(
             enabled = true,
             energy_required = 0.1,
             ingredients = {
-                {"wood", 22},
-                {"anno_tool", 3}
+                {"wood", 36},
+                {"ceramics", 24},
+                {"anno_tool", 5}
             },
             result = "tavern"
         },
@@ -29,11 +30,11 @@ data:extend(
             placeable_by = {item = "tavern", count = 1},
             icon = "__Annotorio__/graphics/icons/tavern_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "tavern"},
             max_health = 900,
-            collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
-            selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+            collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+            selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
             corpse = "big-remnants",
             dying_explosion = "massive-explosion",
             energy_source = {
@@ -50,8 +51,8 @@ data:extend(
                         priority = "extra-high",
                         width = 391,
                         height = 502,
-                        scale = 0.4
-                        -- shift = util.by_pixel(91, -76)
+                        -- scale = 0.4
+                        scale = 0.22829
                     }
                 }
             },

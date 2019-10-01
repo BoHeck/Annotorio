@@ -18,6 +18,7 @@ sheep_farm.png  by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative
 tree_planter.png by "kaschte" from "uh_settler_lumberjack-BLENDER_v249.blend"
 weaver.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"
 woodcutter.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
+doctor_icon.png by "dauerflucher" from "uh_doctor.blend"
 
 blacksmith.png by "unknownscribe" from "blacksmith.blend" under http://creativecommons.org/licenses/by-sa/3.0/legalcode also contains
 model and artwork from "Clint Bellanger"(CC-BY-SA 3.0) and Riidom (CC-BY 3.0)
@@ -49,9 +50,10 @@ _tree_08_70000.png from "https://opengameart.org/content/tree-collection-v26-ble
 house_citizen.png + tavern.png  from "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
 "Bleed's Game Art - https://www.patreon.com/bleed" 
 
-house_pioneer.png  from "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/"
+house_stage1_1.png from "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/" under  "https://creativecommons.org/licenses/by/3.0/"
+house_stage1_3.png from "Hut - Bleed's Game Art" by "Bleed -http://remusprites.carbonmade.com/" under  "https://creativecommons.org/licenses/by/3.0/"
 
-house_settler.png from "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/"
+house_stage2_1.png from "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/" under  "https://creativecommons.org/licenses/by/3.0/"
 ----------------
 fish_resource_sheet2.png by "WeaponGuy" rendered  from "animated_rainbowtrout.blend"  from "https://opengameart.org/content/animated-fish-swarm-ready-for-isometric-rendering" 
 
@@ -65,4 +67,13 @@ c)  by "janexx" from "uh_sailor_main_square-BLENDER_v277.blend" under  Creative 
 castle.png + castle_s.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/western-european-castle-isometric-25d
 tower_stone.png + tower_stone_s.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-stone-guard-tower-isometric-25d
 tower_wood.png + tower_wood_s.png from "Feudal Wars" feudalwars.net    https://opengameart.org/content/medieval-wooden-guard-tower-isometric-25d
+house_stage2_2.png from house1.png from feudal wars "https://feudalwars.net/"  under public domain  
+house_stage2_3.png from house1b.png from feudal wars "https://feudalwars.net/"  under public domain  
+house_stage2_4.png from house1c.png from feudal wars "https://feudalwars.net/"  under public domain  
 ---------------
+school.png + school_s.png  from  "Montana Hall MSU, USA" by "archeomatique" https://sketchfab.com/archeomatique
+---------------
+house_stage1_2.png from  "Old Medieval House" by "Spiral" from https://opengameart.org/content/old-medieval-house under CC0
+---------------
+house_stage3_3.png to *3_7* by "rubberduck" from https://opengameart.org/content/isometric-medieval-buildings-2 under CC0
+

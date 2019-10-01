@@ -1,4 +1,5 @@
 require("scripts.shared_inventory")
+--util = require("util")
 
 function migrate_0_3_0()
     log("apply 0_3_0 to 0_3_1")
@@ -167,6 +168,34 @@ function migrate_0_6_2()
     if (global.castles == nil) then
         global.castles = {}
     end
+
+    migrate_0_6_3()
+end
+
+function migrate_0_6_3()
+    log("apply 0_6_3 to 0_6_4")
+
+    rebuild_houses("houses_pioneers", "invisible_house_pioneer")
+    rebuild_houses("houses_settlers", "invisible_house_settler")
+    rebuild_houses("houses_citizens", "invisible_house_citizen")
+end
+
+function rebuild_houses(global_name, replacement)
+    local copy = deepcopy2(global[global_name])
+    global[global_name] = {}
+
+    for number, house in pairs(copy) do
+        local ent =
+            house.house.surface.create_entity {
+            name = replacement,
+            position = house.house.position,
+            force = house.house.force,
+            fast_replace = true,
+            spill = false,
+            raise_built = true,
+            create_build_effect_smoke = false
+        }
+    end
 end
 
 function allways_try_these()
@@ -193,4 +222,25 @@ function allways_try_these()
         end
         global.houses_pioniers = nil
     end
+end
+
+function deepcopy2(object)
+    local lookup_table = {}
+    local function _copy(object)
+        if type(object) ~= "table" then
+            -- don't copy factorio rich objects
+            return object
+        elseif object.__self then
+            return object
+        elseif lookup_table[object] then
+            return lookup_table[object]
+        end
+        local new_table = {}
+        lookup_table[object] = new_table
+        for index, value in pairs(object) do
+            new_table[_copy(index)] = _copy(value)
+        end
+        return setmetatable(new_table, getmetatable(object))
+    end
+    return _copy(object)
 end

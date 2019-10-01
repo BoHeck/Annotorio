@@ -32,7 +32,7 @@ data:extend(
             name = "marketplace_dummy",
             icon = "__Annotorio__/graphics/icons/marketplace_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "marketplace_dummy"},
             max_health = 600,
             corpse = "medium-small-remnants",

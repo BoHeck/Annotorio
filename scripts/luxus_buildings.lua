@@ -15,15 +15,22 @@ function if_luxus_build(event, entity_name)
         if (entity_name == luxus_building.name) then
             register_onto_houses_in_range(
                 event.created_entity,
-                "house_pioneer",
+                "invisible_house_pioneer",
                 "houses_pioneers",
                 luxus_building.name,
                 luxus_building.range
             )
             register_onto_houses_in_range(
                 event.created_entity,
-                "house_settler",
+                "invisible_house_settler",
                 "houses_settlers",
+                luxus_building.name,
+                luxus_building.range
+            )
+            register_onto_houses_in_range(
+                event.created_entity,
+                "invisible_house_citizen",
+                "houses_citizens",
                 luxus_building.name,
                 luxus_building.range
             )
@@ -37,6 +44,7 @@ function if_luxus_removed(event, entity_name)
         if (entity_name == luxus_building.name) then
             deregister_from_houses(event.entity, "houses_pioneers", luxus_building.name)
             deregister_from_houses(event.entity, "houses_settlers", luxus_building.name)
+            deregister_from_houses(event.entity, "houses_citizens", luxus_building.name)
             return
         end
     end

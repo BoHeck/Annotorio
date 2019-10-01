@@ -116,9 +116,17 @@ local function finish_island(surface, island)
     --------------------------------------
     name_island(surface, island)
     --------------------------------------
-    local soils = roll_soils(1)
-    local ores = roll_ores(1)
-    log("---------------------------------------------------------" .. ores[1])
+    local soils
+    local ores
+    if (global.not_first_island) then
+        soils = roll_soils(1)
+        ores = roll_ores(1)
+    else
+        soils = {"apple_soil"}
+        ores = {"stone"}
+        global["not_first_island"] = true
+    end
+
     place_resources(surface, island, soils, ores)
 end
 

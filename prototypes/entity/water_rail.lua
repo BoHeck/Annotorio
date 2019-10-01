@@ -176,7 +176,7 @@ local buoy_anim = {
     width = 81,
     height = 137,
     scale = 0.5,
-    shift = util.by_pixel(-1, -8),
+    shift = util.by_pixel(-1, -8)
 }
 
 local harbor = table.deepcopy(data.raw["train-stop"]["train-stop"])
@@ -190,11 +190,16 @@ harbor.animations = {
     east = buoy_anim,
     west = buoy_anim
 }
-harbor.animation_ticks_per_frame=2
+harbor.animation_ticks_per_frame = 2
 
 harbor.rail_overlay_animations = nil
 harbor.top_animations = nil
-harbor.working_sound = nil
+harbor.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Pier.wav",
+        volume = 0.75
+    }
+}
 harbor.light1 = nil
 harbor.light2 = nil
 

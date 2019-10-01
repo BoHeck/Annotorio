@@ -164,6 +164,9 @@ data:extend(
                 {"anno_fish", 1},
                 {"cloth", 1},
                 {"cider", 1},
+                {"copperwares", 1},
+                {"bacon_omelet", 1},
+                {"barreled_rum", 1},
                 {"preventingCraftToGoForwardDummy", 1}
             },
             result = "citizen_information",

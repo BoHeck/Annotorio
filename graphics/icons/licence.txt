@@ -19,6 +19,9 @@ cake_icon.png
 bakery_icon.png
 wheat_icon.png
 wheat_field_icon.png also by by wentam
+gambeson_icon.png
+chainmail_icon.png
+plate_armor_icon.png
 ------------------------------------------
 
 bow_icon.png by "DYCHA / Ravenmore - http://dycha.net" from "RavenmoreIconPack.02.2014" under https://creativecommons.org/licenses/by/3.0/    
@@ -61,6 +64,8 @@ blacksmith_icon.png by "unknownscribe" from "blacksmith.blend" under http://crea
 weaver_icon.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"
 woodcutter_icon.png  by "kaschte" from "uh_sailor_lumberjack-BLENDER_v248.blend"
 distillery_icon.png  by "manthus" from "destilliry-BLENDER_v256.blend"
+doctor_icon.png by "dauerflucher" from "uh_doctor.blend"
+
 
 ----------------
 Made by me "TheFunnySide" (some from assets of the public domain) released under the main licence of this mod 
@@ -87,11 +92,8 @@ blunderbuss_icon.png
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
 under  "https://creativecommons.org/licenses/by/3.0/"
 
-house_pioneer_icon.png is based on "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/"
 
-house_settler_icon.png is based on "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/"
-
-house_citizen_icon.png + tavern_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
+ tavern_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
 "Bleed's Game Art - https://www.patreon.com/bleed" 
 
 ---------------
@@ -130,3 +132,10 @@ pig_icon.png from  by daneeklu from https://opengameart.org/content/lpc-style-fa
 gun_powder_icon.png from Black_Powder-1.JPG  by  "Lord Mountbatten"   from https://commons.wikimedia.org/wiki/File:Black_Powder-1.JPG under https://creativecommons.org/licenses/by-sa/3.0/deed.en
 powder_keg_icon.png from 7567668334_68df9cf400_o.jpg  by "shankar s." from  https://www.flickr.com/photos/shankaronline/7567668334 under https://creativecommons.org/licenses/by/2.0/
 ---------------
+school_icon.png  from  "Montana Hall MSU, USA" by "archeomatique" https://sketchfab.com/archeomatique
+--------------
+house_citizen_icon.png by "rubberduck" from https://opengameart.org/content/isometric-medieval-buildings-2 under CC0
+--------------
+house_pioneer_icon.png by "Spiral" from https://opengameart.org/content/old-medieval-house under CC0
+--------------
+house_settler_icon.png from feudal wars "https://feudalwars.net/"  under public domain
