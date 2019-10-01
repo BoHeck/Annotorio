@@ -67,7 +67,7 @@ function distribute(item_name, index)
             availible_items + castle.armory.get_inventory(defines.inventory.chest).get_item_count(item_name)
         --log("castle")
     end
-    log(availible_items)
+    --log(availible_items)
 
     local availible_items_total = availible_items
     local count

@@ -111,7 +111,7 @@ function setup_needs()
         upgrade_progress = 0,
         progress_needed = 15,
         needs_count = 3,
-        next_house = "house_settler",
+        next_house = "invisible_house_settler",
         cost_wood = 9,
         cost_tools = 2,
         cost_bricks = 0
@@ -120,7 +120,7 @@ function setup_needs()
         upgrade_progress = 0,
         progress_needed = 20,
         needs_count = 6,
-        next_house = "house_citizen",
+        next_house = "invisible_house_citizen",
         cost_wood = 18,
         cost_tools = 12,
         cost_bricks = 24
@@ -129,12 +129,25 @@ function setup_needs()
         upgrade_progress = 0,
         progress_needed = 40,
         needs_count = 9,
-        next_house = "house_citizen",
-         --TODO
+        next_house = "invisible_house_citizen",
+        --TODO
         cost_wood = 36,
         cost_tools = 25,
         cost_bricks = 48
     }
+    ----------------------------------------------------------
+    global.house_pioneer_variants = {
+        "h1_1",
+        "h1_2",
+        "h1_3"
+    }
+    global.house_settler_variants = {
+        "h2_1",
+        "h2_2",
+        "h2_3",
+        "h2_4"
+    }
+    global.house_citizen_variants = {"h1_1"}
 end
 
 --called just in case
@@ -156,48 +169,106 @@ local technology_counter = 0
 -------------------------------------------------------------------------
 function ifHouseBuild(ent, entity_name)
     if (entity_name == "house_pioneer") then
-        global.houses_pioneers[ent.unit_number] = {
-            house = ent,
-            chapel = find_luxus_building_in_range(ent, "chapel", global.luxus_buildings[1].range),
-            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range),
-            doctor = find_luxus_building_in_range(ent, "doctor", global.luxus_buildings[2].range),
-            school = find_luxus_building_in_range(ent, "school", global.luxus_buildings[2].range)
-        }
+        house_build(ent, "invisible_house_pioneer", global.houses_pioneers)
     end
-
+    -------------------------------------------------------------------------
     if (entity_name == "house_settler") then
-        global.houses_settlers[ent.unit_number] = {
-            house = ent,
-            chapel = find_luxus_building_in_range(ent, "chapel", global.luxus_buildings[1].range),
-            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range),
-            doctor = find_luxus_building_in_range(ent, "doctor", global.luxus_buildings[2].range),
-            school = find_luxus_building_in_range(ent, "school", global.luxus_buildings[2].range)
-        }
+        house_build(ent, "invisible_house_settler", global.houses_settlers)
+    end
+    -------------------------------------------------------------------------
+    if (entity_name == "house_citizen") then
+        house_build(ent, "invisible_house_citizen", global.houses_citizens)
+    end
+    -------------------------------------------------------------------------
+    if (entity_name == "invisible_house_pioneer") then
+        invisible_house_build(ent, global.houses_pioneers)
+    end
+    -------------------------------------------------------------------------
+    if (entity_name == "invisible_house_settler") then
+        invisible_house_build(ent, global.houses_settlers)
+    end
+    -------------------------------------------------------------------------
+    if (entity_name == "invisible_house_citizen") then
+        invisible_house_build(ent, global.houses_citizens)
+    end
+end
+
+function house_build(ent, replacement_name, global_table)
+    local new_ent = replace_with_invisible(ent, replacement_name)
+
+    invisible_house_build(new_ent, global_table)
+end
+
+function invisible_house_build(new_ent, global_table)
+    local overlay = place_random_overlay(new_ent, new_ent.name)
+
+    global_table[new_ent.unit_number] = {
+        house = new_ent,
+        chapel = find_luxus_building_in_range(new_ent, "chapel", global.luxus_buildings[1].range),
+        tavern = find_luxus_building_in_range(new_ent, "tavern", global.luxus_buildings[2].range),
+        doctor = find_luxus_building_in_range(new_ent, "doctor", global.luxus_buildings[2].range),
+        school = find_luxus_building_in_range(new_ent, "school", global.luxus_buildings[2].range),
+        overlay = overlay
+    }
+end
+
+function replace_with_invisible(ent, replacement_name)
+    local new_ent =
+        ent.surface.create_entity {
+        name = replacement_name,
+        position = ent.position,
+        force = ent.force,
+        fast_replace = true,
+        spill = false,
+        raise_built = false,
+        create_build_effect_smoke = false
+    }
+    ent.destroy()
+    return new_ent
+end
+
+function place_random_overlay(ent, replacement_name)
+    local overlay_name
+    local global_table
+    if (replacement_name == "invisible_house_pioneer") then
+        global_table = global.house_pioneer_variants
+    end
+    if (replacement_name == "invisible_house_settler") then
+        global_table = global.house_settler_variants
+    end
+    if (replacement_name == "invisible_house_citizen") then
+        global_table = global.house_citizen_variants
     end
 
-    if (entity_name == "house_citizen") then
-        global.houses_citizens[ent.unit_number] = {
-            house = ent,
-            chapel = find_luxus_building_in_range(ent, "chapel", global.luxus_buildings[1].range),
-            tavern = find_luxus_building_in_range(ent, "tavern", global.luxus_buildings[2].range),
-            doctor = find_luxus_building_in_range(ent, "doctor", global.luxus_buildings[2].range),
-            school = find_luxus_building_in_range(ent, "school", global.luxus_buildings[2].range)
-        }
-    end
+    local index = math.random(1, #global_table)
+
+    overlay_name = global_table[index]
+
+    local new_ent =
+        ent.surface.create_entity {
+        name = overlay_name,
+        position = ent.position,
+        raise_built = false,
+        create_build_effect_smoke = false
+    }
+    return new_ent
 end
 
 function ifHouseRemoved(event, entity_name)
     local ent = event.entity
 
-    if (entity_name == "house_pioneer") then
+    if (entity_name == "invisible_house_pioneer") then
+        global.houses_pioneers[ent.unit_number].overlay.destroy()
         global.houses_pioneers[ent.unit_number] = nil
     end
 
-    if (entity_name == "house_settler") then
+    if (entity_name == "invisible_house_settler") then
+        global.houses_settlers[ent.unit_number].overlay.destroy()
         global.houses_settlers[ent.unit_number] = nil
     end
 
-    if (entity_name == "house_citizen") then
+    if (entity_name == "invisible_house_citizen") then
+        global.houses_citizens[ent.unit_number].overlay.destroy()
         global.houses_citizens[ent.unit_number] = nil
     end
 end
@@ -300,6 +371,7 @@ function upgrade(house, upgrade_table, houses)
     end
 
     house.destroy()
+    houses[unit_number].overlay.destroy()
     houses[unit_number] = nil
     return true
 end
