@@ -1,95 +1,4 @@
-local animation_overlay_template = {
-    name = "template",
-    type = "simple-entity",
-    flags = {},
-    icon = "__Annotorio__/graphics/icons/house_pioneer_icon.png",
-    icon_size = 64,
-    subgroup = "grass",
-    order = "b[decorative]-x[house]",
-    collision_mask = {},
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
-    selectable_in_game = false,
-    render_layer = "object",
-    destructible = false,
-    animations = nil
-}
-
 -------------------------------------------
-local h1_1 = table.deepcopy(animation_overlay_template)
-h1_1.name = "h1_1"
-h1_1.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage1_1.png",
-    width = 152,
-    height = 113,
-    scale = 0.5
-}
-h1_1.collision_mask = {"layer-11"}
--------------------------------------------
-local h1_2 = table.deepcopy(animation_overlay_template)
-h1_2.name = "h1_2"
-h1_2.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage1_2.png",
-    width = 157,
-    height = 129,
-    scale = 0.5
-}
-h1_2.collision_mask = {"layer-11"}
--------------------------------------------
-local h1_3 = table.deepcopy(animation_overlay_template)
-h1_3.name = "h1_3"
-h1_3.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage1_3.png",
-    width = 150,
-    height = 107,
-    scale = 0.5
-}
-h1_3.collision_mask = {"layer-11"}
--------------------------------------------
-local h2_1 = table.deepcopy(animation_overlay_template)
-h2_1.name = "h2_1"
-h2_1.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage2_1.png",
-    width = 174,
-    height = 158,
-    scale = 0.5
-}
-h2_1.collision_mask = {"layer-12"}
--------------------------------------------
-local h2_2 = table.deepcopy(animation_overlay_template)
-h2_2.name = "h2_2"
-h2_2.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage2_2.png",
-    width = 178,
-    height = 141,
-    scale = 0.44,
-    mipmap_count = 2
-}
-h2_2.collision_mask = {"layer-12"}
--------------------------------------------
-local h2_3 = table.deepcopy(animation_overlay_template)
-h2_3.name = "h2_3"
-h2_3.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage2_3.png",
-    width = 175,
-    height = 140,
-    scale = 0.44,
-    mipmap_count = 2
-}
-h2_3.collision_mask = {"layer-12"}
--------------------------------------------
-local h2_4 = table.deepcopy(animation_overlay_template)
-h2_4.name = "h2_4"
-h2_4.picture = {
-    filename = "__Annotorio__/graphics/entity/house_stage2_4.png",
-    width = 178,
-    height = 137,
-    scale = 0.44,
-    mipmap_count = 2
-}
-h2_4.collision_mask = {"layer-12"}
-
--------------------------------------------
-
 local house_pioneer = {
     type = "assembling-machine",
     name = "house_pioneer",
@@ -134,10 +43,9 @@ local house_pioneer = {
 house_pioneer.collision_mask = {"item-layer", "object-layer", "player-layer", "water-tile", "layer-11"}
 local invisible_house_pioneer = table.deepcopy(house_pioneer)
 invisible_house_pioneer.name = "invisible_house_pioneer"
-invisible_house_pioneer.flags = {"not-rotatable"}
 invisible_house_pioneer.animation = nil
+invisible_house_pioneer.flags = {"player-creation", "not-rotatable", "hidden"}
 -------------------------------------------
-
 local house_settler = {
     type = "assembling-machine",
     name = "house_settler",
@@ -158,7 +66,7 @@ local house_settler = {
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
     minable = {mining_time = 0.2, result = "house_settler"},
-    max_health = 300,
+    max_health = 500,
     dying_explosion = "medium-explosion",
     corpse = "medium-remnants",
     resistances = {
@@ -187,10 +95,9 @@ local house_settler = {
 house_settler.collision_mask = {"item-layer", "object-layer", "player-layer", "water-tile", "layer-12"}
 local invisible_house_settler = table.deepcopy(house_settler)
 invisible_house_settler.name = "invisible_house_settler"
-invisible_house_settler.flags = {"not-rotatable"}
 invisible_house_settler.animation = nil
+invisible_house_settler.flags = {"player-creation", "not-rotatable", "hidden"}
 -------------------------------------------
-
 local house_citizen = {
     type = "assembling-machine",
     name = "house_citizen",
@@ -214,7 +121,7 @@ local house_citizen = {
     icon_size = 64,
     flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
     minable = {mining_time = 0.2, result = "house_citizen"},
-    max_health = 300,
+    max_health = 750,
     dying_explosion = "medium-explosion",
     corpse = "medium-remnants",
     resistances = {
@@ -229,11 +136,10 @@ local house_citizen = {
     animation = {
         layers = {
             {
-                filename = "__Annotorio__/graphics/entity/house_citizen.png",
-                priority = "extra-high",
-                width = 622,
-                height = 570,
-                scale = 0.18
+                filename = "__Annotorio__/graphics/entity/house_stage3_3.png",
+                width = 320,
+                height = 307,
+                scale = 0.50
             }
         }
     },
@@ -244,26 +150,19 @@ local house_citizen = {
 house_citizen.collision_mask = {"item-layer", "object-layer", "player-layer", "water-tile", "layer-13"}
 local invisible_house_citizen = table.deepcopy(house_citizen)
 invisible_house_citizen.name = "invisible_house_citizen"
-invisible_house_citizen.flags = {"not-rotatable"}
 invisible_house_citizen.animation = nil
+invisible_house_citizen.flags = {"player-creation", "not-rotatable", "hidden"}
 -------------------------------------------
 
 data:extend(
     {
-        h1_1,
-        h1_2,
-        h1_3,
-        h2_1,
-        h2_2,
-        h2_3,
-        h2_4,
         house_settler,
         invisible_house_settler,
         house_pioneer,
         invisible_house_pioneer,
         house_citizen,
         invisible_house_citizen,
-        --House1
+        --House1 item
         {
             type = "item",
             name = "house_pioneer",
@@ -274,7 +173,7 @@ data:extend(
             place_result = "house_pioneer",
             stack_size = 25
         },
-        --House2
+        --House2 item
         {
             type = "item",
             name = "house_settler",
@@ -285,7 +184,7 @@ data:extend(
             place_result = "house_settler",
             stack_size = 25
         },
-        --House3
+        --House3 item
         {
             type = "item",
             name = "house_citizen",
@@ -296,7 +195,7 @@ data:extend(
             place_result = "house_citizen",
             stack_size = 25
         },
-        --House 1
+        --House 1 recipe
         {
             type = "recipe",
             name = "house_pioneer",
@@ -309,7 +208,7 @@ data:extend(
             hidden = false,
             allow_as_intermediate = true
         },
-        --House 2
+        --House 2 recipe
         {
             type = "recipe",
             name = "house_settler",
@@ -325,7 +224,7 @@ data:extend(
             hidden = false,
             allow_as_intermediate = true
         },
-        --House 3
+        --House 3 recipe
         {
             type = "recipe",
             name = "house_citizen",

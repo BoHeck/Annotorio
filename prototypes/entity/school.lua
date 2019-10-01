@@ -7,7 +7,7 @@ data:extend(
             icon = "__Annotorio__/graphics/icons/school_icon.png",
             icon_size = 64,
             subgroup = "luxus_building",
-            order = "cc",
+            order = "dd",
             place_result = "school",
             stack_size = 25
         },

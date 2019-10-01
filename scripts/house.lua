@@ -147,7 +147,13 @@ function setup_needs()
         "h2_3",
         "h2_4"
     }
-    global.house_citizen_variants = {"h1_1"}
+    global.house_citizen_variants = {
+        "h3_3",
+        "h3_4",
+        "h3_5",
+        "h3_6",
+        "h3_7"
+    }
 end
 
 --called just in case

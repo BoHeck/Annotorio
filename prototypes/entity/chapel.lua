@@ -29,11 +29,11 @@ data:extend(
             placeable_by = {item = "chapel", count = 1},
             icon = "__Annotorio__/graphics/icons/chapel_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation","not-rotatable"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "chapel"},
             max_health = 900,
-            collision_box = {{-1.8, -2.7}, {1.8, 2.7}},
-            selection_box = {{-2, -3}, {2, 3}},
+            collision_box = {{-1.2, -1.7}, {1.2, 1.7}},
+            selection_box = {{-1.5, -2}, {1.5, 2}},
             corpse = "big-remnants",
             dying_explosion = "massive-explosion",
             energy_source = {
@@ -50,16 +50,18 @@ data:extend(
                         priority = "extra-high",
                         width = 624,
                         height = 898,
-                        scale = 0.5,
-                        shift = util.by_pixel(91, -76)
+                        scale = 0.365,
+                        shift = util.by_pixel(67, -62)
+                        --shift = util.by_pixel(91, -76)
                     },
                     {
                         filename = "__Annotorio__/graphics/entity/chapel_s.png",
                         priority = "extra-high",
                         width = 624,
                         height = 898,
-                        scale = 0.5,
-                        shift = util.by_pixel(91, -76),
+                        scale = 0.365,
+                        shift = util.by_pixel(67, -62),
+                        -- shift = util.by_pixel(91, -76),
                         draw_as_shadow = true
                     }
                 }

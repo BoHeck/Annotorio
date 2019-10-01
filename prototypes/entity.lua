@@ -1,6 +1,7 @@
 require("prototypes.entity.tile_changes")
 require("prototypes.entity.marketplace")
 require("prototypes.entity.houses")
+require("prototypes.entity.houses_sprites")
 require("prototypes.entity.woodcutter")
 require("prototypes.entity.kontor")
 require("prototypes.entity.tree_planter")

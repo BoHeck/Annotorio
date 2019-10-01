@@ -92,11 +92,8 @@ blunderbuss_icon.png
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
 under  "https://creativecommons.org/licenses/by/3.0/"
 
-house_pioneer_icon.png is based on "Medieval_Building_06" by "Bleed -http://remusprites.carbonmade.com/"
 
-house_settler_icon.png is based on "Timbered House_16"  by "Bleed -http://remusprites.carbonmade.com/"
-
-house_citizen_icon.png + tavern_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
+ tavern_icon.png is based on "https://opengameart.org/content/isometric-medieval-tavern" by "Bleed" which is based on concept art by � FerdinandLadera.
 "Bleed's Game Art - https://www.patreon.com/bleed" 
 
 ---------------
@@ -136,3 +133,9 @@ gun_powder_icon.png from Black_Powder-1.JPG  by  "Lord Mountbatten"   from https
 powder_keg_icon.png from 7567668334_68df9cf400_o.jpg  by "shankar s." from  https://www.flickr.com/photos/shankaronline/7567668334 under https://creativecommons.org/licenses/by/2.0/
 ---------------
 school_icon.png  from  "Montana Hall MSU, USA" by "archeomatique" https://sketchfab.com/archeomatique
+--------------
+house_citizen_icon.png by "rubberduck" from https://opengameart.org/content/isometric-medieval-buildings-2 under CC0
+--------------
+house_pioneer_icon.png by "Spiral" from https://opengameart.org/content/old-medieval-house under CC0
+--------------
+house_settler_icon.png from feudal wars "https://feudalwars.net/"  under public domain
