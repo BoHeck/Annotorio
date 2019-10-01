@@ -234,6 +234,7 @@ function if_kontor_build(event, entity_name)
     if (f.technologies["settle_island"].researched == false) then
         queue_technology(f)
         set_progress(f, "settle_island", 1)
+        f.set_spawn_position(game.players[player_index].position,game.players[player_index].surface)
     end
     ------------------------------------------
 
