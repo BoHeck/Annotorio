@@ -45,6 +45,7 @@ local invisible_house_pioneer = table.deepcopy(house_pioneer)
 invisible_house_pioneer.name = "invisible_house_pioneer"
 invisible_house_pioneer.animation = nil
 invisible_house_pioneer.flags = {"player-creation", "not-rotatable", "hidden"}
+invisible_house_pioneer.placeable_by = {item = "house_pioneer", count = 1}
 -------------------------------------------
 local house_settler = {
     type = "assembling-machine",
@@ -109,10 +110,7 @@ local house_citizen = {
     crafting_speed = 1,
     ---------------------
     energy_source = {
-        type = "electric",
-        usage_priority = "secondary-input",
-        emissions_per_minute = 0,
-        drain = "0kW"
+        type = "void"
     },
     energy_usage = "0.00001kW",
     -----------

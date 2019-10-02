@@ -58,6 +58,7 @@ local kontor_container_west = {
   placeable_by = {item = "kontor", count = 1},
   minable = {mining_time = 0.2, result = "kontor"},
   max_health = 1000,
+  dying_explosion="big-explosion",
   corpse = "medium-remnants",
   open_sound = {filename = "__base__/sound/metallic-chest-open.ogg", volume = 0.65},
   close_sound = {filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7},
