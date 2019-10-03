@@ -1,0 +1,5 @@
+ammo-icon-red.png contains round-shot.png made by surang from https://www.flaticon.com/authors/surang
+electricity-icon-red.png + electricity-icon-unplugged.png contains iconfinder_6_2739114.png  by Isaac Grant under Creative Commons (Attribution 3.0 Unported)
+slot-icon-armor.png contains art by "Rexard" included in some humble bundle i bought. Cant be shared outside this mod.
+slot-icon-gun.png by "DYCHA / Ravenmore - http://dycha.net" from "RavenmoreIconPack.02.2014" under https://creativecommons.org/licenses/by/3.0/   
+slot-icon-ammo.png  contains art by "Rexard" included in some humble bundle i bought. Cant be shared outside this mod.

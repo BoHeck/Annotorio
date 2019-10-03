@@ -76,14 +76,14 @@ function distribute(item_name, index)
         if (availible_items <= 0) then
             break
         end
-      --  log("tower")
+        --  log("tower")
 
         count = tower.get_inventory(defines.inventory.turret_ammo).get_item_count(item_name)
 
         if (count < desired_stack_size) then
             local a = math.min(availible_items, desired_stack_size - count)
             availible_items = availible_items - a
-         --   log(a)
+            --   log(a)
             tower.insert {name = item_name, count = a}
         end
     end
@@ -94,13 +94,14 @@ function distribute(item_name, index)
         if (distributed_count <= 0) then
             break
         end
-       -- log("castle")
+        -- log("castle")
         availible_items = castle.armory.get_inventory(defines.inventory.chest).get_item_count(item_name)
 
         local remove = math.min(availible_items, distributed_count)
 
         distributed_count = distributed_count - remove
-
-        castle.armory.get_inventory(defines.inventory.chest).remove({name = item_name, count = remove})
+        if (remove > 0) then
+            castle.armory.get_inventory(defines.inventory.chest).remove({name = item_name, count = remove})
+        end
     end
 end
