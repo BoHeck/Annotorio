@@ -76,4 +76,7 @@ school.png + school_s.png  from  "Montana Hall MSU, USA" by "archeomatique" http
 house_stage1_2.png from  "Old Medieval House" by "Spiral" from https://opengameart.org/content/old-medieval-house under CC0
 ---------------
 house_stage3_3.png to *3_7* by "rubberduck" from https://opengameart.org/content/isometric-medieval-buildings-2 under CC0
-
+house_stage2_5.png to *2_7* by "rubberduck" from https://opengameart.org/content/isometric-medieval-buildings under CC0
+house_stage3_8.png to *3_10* by "rubberduck" from https://opengameart.org/content/isometric-medieval-buildings under CC0
+---------------
+house_stage1_4.png to *1_6* from Medieval Houses by "Glitch Squirrel" from https://opengameart.org/content/medieval-houses  under Attribution 3.0 Unported (CC BY 3.0) 
