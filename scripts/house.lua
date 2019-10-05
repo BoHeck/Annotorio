@@ -139,21 +139,31 @@ function setup_needs()
     global.house_pioneer_variants = {
         "h1_1",
         "h1_2",
-        "h1_3"
+        "h1_3",
+        "h1_4",
+        "h1_5",
+        "h1_6"
     }
     global.house_settler_variants = {
         "h2_1",
         "h2_2",
         "h2_3",
-        "h2_4"
+        "h2_4",
+        "h2_5",
+        "h2_6",
+        "h2_7"
     }
     global.house_citizen_variants = {
         "h3_3",
         "h3_4",
         "h3_5",
         "h3_6",
-        "h3_7"
+        "h3_7",
+        "h3_8",
+        "h3_9",
+        "h3_10"
     }
+    global.last_house_index = 1
 end
 
 --called just in case
@@ -246,7 +256,11 @@ function place_random_overlay(ent, replacement_name)
         global_table = global.house_citizen_variants
     end
 
-    local index = math.random(1, #global_table)
+    local index = global.last_house_index
+    while (index == global.last_house_index) do --warning need at least 2 sprites for this to not loop endlessly
+        index = math.random(1, #global_table)
+    end
+    global.last_house_index = index
 
     overlay_name = global_table[index]
 

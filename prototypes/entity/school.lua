@@ -34,8 +34,8 @@ data:extend(
             flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "school"},
             max_health = 900,
-            collision_box = {{-2.2, -1.7}, {2.2, 1.7}},
-            selection_box = {{-2.5, -2.0}, {2.5, 2.0}},
+            collision_box = {{-3.2, -1.7}, {3.2, 1.7}},
+            selection_box = {{-3.5, -2.0}, {3.5, 2.0}},
             corpse = "big-remnants",
             dying_explosion = "massive-explosion",
             energy_source = {
@@ -52,16 +52,16 @@ data:extend(
                         priority = "extra-high",
                         width = 760,
                         height = 582,
-                        scale = 0.5,
-                        shift = util.by_pixel(8, 20)
+                        scale = 0.66666,
+                        shift = util.by_pixel(10, 8)
                     },
                     {
                         filename = "__Annotorio__/graphics/entity/school_s.png",
                         priority = "extra-high",
                         width = 760,
                         height = 582,
-                        scale = 0.5,
-                        shift = util.by_pixel(8, 20),
+                        scale = 0.66666,
+                        shift = util.by_pixel(12, 8),
                         draw_as_shadow = true
                     }
                 }
