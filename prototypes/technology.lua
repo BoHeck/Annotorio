@@ -204,6 +204,10 @@ data:extend(
             effects = {
                 {
                     type = "unlock-recipe",
+                    recipe = "kontor"
+                },
+                {
+                    type = "unlock-recipe",
                     recipe = "house_settler"
                 },
                 {
@@ -237,6 +241,22 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "anno_repair_kit"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "shipyard"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sloop"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sloop_to_loc"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sloop_from_loc"
                 }
             },
             unit = {
@@ -332,10 +352,6 @@ data:extend(
             effects = {
                 {
                     type = "unlock-recipe",
-                    recipe = "kontor"
-                },
-                {
-                    type = "unlock-recipe",
                     recipe = "doctor"
                 },
                 {
@@ -361,10 +377,6 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "press_sugar_cane"
-                },
-                {
-                    type = "unlock-recipe",
-                    recipe = "shipyard"
                 },
                 {
                     type = "unlock-recipe",

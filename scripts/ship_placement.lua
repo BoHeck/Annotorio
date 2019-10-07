@@ -8,6 +8,9 @@ function if_ship_build(event, entity_name)
     if (entity_name == "carrack_cargo") then
         place_locomotive(ent, "carrack_loc", event.player_index)
     end
+    if (entity_name == "sloop_cargo") then
+        place_locomotive(ent, "sloop_loc", event.player_index)
+    end
 end
 
 function if_ship_removed(event, entity_name)
@@ -16,6 +19,30 @@ function if_ship_removed(event, entity_name)
     if (entity_name == "carrack_cargo") then
         global.anno_ships[ent.unit_number].loco.destroy()
         global.anno_ships[ent.unit_number] = nil
+    end
+    if (entity_name == "sloop_cargo") then
+        global.anno_ships[ent.unit_number].loco.destroy()
+        global.anno_ships[ent.unit_number] = nil
+    end
+
+    if (entity_name == "sloop_loc") then
+        local cargo = find_cargo(ent)
+        global.anno_ships[cargo.unit_number] = nil
+        cargo.destroy()
+    end
+
+    if (entity_name == "carrack_loc") then
+        local cargo = find_cargo(ent)
+        global.anno_ships[cargo.unit_number] = nil
+        cargo.destroy()
+    end
+end
+
+function find_cargo(ent)
+    for i, v in pairs(global.anno_ships) do
+        if (v.loco == ent) then
+            return v.cargo
+        end
     end
 end
 
@@ -58,7 +85,7 @@ function get_locomotive_position(cargo_wagon)
 
     --log(cargo_wagon.position.x)
     -- log(cargo_wagon.position.y)
-    log(orientation)
+    --log(orientation)
 
     --point north
     if (orientation == 0) then

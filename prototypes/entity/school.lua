@@ -61,7 +61,7 @@ data:extend(
                         width = 760,
                         height = 582,
                         scale = 0.66666,
-                        shift = util.by_pixel(12, 8),
+                        shift = util.by_pixel(10, 8),
                         draw_as_shadow = true
                     }
                 }

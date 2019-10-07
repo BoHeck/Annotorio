@@ -139,3 +139,6 @@ house_citizen_icon.png by "rubberduck" from https://opengameart.org/content/isom
 house_pioneer_icon.png by "Spiral" from https://opengameart.org/content/old-medieval-house under CC0
 --------------
 house_settler_icon.png from feudal wars "https://feudalwars.net/"  under public domain
+--------------
+sloop_icon.png + sloop_convert_icon.png + sloop_loc_icon.png from an origninal model by "fan3d" https://sketchfab.com/3d-models/tartane-170e890a4f4542dead948b6218ec65ff under https://creativecommons.org/licenses/by/4.0/
+--------------

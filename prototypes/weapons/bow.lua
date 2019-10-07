@@ -18,7 +18,7 @@ data:extend(
             result = "anno_arrow",
             allow_as_intermediate = true
         },
-        -- bow
+        -- bow recipe
         {
             type = "recipe",
             name = "bow",
@@ -31,6 +31,31 @@ data:extend(
             result = "bow",
             allow_as_intermediate = true
         },
+        -- sloop weapon
+        {
+            type = "gun",
+            name = "sloop_bow",
+            icon = "__Annotorio__/graphics/icons/bow_icon.png",
+            icon_size = 64,
+            subgroup = "gun",
+            order = "a",
+            attack_parameters = {
+                type = "projectile",
+                ammo_category = "anno_arrow",
+                cooldown = 25,
+                projectile_creation_distance = 0.825,
+                range = 29.3,
+                min_range = 1,
+                sound = {
+                    {
+                        filename = "__Annotorio__/sound/fire_bow_sound-mike-koenig.wav",
+                        volume = 0.5
+                    }
+                }
+            },
+            stack_size = 25
+        },
+        -- bow item
         {
             type = "gun",
             name = "bow",
@@ -55,6 +80,7 @@ data:extend(
             },
             stack_size = 25
         },
+        -- anno_arrow item
         {
             type = "ammo",
             name = "anno_arrow",

@@ -60,7 +60,7 @@ local carrack = {
     name = "carrack",
     icon = "__Annotorio__/graphics/icons/carrack_icon.png",
     icon_size = 64,
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    flags = {"placeable-player", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 0.75, result = "carrack"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 3000,
@@ -70,7 +70,7 @@ local carrack = {
     weight = 70000,
     effectivity = 1,
     braking_power = "1000kW",
-    consumption = "1000kW",
+    consumption = "1000kW",--measured speed 55.5 km/h
     friction = 1e-3,
     corpse = "big-remnants",
     dying_explosion = "big-explosion",
@@ -156,15 +156,6 @@ local carrack = {
             filename = "__Annotorio__/sound/Boat_Moving.ogg",
             volume = 1
         },
-        --[[
-        activate_sound = {
-            filename = "__base__/sound/car-engine-start.ogg",
-            volume = 0.6
-        },
-        deactivate_sound = {
-            filename = "__base__/sound/car-engine-stop.ogg",
-            volume = 0.6
-        },]]
         match_speed_to_activity = true
     },
     tank_driving = true,
@@ -244,7 +235,7 @@ carrack_cargo.icon = "__Annotorio__/graphics/icons/carrack_icon.png"
 carrack_cargo.icon_size = 64
 carrack_cargo.minable = {mining_time = 0.75, result = "carrack_cargo"}
 
-carrack_cargo.inventory_size = 25
+carrack_cargo.inventory_size = 16
 
 carrack_cargo.max_speed = 1.2
 carrack_cargo.air_resistance = 0
