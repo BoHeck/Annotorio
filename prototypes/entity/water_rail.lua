@@ -153,6 +153,9 @@ water_rail_straight.selection_priority = 49
 water_rail_curved.pictures = railpictures()
 water_rail_straight.pictures = railpictures()
 
+water_rail_curved.working_sound = nil
+water_rail_straight.working_sound = nil
+
 function buoy_stripes()
     local result = {}
 

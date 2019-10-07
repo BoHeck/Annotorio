@@ -70,7 +70,8 @@ local carrack = {
     weight = 70000,
     effectivity = 1,
     braking_power = "1000kW",
-    consumption = "1000kW",--measured speed 55.5 km/h
+    consumption = "1000kW",
+    --measured speed 55.5 km/h
     friction = 1e-3,
     corpse = "big-remnants",
     dying_explosion = "big-explosion",
@@ -166,7 +167,6 @@ local carrack = {
 -------------------------------------------------------------
 local carrack_loc = table.deepcopy(data.raw["locomotive"]["locomotive"])
 carrack_loc.name = "carrack_loc"
-carrack_loc.max_health = 3000
 
 carrack_loc.flags = {"not-blueprintable", "placeable-neutral", "player-creation"}
 carrack_loc.burner = nil
@@ -216,7 +216,14 @@ carrack_loc.wheels = {
     lines_per_file = 1
 }
 
-carrack_loc.working_sound = nil
+carrack_loc.drive_over_tie_trigger = nil
+carrack_loc.stop_trigger = nil
+carrack_loc.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Moving.ogg",
+        volume = 1
+    }
+}
 
 carrack_loc.energy_per_hit_point = 1
 carrack_loc.max_health = 3000
@@ -235,6 +242,7 @@ carrack_cargo.icon = "__Annotorio__/graphics/icons/carrack_icon.png"
 carrack_cargo.icon_size = 64
 carrack_cargo.minable = {mining_time = 0.75, result = "carrack_cargo"}
 
+carrack_cargo.max_health = 3000
 carrack_cargo.inventory_size = 16
 
 carrack_cargo.max_speed = 1.2
@@ -259,6 +267,15 @@ carrack_cargo.wheels = {
     filename = "__core__/graphics/empty.png",
     line_length = 1,
     lines_per_file = 1
+}
+
+carrack_cargo.drive_over_tie_trigger = nil
+carrack_cargo.stop_trigger = nil
+carrack_cargo.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Moving.ogg",
+        volume = 1
+    }
 }
 
 carrack_cargo.vertical_doors = nil

@@ -55,7 +55,7 @@ local sloop = {
     effectivity = 1,
     braking_power = "200kW",
     consumption = "200kW",
-     --measured speed 65.7 km/h
+    --measured speed 65.7 km/h
     friction = 1e-3,
     corpse = "big-remnants",
     dying_explosion = "big-explosion",
@@ -201,7 +201,14 @@ sloop_loc.wheels = {
     lines_per_file = 1
 }
 
-sloop_loc.working_sound = nil
+sloop_loc.drive_over_tie_trigger = nil
+sloop_loc.stop_trigger = nil
+sloop_loc.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Moving.ogg",
+        volume = 1
+    }
+}
 
 sloop_loc.energy_per_hit_point = 1
 sloop_loc.max_health = 800
@@ -220,6 +227,7 @@ sloop_cargo.icon = "__Annotorio__/graphics/icons/sloop_icon.png"
 sloop_cargo.icon_size = 64
 sloop_cargo.minable = {mining_time = 0.75, result = "sloop_cargo"}
 
+sloop_cargo.max_health = 800
 sloop_cargo.inventory_size = 3
 
 sloop_cargo.max_speed = 1.2
@@ -244,6 +252,15 @@ sloop_cargo.wheels = {
     filename = "__core__/graphics/empty.png",
     line_length = 1,
     lines_per_file = 1
+}
+
+sloop_cargo.drive_over_tie_trigger = nil
+sloop_cargo.stop_trigger = nil
+sloop_cargo.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Moving.ogg",
+        volume = 1
+    }
 }
 
 sloop_cargo.vertical_doors = nil
