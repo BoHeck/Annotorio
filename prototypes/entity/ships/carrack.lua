@@ -60,7 +60,7 @@ local carrack = {
     name = "carrack",
     icon = "__Annotorio__/graphics/icons/carrack_icon.png",
     icon_size = 64,
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    flags = {"placeable-player", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 0.75, result = "carrack"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 3000,
@@ -71,6 +71,7 @@ local carrack = {
     effectivity = 1,
     braking_power = "1000kW",
     consumption = "1000kW",
+    --measured speed 55.5 km/h
     friction = 1e-3,
     corpse = "big-remnants",
     dying_explosion = "big-explosion",
@@ -156,15 +157,6 @@ local carrack = {
             filename = "__Annotorio__/sound/Boat_Moving.ogg",
             volume = 1
         },
-        --[[
-        activate_sound = {
-            filename = "__base__/sound/car-engine-start.ogg",
-            volume = 0.6
-        },
-        deactivate_sound = {
-            filename = "__base__/sound/car-engine-stop.ogg",
-            volume = 0.6
-        },]]
         match_speed_to_activity = true
     },
     tank_driving = true,
@@ -175,7 +167,6 @@ local carrack = {
 -------------------------------------------------------------
 local carrack_loc = table.deepcopy(data.raw["locomotive"]["locomotive"])
 carrack_loc.name = "carrack_loc"
-carrack_loc.max_health = 3000
 
 carrack_loc.flags = {"not-blueprintable", "placeable-neutral", "player-creation"}
 carrack_loc.burner = nil
@@ -225,7 +216,14 @@ carrack_loc.wheels = {
     lines_per_file = 1
 }
 
-carrack_loc.working_sound = nil
+carrack_loc.drive_over_tie_trigger = nil
+carrack_loc.stop_trigger = nil
+carrack_loc.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Moving.ogg",
+        volume = 1
+    }
+}
 
 carrack_loc.energy_per_hit_point = 1
 carrack_loc.max_health = 3000
@@ -244,7 +242,8 @@ carrack_cargo.icon = "__Annotorio__/graphics/icons/carrack_icon.png"
 carrack_cargo.icon_size = 64
 carrack_cargo.minable = {mining_time = 0.75, result = "carrack_cargo"}
 
-carrack_cargo.inventory_size = 25
+carrack_cargo.max_health = 3000
+carrack_cargo.inventory_size = 16
 
 carrack_cargo.max_speed = 1.2
 carrack_cargo.air_resistance = 0
@@ -268,6 +267,15 @@ carrack_cargo.wheels = {
     filename = "__core__/graphics/empty.png",
     line_length = 1,
     lines_per_file = 1
+}
+
+carrack_cargo.drive_over_tie_trigger = nil
+carrack_cargo.stop_trigger = nil
+carrack_cargo.working_sound = {
+    sound = {
+        filename = "__Annotorio__/sound/Boat_Moving.ogg",
+        volume = 1
+    }
 }
 
 carrack_cargo.vertical_doors = nil

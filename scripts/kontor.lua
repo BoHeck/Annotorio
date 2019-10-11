@@ -11,12 +11,122 @@ require("scripts.shared_inventory")
 require("scripts.technology")
 require("scripts.util")
 
+--------------------globals--------------------------
 if (global.kontors == nil) then
     global.kontors = {}
     global.kontor_count = 0
 end
+
 if (global.banked_gold == nil) then
     global.banked_gold = 50000000
+end
+
+local names_stage_1 = {
+    "kontor_container_west",
+    "kontor_container_east",
+    "kontor_container_north",
+    "kontor_container_south"
+}
+-------------------------------------------------------
+
+function if_kontor_upgraded(event, entity_name)
+    if (entity_name == "kontor_upgrade_kit_1") then
+        if (upgrade_kit(event, entity_name, names_stage_1)) then
+            set_progress(game.players[event.player_index].force, "upgrade_your_kontor_1", 1)
+        end
+    end
+end
+
+function upgrade_kit(event, entity_name, names)
+    local ent = event.created_entity
+    local player = game.players[event.player_index]
+
+    local kon =
+        ent.surface.find_entities_filtered {
+        position = ent.position,
+        name = names,
+        limit = 1
+    }
+
+    if (kon[1] ~= nil) then
+        ent.destroy()
+        upgrade_kontor(kon[1])
+        return true
+    else
+        player.print("Can only be placed on a Kontor")
+        ent.destroy()
+        player.insert {name = entity_name, count = 1} --entity_name = item name which places it
+        return false
+    end
+end
+
+function upgrade_kontor(kontor_container)
+    local replacement_name = global.kontor_replacement_table[kontor_container.name]
+    local old_unit_number = kontor_container.unit_number
+
+    local new_kont =
+        kontor_container.surface.create_entity {
+        name = replacement_name,
+        position = kontor_container.position,
+        force = kontor_container.force,
+        fast_replace = true,
+        spill = false,
+        raise_built = false,
+        create_build_effect_smoke = true
+    }
+
+    ----------------------------------
+    global.kontors[new_kont.unit_number] = global.kontors[old_unit_number]
+
+    global.kontors[new_kont.unit_number].kontor = new_kont
+
+    global.kontors[old_unit_number] = nil
+
+    ----------------------------------
+    upgrade_cranes(new_kont)
+end
+
+function upgrade_cranes(new_kont)
+    local kontor = global.kontors[new_kont.unit_number]
+    log(kontor.crane_1.name)
+    local replacement_name = global.kontor_replacement_table[kontor.crane_1.name]
+    log(replacement_name)
+
+    local pos_old_1 = kontor.crane_1.position
+    local pos_old_2 = kontor.crane_2.position
+
+    kontor.crane_2.teleport({pos_old_2.x + 100, pos_old_2.y + 100})
+
+    local ent8 =
+        new_kont.surface.create_entity {
+        name = replacement_name,
+        position = kontor.crane_1.position,
+        direction = kontor.crane_1.direction,
+        force = kontor.crane_1.force,
+        fast_replace = true,
+        spill = false,
+        raise_built = false,
+        create_build_effect_smoke = false
+    }
+
+    ent8.rotatable = false
+
+    local ent9 =
+        new_kont.surface.create_entity {
+        name = replacement_name,
+        position = kontor.crane_2.position,
+        direction = kontor.crane_2.direction,
+        force = kontor.crane_2.force,
+        fast_replace = true,
+        spill = false,
+        raise_built = false,
+        create_build_effect_smoke = false
+    }
+    ent9.rotatable = false
+    ent9.teleport(pos_old_2)
+
+    kontor.crane_1 = ent8
+    kontor.crane_2 = ent9
 end
 
 function if_kontor_build(event, entity_name)
@@ -231,10 +341,8 @@ function if_kontor_build(event, entity_name)
 
     ------------------------------------------
     local f = game.players[player_index].force
-    if (f.technologies["settle_island"].researched == false) then
-        queue_technology(f)
-        set_progress(f, "settle_island", 1)
-        f.set_spawn_position(game.players[player_index].position,game.players[player_index].surface)
+    if (set_progress(f, "settle_island", 1)) then
+        f.set_spawn_position(game.players[player_index].position, game.players[player_index].surface)
     end
     ------------------------------------------
 

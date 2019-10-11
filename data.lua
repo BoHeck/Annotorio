@@ -48,7 +48,7 @@ require("prototypes.utility_assets")
 --Enabling the recipes we need
 --data.raw.recipe["iron-plate"].enabled = true
 --data.raw.recipe["iron-plate"].hidden = false
-
+data.raw.recipe["kontor"].enabled = true
 -------
 data.raw.fish["fish"].minable = {mining_time = 0.4, result = "anno_fish", count = 5}
 data.raw.fish["fish"].collision_mask = {"ground-tile", "colliding-with-tiles-only"}
@@ -63,4 +63,3 @@ data.raw["simple-entity"]["sand-rock-big"].minable.results = {{"clay", 10}}
 
 data.raw.character.character.enter_vehicle_distance = 5
 -------
-

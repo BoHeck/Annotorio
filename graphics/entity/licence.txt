@@ -14,6 +14,8 @@ b) from  "uh_farm_pioneer-BLENDER_v249.blend"  by "kaschte"
 distillery.png  by "manthus" from "destilliry-BLENDER_v256.blend"
 fishers_hut.png by "dauerflucher" from "fisher_tent-BLENDER_v247.blend"
 kontor_*.png  originally by "janexx" based from "warehouse_citizens_BLENDER-v276.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+kontor_*_2.png by dauerflucher made for the open source project Unkown Horizons" (http://unknown-horizons.org/)
+
 sheep_farm.png  by "janexx" from  "newsheeps-BLENDER-v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
 tree_planter.png by "kaschte" from "uh_settler_lumberjack-BLENDER_v249.blend"
 weaver.png by "terwarf" from "uh_weaver_pioneers-BLENDER_v249.blend"

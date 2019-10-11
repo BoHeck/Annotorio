@@ -4,10 +4,10 @@ local kontor_anim = {
       {
         filename = "__Annotorio__/graphics/entity/kontor_north.png",
         priority = "extra-high",
-        width = 350,
-        height = 563,
+        width = 390,
+        height = 586,
         scale = 0.5,
-        shift = util.by_pixel(1, -24)
+        shift = util.by_pixel(1, -54)
       }
     }
   },
@@ -16,10 +16,10 @@ local kontor_anim = {
       {
         filename = "__Annotorio__/graphics/entity/kontor_south.png",
         priority = "extra-high",
-        width = 362,
-        height = 353,
+        width = 391,
+        height = 413,
         scale = 0.5,
-        shift = util.by_pixel(1, -24)
+        shift = util.by_pixel(1, 2)
       }
     }
   },
@@ -28,8 +28,8 @@ local kontor_anim = {
       {
         filename = "__Annotorio__/graphics/entity/kontor_east.png",
         priority = "extra-high",
-        width = 513,
-        height = 297,
+        width = 591,
+        height = 370,
         scale = 0.5,
         shift = util.by_pixel(16, -8)
       }
@@ -40,10 +40,61 @@ local kontor_anim = {
       {
         filename = "__Annotorio__/graphics/entity/kontor_west.png",
         priority = "extra-high",
-        width = 526,
-        height = 426,
+        width = 549,
+        height = 452,
         scale = 0.5,
-        shift = util.by_pixel(-16, -40)
+        shift = util.by_pixel(-16, -44)
+      }
+    }
+  }
+}
+
+local kontor_anim2 = {
+  north = {
+    layers = {
+      {
+        filename = "__Annotorio__/graphics/entity/kontor_north_2.png",
+        priority = "extra-high",
+        width = 390,
+        height = 586,
+        scale = 0.5,
+        shift = util.by_pixel(1, -54)
+      }
+    }
+  },
+  south = {
+    layers = {
+      {
+        filename = "__Annotorio__/graphics/entity/kontor_south_2.png",
+        priority = "extra-high",
+        width = 391,
+        height = 413,
+        scale = 0.5,
+        shift = util.by_pixel(1, 2)
+      }
+    }
+  },
+  east = {
+    layers = {
+      {
+        filename = "__Annotorio__/graphics/entity/kontor_east_2.png",
+        priority = "extra-high",
+        width = 591,
+        height = 370,
+        scale = 0.5,
+        shift = util.by_pixel(16, -8)
+      }
+    }
+  },
+  west = {
+    layers = {
+      {
+        filename = "__Annotorio__/graphics/entity/kontor_west_2.png",
+        priority = "extra-high",
+        width = 549,
+        height = 452,
+        scale = 0.5,
+        shift = util.by_pixel(-16, -44)
       }
     }
   }
@@ -58,7 +109,7 @@ local kontor_container_west = {
   placeable_by = {item = "kontor", count = 1},
   minable = {mining_time = 0.2, result = "kontor"},
   max_health = 1000,
-  dying_explosion="big-explosion",
+  dying_explosion = "big-explosion",
   corpse = "medium-remnants",
   open_sound = {filename = "__base__/sound/metallic-chest-open.ogg", volume = 0.65},
   close_sound = {filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7},
@@ -74,8 +125,8 @@ local kontor_container_west = {
   },
   collision_box = {{-3.4, -2.4}, {3.4, 2.4}},
   selection_box = {{-3.5, 0}, {0, 2.5}},
-  --selection_box = {{-1.0, -2.5}, {1.5, 0}},
-  fast_replaceable_group = "kontor",
+  --collision_mask = {"object-layer", "player-layer"},
+  fast_replaceable_group = "kontor_container",
   inventory_size = 60,
   vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
   picture = kontor_anim.west,
@@ -88,33 +139,66 @@ local kontor_container_north = table.deepcopy(kontor_container_west)
 kontor_container_north.name = "kontor_container_north"
 kontor_container_north.collision_box = {{-2.4, -2.4}, {2.4, 2.4}}
 kontor_container_north.selection_box = {{-2.5, -2.5}, {0, 0}}
-kontor_container_north.picture = {
-  filename = "__Annotorio__/graphics/entity/kontor_north.png",
-  priority = "extra-high",
-  width = 350,
-  height = 563,
-  scale = 0.5,
-  shift = util.by_pixel(1, -56)
-}
+kontor_container_north.picture = kontor_anim.north
 
 local kontor_container_south = table.deepcopy(kontor_container_west)
 kontor_container_south.name = "kontor_container_south"
 kontor_container_south.collision_box = {{-2.4, -2.4}, {2.4, 2.4}}
 kontor_container_south.selection_box = {{0, 0}, {2.5, 2.5}}
 --kontor_container_south.selection_box = {{-2.5, -3.0}, {0, -0.5}}
-kontor_container_south.picture = {
-  filename = "__Annotorio__/graphics/entity/kontor_south.png",
-  priority = "extra-high",
-  width = 362,
-  height = 353,
-  scale = 0.5,
-  shift = util.by_pixel(1, 8)
-}
+kontor_container_south.picture = kontor_anim.south
 
 local kontor_container_east = table.deepcopy(kontor_container_west)
 kontor_container_east.name = "kontor_container_east"
+kontor_container_east.collision_box = {{-3.4, -2.4}, {3.4, 2.4}}
 kontor_container_east.selection_box = {{0, -2.5}, {3.5, 0}}
 kontor_container_east.picture = kontor_anim.east
+
+local kontor_container_2_north = table.deepcopy(kontor_container_north)
+kontor_container_2_north.name = "kontor_container_2_north"
+kontor_container_2_north.icon = "__Annotorio__/graphics/icons/kontor2_icon.png"
+kontor_container_2_north.icon_size = 64
+kontor_container_2_north.picture = kontor_anim2.north
+
+local kontor_container_2_south = table.deepcopy(kontor_container_south)
+kontor_container_2_south.name = "kontor_container_2_south"
+kontor_container_2_south.icon = "__Annotorio__/graphics/icons/kontor2_icon.png"
+kontor_container_2_south.icon_size = 64
+kontor_container_2_south.picture = kontor_anim2.south
+
+local kontor_container_2_east = table.deepcopy(kontor_container_east)
+kontor_container_2_east.name = "kontor_container_2_east"
+kontor_container_2_east.icon = "__Annotorio__/graphics/icons/kontor2_icon.png"
+kontor_container_2_east.icon_size = 64
+kontor_container_2_east.picture = kontor_anim2.east
+
+local kontor_container_2_west = table.deepcopy(kontor_container_west)
+kontor_container_2_west.name = "kontor_container_2_west"
+kontor_container_2_west.icon = "__Annotorio__/graphics/icons/kontor2_icon.png"
+kontor_container_2_west.icon_size = 64
+kontor_container_2_west.picture = kontor_anim2.west
+
+local kontor_upgrade_kit_1 = {
+  type = "container",
+  name = "kontor_upgrade_kit_1",
+  icon = "__Annotorio__/graphics/icons/kontor_upgrade_kit_1_icon.png",
+  icon_size = 64,
+  placeable_by = {item = "kontor_upgrade_kit_1", count = 1},
+  minable = {mining_time = 0.2, result = "kontor_upgrade_kit_1"},
+  max_health = 1000,
+  dying_explosion = "big-explosion",
+  corpse = "medium-remnants",
+  collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+  selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+  collision_mask = {"ground-tile"},
+  inventory_size = 60,
+  picture = {
+    filename = "__Annotorio__/graphics/icons/kontor_upgrade_kit_1_icon.png",
+    priority = "extra-high",
+    width = 64,
+    height = 64
+  }
+}
 
 data:extend(
   {
@@ -122,6 +206,11 @@ data:extend(
     kontor_container_south,
     kontor_container_east,
     kontor_container_west,
+    kontor_container_2_north,
+    kontor_container_2_south,
+    kontor_container_2_east,
+    kontor_container_2_west,
+    kontor_upgrade_kit_1,
     --Kontor item
     {
       type = "item",
@@ -133,14 +222,40 @@ data:extend(
       place_result = "kontor_dummy",
       stack_size = 25
     },
+    --Kontor upgrade kit item
+    {
+      type = "item",
+      name = "kontor_upgrade_kit_1",
+      icon = "__Annotorio__/graphics/icons/kontor_upgrade_kit_1_icon.png",
+      icon_size = 64,
+      subgroup = "administration",
+      order = "b",
+      place_result = "kontor_upgrade_kit_1",
+      stack_size = 25
+    },
+    --Kontor upgrade kit recipe
+    {
+      type = "recipe",
+      name = "kontor_upgrade_kit_1",
+      ingredients = {
+        {"wood", 16},
+        {"ceramics", 24},
+        {"anno_tool", 10},
+        {"anno_crane_2", 1}
+      },
+      result = "kontor_upgrade_kit_1",
+      energy_required = 0.1,
+      --5
+      enabled = true,
+      hidden = false,
+      allow_as_intermediate = true
+    },
     --Kontor recipe
     {
       type = "recipe",
       name = "kontor",
       ingredients = {
-        {"wood", 16},
-        {"ceramics", 24},
-        {"anno_tool", 10}
+        {"wood", 40}
       },
       result = "kontor",
       energy_required = 0.1,
@@ -211,7 +326,7 @@ data:extend(
       type = "electric-pole",
       name = "hidden_pole",
       placeable_by = {item = "kontor", count = 1},
-      flags = {"placeable-off-grid","not-blueprintable"},
+      flags = {"placeable-off-grid", "not-blueprintable"},
       max_health = 999999,
       resistances = {},
       collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -369,7 +484,7 @@ data:extend(
       placeable_by = {item = "kontor", count = 1},
       icon = "__Annotorio__/graphics/icons/bazaar_icon.png",
       icon_size = 64,
-      flags = {"placeable-off-grid","not-blueprintable"},
+      flags = {"placeable-off-grid", "not-blueprintable"},
       max_health = 99999,
       energy_source = {
         type = "electric",

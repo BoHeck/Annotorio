@@ -59,6 +59,7 @@ function on_built_entity_collection(event)
    if_tree_planter_build(event, entity_name)
    if_shipyard_build(event, entity_name)
    if_kontor_build(event, entity_name)
+   if_kontor_upgraded(event, entity_name)
    if_something_build(event, entity_name)
    if_mine_build(event, entity_name)
    if_ship_build(event, entity_name)
@@ -190,7 +191,7 @@ end
 function start_player_in_ship(player)
    local ship =
       player.surface.create_entity {
-      name = "carrack",
+      name = "sloop",
       position = player.position,
       force = player.force,
       fast_replace = false,
@@ -200,9 +201,9 @@ function start_player_in_ship(player)
       create_build_effect_smoke = false
    }
    if (settings.startup["debug_mode"].value) then
-      ship.insert {name = "cannon_ball", count = 100}
+      ship.insert {name = "anno_arrow", count = 200}
    else
-      ship.insert {name = "cannon_ball", count = 8}
+      ship.insert {name = "anno_arrow", count = 20}
    end
    ship.set_driver(player)
 end
@@ -214,10 +215,11 @@ end
 function on_init_collection()
    setup_needs()
    pipette_init()
-
-   remote.call("freeplay", "set_created_items", {})
-   remote.call("freeplay", "set_respawn_items", {})
-   remote.call("freeplay", "set_skip_intro", true)
+   if (remote.interfaces["freeplay"]) then
+      remote.call("freeplay", "set_created_items", {})
+      remote.call("freeplay", "set_respawn_items", {})
+      remote.call("freeplay", "set_skip_intro", true)
+   end
 end
 
 function on_runtime_mod_setting_changed_collection()
@@ -299,8 +301,10 @@ end
 ----remove all items from player (mostly from factorio default scenario)
 function clear_player(player)
    player.get_main_inventory().clear()
-   player.get_inventory(defines.inventory.character_guns).clear()
-   player.get_inventory(defines.inventory.character_ammo).clear()
+   if (player.get_inventory(defines.inventory.character_guns)) then
+      player.get_inventory(defines.inventory.character_guns).clear()
+      player.get_inventory(defines.inventory.character_ammo).clear()
+   end
 end
 
 function give_player_starting_items_debug(player)

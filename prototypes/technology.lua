@@ -3,8 +3,8 @@ data:extend(
         {
             type = "technology",
             name = "settle_island",
-            icon = "__Annotorio__/graphics/icons/kontor_icon.png",
-            icon_size = 64,
+            icon = "__Annotorio__/graphics/technology/settle_island.png",
+            icon_size = 256,
             effects = {
                 {
                     type = "unlock-recipe",
@@ -49,8 +49,8 @@ data:extend(
         {
             type = "technology",
             name = "feed_your_people",
-            icon = "__Annotorio__/graphics/icons/anno_fish_icon.png",
-            icon_size = 64,
+            icon = "__Annotorio__/graphics/technology/feed_your_people.png",
+            icon_size = 256,
             effects = {
                 {
                     type = "unlock-recipe",
@@ -91,8 +91,8 @@ data:extend(
         {
             type = "technology",
             name = "grow_1",
-            icon = "__Annotorio__/graphics/icons/house_pioneer_icon.png",
-            icon_size = 64,
+            icon = "__Annotorio__/graphics/technology/grow_1.png",
+            icon_size = 256,
             effects = {
                 {
                     type = "unlock-recipe",
@@ -187,6 +187,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "anno_crane_2"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "kontor_upgrade_kit_1"
                 }
             },
             unit = {
@@ -199,8 +203,8 @@ data:extend(
         {
             type = "technology",
             name = "upgrade_your_kontor_1",
-            icon = "__Annotorio__/graphics/icons/kontor_icon.png",
-            icon_size = 64,
+            icon = "__Annotorio__/graphics/technology/upgrade_your_kontor_1.png",
+            icon_size = 256,
             effects = {
                 {
                     type = "unlock-recipe",
@@ -237,6 +241,22 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "anno_repair_kit"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "shipyard"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sloop"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sloop_to_loc"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "sloop_from_loc"
                 }
             },
             unit = {
@@ -332,10 +352,6 @@ data:extend(
             effects = {
                 {
                     type = "unlock-recipe",
-                    recipe = "kontor"
-                },
-                {
-                    type = "unlock-recipe",
                     recipe = "doctor"
                 },
                 {
@@ -361,10 +377,6 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "press_sugar_cane"
-                },
-                {
-                    type = "unlock-recipe",
-                    recipe = "shipyard"
                 },
                 {
                     type = "unlock-recipe",
