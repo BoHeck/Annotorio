@@ -164,6 +164,16 @@ function setup_needs()
         "h3_10"
     }
     global.last_house_index = 1
+    ----------------------------------------------------------
+
+    global.kontor_replacement_table = {}
+
+    global.kontor_replacement_table["kontor_container_west"] = "kontor_container_2_west"
+    global.kontor_replacement_table["kontor_container_east"] = "kontor_container_2_east"
+    global.kontor_replacement_table["kontor_container_north"] = "kontor_container_2_north"
+    global.kontor_replacement_table["kontor_container_south"] = "kontor_container_2_south"
+    global.kontor_replacement_table["anno_crane"] = "anno_crane_3"
+    ----------------------------------------------------------
 end
 
 --called just in case

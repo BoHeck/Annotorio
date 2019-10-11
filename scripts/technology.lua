@@ -40,7 +40,9 @@ function set_progress(force, technology, progress)
     if (force.technologies[technology].researched == false) then
         force.add_research(technology)
         force.research_progress = math.min(progress, 1)
+        return true
     end
+    return false
 end
 
 if (global.anno_technology_requierements == nil) then
@@ -63,10 +65,10 @@ end
 
 if (global.anno_technology_resource_requierements == nil) then
     global.anno_technology_resource_requierements = {}
-
+--[[
     global.anno_technology_resource_requierements["upgrade_your_kontor_1"] = {
         {amount = 40, name = "ceramics"},
         {amount = 4, name = "anno_tool"},
         {amount = 24, name = "wood"}
-    }
+    }]]
 end

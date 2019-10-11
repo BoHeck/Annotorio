@@ -5,6 +5,8 @@ anno_crane.minable = nil
 anno_crane.max_health = 999999
 anno_crane.flags = {"placeable-off-grid", "not-blueprintable"}
 anno_crane.placeable_by = {item = "kontor", count = 1}
+anno_crane.icon = "__Annotorio__/graphics/icons/crane_icon.png"
+anno_crane.icon_size = 64
 ---------------------------
 anno_crane.energy_per_movement = "0.707547kJ"
 anno_crane.energy_per_rotation = "0.707547kJ"
@@ -18,7 +20,8 @@ anno_crane.energy_source = {
 ---------------------------
 anno_crane.stack = true
 anno_crane.filter_count = 5
---anno_crane.rotation_speed
+anno_crane.rotation_speed = 0.005
+anno_crane.extension_speed = 0.0125
 --------------------------
 local empty = {
     filename = "__core__/graphics/empty.png",
@@ -43,7 +46,13 @@ anno_crane.pickup_position = {0, -3}
 anno_crane.insert_position = {0, 3.2}
 
 --------------------------
+--This version is used by the stage 2 kontor
+local anno_crane_3 = table.deepcopy(anno_crane)
+anno_crane_3.name = "anno_crane_3"
 
+anno_crane_3.rotation_speed = 0.02
+anno_crane_3.extension_speed = 0.0457
+--------------------------
 --This is a player placeable version of the crane
 local anno_crane_2 = table.deepcopy(anno_crane)
 anno_crane_2.name = "anno_crane_2"
@@ -54,7 +63,9 @@ anno_crane_2.placeable_by = nil
 
 anno_crane_2.collision_box = {{-1.4, -1.4}, {1.4, 1.4}}
 anno_crane_2.selection_box = {{-1.5, -1.5}, {1.5, 1.5}}
-anno_crane_2.collision_mask = {}
+
+anno_crane_2.rotation_speed = 0.02
+anno_crane_2.extension_speed = 0.0457
 
 anno_crane_2.platform_picture = {
     north = {
@@ -90,11 +101,12 @@ anno_crane_2.platform_picture = {
         shift = util.by_pixel(-2, -40)
     }
 }
-
+--------------------------
 data:extend(
     {
         anno_crane,
         anno_crane_2,
+        anno_crane_3,
         --anno_crane item
         {
             type = "item",

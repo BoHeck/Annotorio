@@ -38,7 +38,8 @@ bazaar_icon.png by "Daniel Eddeland" from "https://opengameart.org/content/lpc-f
 the listed images are from "Unkown Horizons" (http://unknown-horizons.org/) or to be more clear rendered from blender files made for said game.
 My derivations are licenced under their original licence.
 
-kontor_icon.png by "janexx" based from "warehouse_citizens_BLENDER-v276.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
+kontor_icon.png by dauerflucher made for the open source project Unkown Horizons" (http://unknown-horizons.org/)
+kontor2_icon.png +  kontor_upgrade_kit_1_icon.png by "janexx" based from "warehouse_citizens_BLENDER-v276.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
 
 marketplace_icon.png by "janexx" from "uh_sailor_main_square-BLENDER_v277.blend" under  Creative Commons Attribution Sharealike 3.0 Unported License 
 

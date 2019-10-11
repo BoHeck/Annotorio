@@ -56,7 +56,7 @@ data:extend(
                     }
                 }
             },
-            draw_copper_wires=false,
+            draw_copper_wires = false,
             connection_points = {
                 {
                     shadow = {
@@ -108,6 +108,7 @@ data:extend(
                     }
                 }
             },
+            draw_copper_wires = false,
             connection_points = {
                 {
                     shadow = {
