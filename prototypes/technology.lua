@@ -257,6 +257,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "sloop_from_loc"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "kontor"
                 }
             },
             unit = {
