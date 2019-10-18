@@ -9,8 +9,10 @@ function pipette_init()
     end
 
     for i, recipe in pairs(game.recipe_prototypes) do
-        if (recipe.name == recipe.products[1].name) then
-            global.pipette_pair[recipe.products[1].name] = recipe --This might not seem usefull now but it enables us to later  add pairs by hand....
+        if (recipe.products[1] ~= nil) then
+            if (recipe.name == recipe.products[1].name) then
+                global.pipette_pair[recipe.products[1].name] = recipe --This might not seem usefull now but it enables us to later  add pairs by hand....
+            end
         end
     end
 end

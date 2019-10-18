@@ -191,6 +191,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "kontor_upgrade_kit_1"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "kontor"
                 }
             },
             unit = {
