@@ -18,8 +18,9 @@ data:extend(
             enabled = true,
             energy_required = 0.1,
             ingredients = {
-                {"wood", 6},
-                {"anno_tool", 3}
+                {"wood", 16},
+                {"ceramics", 24},
+                {"anno_tool", 4}
             },
             result = "press"
         },
@@ -103,18 +104,27 @@ data:extend(
                     percent = 70
                 }
             },
-            collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-            selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+            collision_box = {{-1.7, -2.2}, {1.7, 2.2}},
+            selection_box = {{-2, -2.5}, {2, 2.5}},
             alert_icon_shift = util.by_pixel(-3, -12),
             animation = {
                 layers = {
                     {
-                        filename = "__Annotorio__/graphics/entity/press.png",
+                        filename = "__Annotorio__/graphics/entity/press_workshop.png",
                         priority = "extra-high",
-                        width = 279,
-                        height = 295,
-                        scale = 0.5
-                        --shift = util.by_pixel(24, -4)
+                        width = 310,
+                        height = 353,
+                        scale = 0.5,
+                        shift = util.by_pixel(11, 8)
+                    },
+                    {
+                        filename = "__Annotorio__/graphics/entity/press_workshop_s.png",
+                        priority = "extra-high",
+                        width = 310,
+                        height = 353,
+                        scale = 0.5,
+                        draw_as_shadow = true,
+                        shift = util.by_pixel(11, 8)
                     }
                 }
             },
