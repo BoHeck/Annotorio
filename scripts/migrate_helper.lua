@@ -1,4 +1,5 @@
 require("scripts.shared_inventory")
+require("prototypes.map.resource_placement")
 --util = require("util")
 
 function migrate_0_3_0()
@@ -222,6 +223,8 @@ function allways_try_these()
         end
         global.houses_pioniers = nil
     end
+
+    reset_global_ores_and_soils()
 end
 
 function deepcopy2(object)

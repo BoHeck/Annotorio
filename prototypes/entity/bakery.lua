@@ -68,7 +68,7 @@ data:extend(
             name = "bakery",
             icon = "__Annotorio__/graphics/icons/bakery_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation","not-rotatable"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "bakery"},
             max_health = 300,
             dying_explosion = "medium-explosion",
@@ -79,18 +79,27 @@ data:extend(
                     percent = 70
                 }
             },
-            collision_box = {{-0.7, -1.2}, {0.7, 1.2}},
-            selection_box = {{-1.0, -1.5}, {1.0, 1.5}},
+            collision_box = {{-1.2, -1.7}, {1.2, 1.7}},
+            selection_box = {{-1.5, -2.0}, {1.5, 2.0}},
             alert_icon_shift = util.by_pixel(-3, -12),
             animation = {
                 layers = {
                     {
                         filename = "__Annotorio__/graphics/entity/bakery.png",
                         priority = "extra-high",
-                        width = 265,
-                        height = 359,
-                        scale = 0.25
-                        --shift = util.by_pixel(24, -4)
+                        width = 327,
+                        height = 379,
+                        scale = 0.375,
+                        shift = util.by_pixel(15, 2)
+                    },
+                    {
+                        filename = "__Annotorio__/graphics/entity/bakery_s.png",
+                        priority = "extra-high",
+                        width = 327,
+                        height = 379,
+                        scale = 0.375,
+                        shift = util.by_pixel(15, 2),
+                        draw_as_shadow = true
                     }
                 }
             },

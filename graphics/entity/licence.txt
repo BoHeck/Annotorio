@@ -98,3 +98,15 @@ rubberduck CC0 - http://opengameart.org/node/20102
 yughues CC0 - http://opengameart.org/content/wood-barrels-pack
 unknownscribe CC-BY-SA 3.0 https://github.com/unknown-horizons/gfx/tree/master/unknownscribe/buildings/barracks/resources/ground Tex.png
 ---------------
+apothecary*.png by TheFunnySide
+This render uses textures and models by:
+"Barrels!" by toomanydemons from https://sketchfab.com/3d-models/barrels-1009f5c51391437e9ed2b97f04b9af31 under https://creativecommons.org/licenses/by/4.0/
+"pestel and mortar" by "FlukierJupiter" from https://sketchfab.com/3d-models/pestle-and-mortar-923082ddddf64fbe8b2548e5819bad53 under https://creativecommons.org/licenses/by/4.0/
+scale by "gggeorggg" from https://sketchfab.com/3d-models/antique-scale-7bd70ece68784f1ebab5785e8443ad68 under https://creativecommons.org/licenses/by/4.0/
+"Stone Fire Pit" by "pavus" from https://sketchfab.com/3d-models/stone-fire-pit-7cd41ec9abfc48e893c1861518ac8634
+table by "DeMoon" from https://sketchfab.com/3d-models/table-01-01-b3e125681ced468cbbcd9730e2350a65 under https://creativecommons.org/licenses/by/4.0/
+"Beam Scale" by "Friends of Upminster Windmill" from https://sketchfab.com/3d-models/beam-scale-0eedb0d40a244bb5b0f0c2aa32dbbeae under https://creativecommons.org/licenses/by/4.0/
+---------------
+hr_sulfur.png and sulfur.png from Factorio by tinting "copper-ore.png". Do not share outside this mod!
+---------------
+

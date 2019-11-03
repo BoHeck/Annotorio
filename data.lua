@@ -44,6 +44,7 @@ require("prototypes.gui")
 require("prototypes.map")
 require("prototypes.groups")
 require("prototypes.utility_assets")
+require("prototypes.music")
 
 --Enabling the recipes we need
 --data.raw.recipe["iron-plate"].enabled = true

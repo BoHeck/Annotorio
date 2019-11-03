@@ -484,11 +484,23 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
+                    recipe = "powder_keg"
+                },
+                {
+                    type = "unlock-recipe",
                     recipe = "blunderbuss_shot"
                 },
                 {
                     type = "unlock-recipe",
                     recipe = "musket_ball"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "buy_gun_powder"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "gun_powder"
                 },
                 {
                     type = "unlock-recipe",
@@ -500,11 +512,11 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
-                    recipe = "buy_gun_powder"
+                    recipe = "mine_sulfur"
                 },
                 {
                     type = "unlock-recipe",
-                    recipe = "powder_keg"
+                    recipe = "apothecary"
                 }
             },
             unit = {

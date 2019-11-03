@@ -47,7 +47,11 @@ data:extend(
             ingredients = {
                 {"seedling", 4}
             },
-            result = "pig"
+            main_product = "pig",
+            results = {
+                {"pig", 1},
+                {"fertilizer", 2}
+            }
         },
         -- pig_farm entity
         {
