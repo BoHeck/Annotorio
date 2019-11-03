@@ -1,11 +1,11 @@
-if (global.anno_soils == nil) then
+function reset_global_ores_and_soils()
+    global.anno_ores = {"iron-ore", "copper-ore", "stone", "coal", "sulfur"}
     global.anno_soils = {}
     global.anno_soils["cold"] = {"apple_soil"}
     global.anno_soils["warm"] = {"sugar_cane_soil"}
 end
-if (global.anno_ores == nil) then
-    global.anno_ores = {"iron-ore", "copper-ore", "stone", "coal"}
-end
+
+reset_global_ores_and_soils()
 
 local ore_patch_factor = 0.10
 local soil_patch_factor = 0.20

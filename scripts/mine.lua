@@ -6,7 +6,7 @@
 
 require("scripts.util")
 
-function if_mine_build(event, entity_name)--entity_name is used to prevent a crash in case soime other function deleted the entity
+function if_mine_build(event, entity_name) --entity_name is used to prevent a crash in case soime other function deleted the entity
     local ent = event.created_entity
 
     if (entity_name == "mine_dummy") then
@@ -44,13 +44,30 @@ function find_correct_mine(ent)
         name = "coal",
         radius = 1.5
     }
+    local sulfur =
+        ent.surface.count_entities_filtered {
+        position = ent.position,
+        name = "sulfur",
+        radius = 1.5
+    }
+    local max = iron
+    local result = "iron_mine"
 
-    if (coal >= copper and coal >= iron) then
-        return "coal_mine"
+    if (copper > max) then
+        max = copper
+        result = "copper_mine"
     end
-    if (copper >= coal and copper >= iron) then
-        return "copper_mine"
+
+    if (coal > max) then
+        max = coal
+        result = "coal_mine"
     end
-    return "iron_mine"
+
+    if (sulfur > max) then
+        max = coal
+        result = "sulfur_mine"
+    end
+
+    return result
     --Its presumed that there was at least 1 resource entity found else it would not have been possible to place the mine_dummy
 end

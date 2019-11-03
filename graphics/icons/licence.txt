@@ -88,6 +88,8 @@ shipyard_icon.png
 blunderbuss_shot_icon.png
 musket_balls_icon.png
 blunderbuss_icon.png
+fertilizer_icon.png
+
 ---------------
 
 young_tree_icon.png is based on "_tree_08_70000.png"   by "Bleed - http://remusprites.carbonmade.com/"
@@ -102,6 +104,7 @@ under  "https://creativecommons.org/licenses/by/3.0/"
 clay_icon.png is a tinted version of "stone.png" from Factorio
 clay_pit_icon.png contains a tinted version of "stone.png" from Factorio
 mine_icon.png contains resource icon parts from Factorio
+sulfur_icon.png is a tinted version of "copper-ore.png" from Factorio
 
 ---------------
 
@@ -142,4 +145,13 @@ house_pioneer_icon.png by "Spiral" from https://opengameart.org/content/old-medi
 house_settler_icon.png from feudal wars "https://feudalwars.net/"  under public domain
 --------------
 sloop_icon.png + sloop_convert_icon.png + sloop_loc_icon.png from an origninal model by "fan3d" https://sketchfab.com/3d-models/tartane-170e890a4f4542dead948b6218ec65ff under https://creativecommons.org/licenses/by/4.0/
+--------------
+apothecary_icon.png by TheFunnySide
+This render uses textures and models by:
+"Barrels!" by toomanydemons from https://sketchfab.com/3d-models/barrels-1009f5c51391437e9ed2b97f04b9af31 under https://creativecommons.org/licenses/by/4.0/
+"pestel and mortar" by "FlukierJupiter" from https://sketchfab.com/3d-models/pestle-and-mortar-923082ddddf64fbe8b2548e5819bad53 under https://creativecommons.org/licenses/by/4.0/
+scale by "gggeorggg" from https://sketchfab.com/3d-models/antique-scale-7bd70ece68784f1ebab5785e8443ad68 under https://creativecommons.org/licenses/by/4.0/
+"Stone Fire Pit" by "pavus" from https://sketchfab.com/3d-models/stone-fire-pit-7cd41ec9abfc48e893c1861518ac8634
+table by "DeMoon" from https://sketchfab.com/3d-models/table-01-01-b3e125681ced468cbbcd9730e2350a65 under https://creativecommons.org/licenses/by/4.0/
+"Beam Scale" by "Friends of Upminster Windmill" from https://sketchfab.com/3d-models/beam-scale-0eedb0d40a244bb5b0f0c2aa32dbbeae under https://creativecommons.org/licenses/by/4.0/
 --------------

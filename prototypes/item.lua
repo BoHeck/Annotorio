@@ -9,16 +9,6 @@ data:extend(
         -------Buldings----------
 
         -------Ingredients--------
-        --gun_powder item
-        {
-            type = "item",
-            name = "gun_powder",
-            icon = "__Annotorio__/graphics/icons/gun_powder_icon.png",
-            icon_size = 64,
-            subgroup = "advanced_item",
-            order = "a[gun_powder]",
-            stack_size = 50
-        },
         powder_keg,
         -------Consumables--------
 

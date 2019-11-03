@@ -150,7 +150,7 @@ data:extend(
             name = "blacksmith",
             icon = "__Annotorio__/graphics/icons/blacksmith_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation","not-rotatable"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "blacksmith"},
             max_health = 300,
             dying_explosion = "medium-explosion",
@@ -161,8 +161,8 @@ data:extend(
                     percent = 70
                 }
             },
-            collision_box = {{-1.9, -1.2}, {1.9, 1.2}},
-            selection_box = {{-2, -1.5}, {2, 1.5}},
+            collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+            selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
             alert_icon_shift = util.by_pixel(-3, -12),
             animation = {
                 layers = {
@@ -171,8 +171,8 @@ data:extend(
                         priority = "extra-high",
                         width = 355,
                         height = 280,
-                        scale = 0.5,
-                        shift = util.by_pixel(24, -4)
+                        scale = 0.375,
+                        shift = util.by_pixel(19, 0)
                     }
                 }
             },

@@ -89,12 +89,16 @@ copper_mine.fixed_recipe = "copper_mining"
 local coal_mine = table.deepcopy(iron_mine)
 coal_mine.name = "coal_mine"
 coal_mine.fixed_recipe = "coal_mining"
+local sulfur_mine = table.deepcopy(iron_mine)
+sulfur_mine.name = "sulfur_mine"
+sulfur_mine.fixed_recipe = "sulfur_mining"
 
 data:extend(
     {
         iron_mine,
         copper_mine,
         coal_mine,
+        sulfur_mine,
         {
             type = "resource-category",
             name = "anno_iron"
@@ -106,6 +110,10 @@ data:extend(
         {
             type = "resource-category",
             name = "anno_coal"
+        },
+        {
+            type = "resource-category",
+            name = "anno_sulfur"
         },
         --  mine dummy
         {
@@ -168,6 +176,18 @@ data:extend(
             ingredients = {},
             result = "copper-ore"
         },
+        --sulfur mining
+        {
+            type = "recipe",
+            name = "sulfur_mining",
+            enabled = true,
+            hidden = false,
+            energy_required = 6,
+            subgroup = "anno_raw",
+            category = "predetermined",
+            ingredients = {},
+            result = "sulfur"
+        },
         {
             type = "mining-drill",
             name = "mine_dummy",
@@ -177,7 +197,7 @@ data:extend(
             selection_priority = 51,
             minable = {mining_time = 0.3, result = "unobtainable_dummy"},
             max_health = 300,
-            resource_categories = {"anno_iron", "anno_copper", "anno_coal"},
+            resource_categories = {"anno_iron", "anno_copper", "anno_coal", "anno_sulfur"},
             corpse = "medium-remnants",
             collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
             selection_box = {{-1.5, -1.5}, {1.5, 1.5}},

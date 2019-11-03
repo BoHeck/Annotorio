@@ -48,7 +48,11 @@ data:extend(
             ingredients = {
                 {"wheat", 4}
             },
-            result = "egg"
+            main_product = "egg",
+            results = {
+                {"egg", 1},
+                {"fertilizer", 1}
+            }
         },
         -- chicken_pen entity
         {

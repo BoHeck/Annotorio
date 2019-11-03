@@ -104,8 +104,8 @@ data:extend(
                     percent = 70
                 }
             },
-            collision_box = {{-1.7, -2.2}, {1.7, 2.2}},
-            selection_box = {{-2, -2.5}, {2, 2.5}},
+            collision_box = {{-1.2, -1.7}, {1.2, 1.7}},
+            selection_box = {{-1.5, -2.0}, {1.5, 2.0}},
             alert_icon_shift = util.by_pixel(-3, -12),
             animation = {
                 layers = {
@@ -114,7 +114,7 @@ data:extend(
                         priority = "extra-high",
                         width = 310,
                         height = 353,
-                        scale = 0.5,
+                        scale = 0.375,
                         shift = util.by_pixel(11, 8)
                     },
                     {
@@ -122,7 +122,7 @@ data:extend(
                         priority = "extra-high",
                         width = 310,
                         height = 353,
-                        scale = 0.5,
+                        scale = 0.375,
                         draw_as_shadow = true,
                         shift = util.by_pixel(11, 8)
                     }
