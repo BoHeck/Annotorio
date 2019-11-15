@@ -305,3 +305,12 @@ data:extend(
         }
     }
 )
+
+-----------------------------
+data.raw["curved-rail"]["curved-rail"] = nil
+data.raw["straight-rail"]["straight-rail"] = nil
+data.raw["rail-planner"]["rail"] = nil
+data.raw["recipe"]["rail"] = nil
+data.raw["item"]["rail"] = nil
+
+ 

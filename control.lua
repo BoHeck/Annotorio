@@ -260,19 +260,6 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function give_player_starting_items(player)
-   --game.player.force.technologies["atomic-bomb"].enabled = true
-   --game.player.force.technologies["atomic-bomb"].researched = true
-   --for i,player in pairs(game.players) do
-   --player.force.technologies["atomic-bomb"].enabled = true
-   --player.force.technologies["atomic-bomb"].researched = true
-
-   player.force.recipes["pipe"].enabled = false
-   player.force.recipes["steam-engine"].enabled = false
-   player.force.recipes["burner-mining-drill"].enabled = false
-   player.force.recipes["electric-mining-drill"].enabled = false
-   player.force.recipes["iron-gear-wheel"].enabled = false
-   player.force.recipes["electronic-circuit"].enabled = false
-
    player.force.research_queue_enabled = false
    queue_technology(player.force)
 

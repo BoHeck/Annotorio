@@ -10,7 +10,6 @@ if (debug_on == false) then
     end
 end
 
-data.raw.recipe["wood-wall"].enabled = false --TODO find out why this doesnt work
 ----------------
 --All assemblers with a fixed recipe should have assembler.crafting_categories[1] == "predetermined"
 --They then get a new generated category so that the UI knows that only this one entity can make the recipe.
