@@ -11,6 +11,7 @@ end
 
 -------------------------------
 local recipe_wooden_chest = data.raw.recipe["wooden-chest"]
+local recipe_wood_wall = data.raw.recipe["wood-wall"]
 -------------------------------
 
 data.raw.recipe = nil
@@ -102,6 +103,8 @@ data.raw["simple-entity"]["sand-rock-big"].minable.results = {{"clay", 10}}
 data.raw.character.character.enter_vehicle_distance = 5
 -------
 data.raw.recipe["wooden-chest"] = recipe_wooden_chest
+data.raw.recipe["wood-wall"] = recipe_wood_wall
+
 -------
 
 --[[
