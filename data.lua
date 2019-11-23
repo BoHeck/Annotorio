@@ -1,10 +1,58 @@
 debug_on = settings.startup["debug_mode"].value
 
---Hiding all existing technologies
-for i, v in pairs(data.raw.technology) do
-  v.hidden = false
-  v.enabled = false
+------------------------------------------------------
+-------- Delete Unnessessary Base Game Entries -------
+------------------------------------------------------
+data.raw.technology = nil
+
+for i, v in pairs(data.raw.shortcut) do
+  v.technology_to_unlock = nil
 end
+
+-------------------------------
+local recipe_wooden_chest = data.raw.recipe["wooden-chest"]
+local recipe_wood_wall = data.raw.recipe["wood-wall"]
+-------------------------------
+
+data.raw.recipe = nil
+
+data.raw["research-achievement"] = nil
+data.raw["kill-achievement"] = nil
+data.raw["train-path-achievement"] = nil
+data.raw["build-entity-achievement"] = nil
+data.raw["dont-use-entity-in-energy-production-achievement"] = nil
+data.raw["dont-craft-manually-achievement"] = nil
+data.raw["dont-build-entity-achievement"] = nil
+
+data.raw["rocket-silo"]["rocket-silo"].fixed_recipe = nil
+data.raw["rocket-silo"]["rocket-silo"].minable = nil
+data.raw["rocket-silo"]["rocket-silo"].flags = {}
+data.raw["rocket-silo"]["rocket-silo"].order = "a"
+data.raw.item["rocket-silo"] = nil
+
+data.raw.car = nil
+
+data.raw["item-with-entity-data"]["car"] = nil
+data.raw["item-with-entity-data"]["tank"] = nil
+data.raw["item-with-entity-data"]["locomotive"] = nil
+data.raw["item-with-entity-data"]["cargo-wagon"] = nil
+
+--[[
+data.raw["generator"] = nil
+data.raw.item["steam-engine"] = nil
+data.raw.item["steam-turbine"] = nil
+]]
+----------------------------------------
+local speed_module = data.raw.module["speed-module"]
+data.raw.module = {}
+data.raw.module["speed-module"] = speed_module
+----------------------------------------
+
+data.raw.tutorial = nil
+
+------------------------------------------------------
+-------- Delete Unnessessary Base Game Entries -------
+------------------------------------------------------
 
 for i, v in pairs(data.raw.tree) do
   v.minable = {
@@ -23,16 +71,6 @@ for i, v in pairs(data.raw.tree) do
       }
     }
   }
-end
-
-data.raw.furnace["electric-furnace"].crafting_categories = {"none"}
-
-if (debug_on == true) then
-  --Disable all existing recipes
-  for i, v in pairs(data.raw.recipe) do
-    v.hidden = false
-    v.enabled = false
-  end
 end
 
 require("prototypes.entity")
@@ -64,3 +102,17 @@ data.raw["simple-entity"]["sand-rock-big"].minable.results = {{"clay", 10}}
 
 data.raw.character.character.enter_vehicle_distance = 5
 -------
+data.raw.recipe["wooden-chest"] = recipe_wooden_chest
+data.raw.recipe["wood-wall"] = recipe_wood_wall
+
+-------
+
+--[[
+if (debug_on == true) then
+  --Disable all existing recipes
+  for i, v in pairs(data.raw.recipe) do
+    v.hidden = false
+    v.enabled = false
+  end
+end
+]]

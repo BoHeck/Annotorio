@@ -306,7 +306,7 @@ data:extend(
         carrack_loc,
         carrack_cargo,
         {
-            type = "item",
+            type = "item-with-entity-data",
             name = "carrack",
             icon = "__Annotorio__/graphics/icons/carrack_icon.png",
             icon_size = 64,
@@ -316,7 +316,7 @@ data:extend(
             stack_size = 25
         },
         {
-            type = "item",
+            type = "item-with-entity-data",
             name = "carrack_cargo",
             icon = "__Annotorio__/graphics/icons/carrack_loc_icon.png",
             icon_size = 64,
@@ -326,7 +326,7 @@ data:extend(
             stack_size = 25
         },
         {
-            type = "item",
+            type = "item-with-entity-data",
             name = "carrack_loc",
             icon = "__Annotorio__/graphics/icons/carrack_loc_icon.png",
             icon_size = 64,

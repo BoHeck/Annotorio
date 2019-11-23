@@ -512,7 +512,7 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
-                    recipe = "mine_sulfur"
+                    recipe = "sulfur_mining"
                 },
                 {
                     type = "unlock-recipe",
