@@ -16,12 +16,31 @@ local recipe_wooden_chest = data.raw.recipe["wooden-chest"]
 data.raw.recipe = nil
 
 data.raw["research-achievement"] = nil
+data.raw["kill-achievement"] = nil
+data.raw["train-path-achievement"] = nil
+data.raw["build-entity-achievement"] = nil
+data.raw["dont-use-entity-in-energy-production-achievement"] = nil
+data.raw["dont-craft-manually-achievement"] = nil
+data.raw["dont-build-entity-achievement"] = nil
+
 data.raw["rocket-silo"]["rocket-silo"].fixed_recipe = nil
 data.raw["rocket-silo"]["rocket-silo"].minable = nil
 data.raw["rocket-silo"]["rocket-silo"].flags = {}
 data.raw["rocket-silo"]["rocket-silo"].order = "a"
 data.raw.item["rocket-silo"] = nil
 
+data.raw.car = nil
+
+data.raw["item-with-entity-data"]["car"] = nil
+data.raw["item-with-entity-data"]["tank"] = nil
+data.raw["item-with-entity-data"]["locomotive"] = nil
+data.raw["item-with-entity-data"]["cargo-wagon"] = nil
+
+--[[
+data.raw["generator"] = nil
+data.raw.item["steam-engine"] = nil
+data.raw.item["steam-turbine"] = nil
+]]
 ----------------------------------------
 local speed_module = data.raw.module["speed-module"]
 data.raw.module = {}
