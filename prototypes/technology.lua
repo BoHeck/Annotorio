@@ -410,7 +410,19 @@ data:extend(
             effects = {
                 {
                     type = "unlock-recipe",
-                    recipe = "castle"
+                    recipe = "wheat_field"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "wheat"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "water_pump"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "canal"
                 },
                 {
                     type = "unlock-recipe",
@@ -427,14 +439,6 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "egg"
-                },
-                {
-                    type = "unlock-recipe",
-                    recipe = "wheat_field"
-                },
-                {
-                    type = "unlock-recipe",
-                    recipe = "wheat"
                 },
                 {
                     type = "unlock-recipe",
@@ -455,6 +459,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "citizen_needs"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "castle"
                 }
             },
             unit = {

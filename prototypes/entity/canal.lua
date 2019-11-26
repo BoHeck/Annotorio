@@ -146,17 +146,29 @@ end
 
 data:extend(
     {
-        --  mine dummy
+        -- canal item
         {
             type = "item",
             name = "canal",
             icon = "__Annotorio__/graphics/icons/canal_icon.png",
             icon_size = 64,
-            subgroup = "transport",
-            order = "b[building]-k[canal]",
+            subgroup = "plantation",
+            order = "b[building]-z[canal]",
             place_result = "canal",
             stack_size = 250
         },
+        -- canal recipe
+        {
+            type = "recipe",
+            name = "canal",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"ceramics", 4}
+            },
+            result = "canal"
+        },
+        -- canal entity
         {
             type = "pipe",
             name = "canal",
