@@ -157,6 +157,17 @@ data:extend(
             place_result = "canal",
             stack_size = 250
         },
+        -- canal_to_ground item
+        {
+            type = "item",
+            name = "canal_to_ground",
+            icon = "__Annotorio__/graphics/entity/canal/to_ground/pipe-to-ground-down.png",
+            icon_size = 64,
+            subgroup = "plantation",
+            order = "b[building]-zz[canal]",
+            place_result = "canal_to_ground",
+            stack_size = 250
+        },
         -- canal recipe
         {
             type = "recipe",
@@ -167,6 +178,17 @@ data:extend(
                 {"ceramics", 4}
             },
             result = "canal"
+        },
+        -- canal_to_ground recipe
+        {
+            type = "recipe",
+            name = "canal_to_ground",
+            enabled = true,
+            energy_required = 0.1,
+            ingredients = {
+                {"ceramics", 24}
+            },
+            result = "canal_to_ground"
         },
         -- canal entity
         {
@@ -214,6 +236,70 @@ data:extend(
             },
             horizontal_window_bounding_box = {{-0.25, -0.28125}, {0.25, 0.15625}},
             vertical_window_bounding_box = {{-0.28125, -0.5}, {0.03125, 0.125}}
+        },
+        {
+            type = "pipe-to-ground",
+            name = "canal_to_ground",
+            icon = "__Annotorio__/graphics/entity/canal/to_ground/pipe-to-ground-down.png",
+            icon_size = 64,
+            flags = {"placeable-neutral", "player-creation"},
+            minable = {mining_time = 0.1, result = "canal_to_ground"},
+            max_health = 150,
+            corpse = nil,
+            resistances = {
+                {
+                    type = "fire",
+                    percent = 100
+                },
+                {
+                    type = "impact",
+                    percent = 100
+                }
+            },
+            fast_replaceable_group = "pipe",
+            collision_box = {{-0.29, -0.29}, {0.29, 0.2}},
+            selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+            fluid_box = {
+                base_area = 1,
+                pipe_connections = {
+                    {position = {0, -1}},
+                    {
+                        position = {0, 1},
+                        max_underground_distance = 6
+                    }
+                }
+            },
+            vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+            pictures = {
+                up = {
+                    filename = "__Annotorio__/graphics/entity/canal/to_ground/pipe-to-ground-up.png",
+                    priority = "extra-high",
+                    width = 64,
+                    height = 64,
+                    scale = 0.5
+                },
+                down = {
+                    filename = "__Annotorio__/graphics/entity/canal/to_ground/pipe-to-ground-down.png",
+                    priority = "extra-high",
+                    width = 64,
+                    height = 64,
+                    scale = 0.5
+                },
+                left = {
+                    filename = "__Annotorio__/graphics/entity/canal/to_ground/pipe-to-ground-left.png",
+                    priority = "extra-high",
+                    width = 64,
+                    height = 64,
+                    scale = 0.5
+                },
+                right = {
+                    filename = "__Annotorio__/graphics/entity/canal/to_ground/pipe-to-ground-right.png",
+                    priority = "extra-high",
+                    width = 64,
+                    height = 64,
+                    scale = 0.5
+                }
+            }
         }
     }
 )

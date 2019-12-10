@@ -90,6 +90,7 @@ musket_balls_icon.png
 blunderbuss_icon.png
 fertilizer_icon.png
 water_pump_icon.png
+canal_icon.png
 
 ---------------
 

@@ -72,9 +72,9 @@ data:extend(
                 type = "electric",
                 usage_priority = "secondary-input",
                 emissions_per_minute = 6,
-                drain = "15kW"
+                drain = "5kW"
             },
-            energy_usage = "45kW",
+            energy_usage = "25kW",
             output_fluid_box = {
                 production_type = "input-output",
                 base_area = 1,

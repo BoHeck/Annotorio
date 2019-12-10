@@ -44,7 +44,7 @@ data:extend(
             energy_required = 18,
             subgroup = "anno_raw",
             category = "predetermined",
-            ingredients = {},
+            ingredients = {{type = "fluid", name = "water", amount = 72}},
             result = "wheat"
         },
         -- wheat_field entity
@@ -60,7 +60,7 @@ data:extend(
             name = "wheat_field",
             icon = "__Annotorio__/graphics/icons/wheat_field_icon.png",
             icon_size = 64,
-            flags = {"placeable-neutral", "placeable-player", "player-creation","not-rotatable"},
+            flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
             minable = {mining_time = 0.2, result = "wheat_field"},
             max_health = 300,
             dying_explosion = "medium-explosion",
@@ -108,6 +108,22 @@ data:extend(
                 },
                 idle_sound = {filename = "__base__/sound/idle1.ogg", volume = 0.6},
                 apparent_volume = 1.5
+            },
+            fluid_boxes = {
+                {
+                    production_type = "input",
+                    pipe_picture = nil,
+                    pipe_covers = nil,
+                    base_area = 10,
+                    base_level = -1,
+                    pipe_connections = {
+                        {position = {-2.5, 0}},
+                        {position = {2.5, 0}},
+                        {position = {0.5, 3}},
+                        {position = {-0.5, -3}}
+                    }
+                },
+                off_when_no_fluid_recipe = false
             }
         }
     }

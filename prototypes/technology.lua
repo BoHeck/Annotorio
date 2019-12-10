@@ -426,6 +426,10 @@ data:extend(
                 },
                 {
                     type = "unlock-recipe",
+                    recipe = "canal_to_ground"
+                },
+                {
+                    type = "unlock-recipe",
                     recipe = "pig_farm"
                 },
                 {
