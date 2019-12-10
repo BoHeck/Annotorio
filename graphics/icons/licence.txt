@@ -89,6 +89,8 @@ blunderbuss_shot_icon.png
 musket_balls_icon.png
 blunderbuss_icon.png
 fertilizer_icon.png
+water_pump_icon.png
+canal_icon.png
 
 ---------------
 
@@ -105,7 +107,7 @@ clay_icon.png is a tinted version of "stone.png" from Factorio
 clay_pit_icon.png contains a tinted version of "stone.png" from Factorio
 mine_icon.png contains resource icon parts from Factorio
 sulfur_icon.png is a tinted version of "copper-ore.png" from Factorio
-
+fresh_water_icon.png is a modified version of "crude-oil.png" from Factorio
 ---------------
 
 sugar_icon.png from 7164573186_22a39ac51e_o.jpg  by "david pacey" under https://creativecommons.org/licenses/by/2.0/

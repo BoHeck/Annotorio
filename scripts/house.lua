@@ -59,7 +59,7 @@ function setup_needs()
         luxus_buildings = 3
     }
     global.settler_needs["bacon_omelet"] = {
-        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 140.8854167,
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 170,8854167,
         DurabilityLossPerTick = 0.003125,
         luxus_buildings = 4
     }

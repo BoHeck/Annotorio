@@ -118,16 +118,32 @@ local function finish_island(surface, island)
     --------------------------------------
     local soils
     local ores
+    local fluids
+    local alternatives
+    local place_fluid
+    local place_fluid_probability = 0.5
+
     if (global.not_first_island) then
         soils = roll_soils(1)
         ores = roll_ores(1)
+        --if any of the growable plant on the island needs water then they spawned fluid is allways fresh_water
+        if (needs_water(soils)) then
+            fluids = {"fresh_water"}
+            place_fluid = true
+        else
+            place_fluid = (math.random() - place_fluid_probability) < 0
+            fluids = roll_fluids(1)
+            alternatives = roll_alternatives(1, soils, ores)
+        end
     else
         soils = {"apple_soil"}
         ores = {"stone"}
+        fluids = {"fresh_water"}
+        place_fluid = true
         global["not_first_island"] = true
     end
 
-    place_resources(surface, island, soils, ores)
+    place_resources(surface, island, soils, ores, fluids, alternatives, place_fluid)
 end
 
 --This function is mainly for debugging
