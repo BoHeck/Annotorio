@@ -5,7 +5,7 @@ function reset_global_ores_and_soils()
     global.anno_soils = {}
     global.anno_soils["cold"] = {"apple_soil"}
     global.anno_soils["warm"] = {"sugar_cane_soil"}
-    global.anno_liquids = {"fresh_water"}
+    global.anno_liquids = {"fresh_water", "anno_oil"}
     global.anno_alternatives = {"iron-ore", "copper-ore", "stone", "coal", "sulfur"}
     global.needs_water = {}
     --Use like this :  global.needs_water["some_soil"]=true

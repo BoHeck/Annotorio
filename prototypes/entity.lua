@@ -36,3 +36,6 @@ require("prototypes.entity.apothecary")
 require("prototypes.entity.sulfur")
 require("prototypes.entity.canal")
 require("prototypes.entity.water_pump")
+require("prototypes.entity.oil_pump")
+
+
