@@ -1,5 +1,6 @@
 require("prototypes.map.island_naming")
 require("prototypes.map.resource_placement")
+require("scripts.adventurers_guild")
 
 local Area = require("__stdlib__/stdlib/area/area")
 local Position = require("__stdlib__/stdlib/area/position")
@@ -124,18 +125,33 @@ local function finish_island(surface, island)
     local place_fluid_probability = 0.5
 
     if (global.not_first_island) then
-        soils = roll_soils(1)
-        ores = roll_ores(1)
-        --if any of the growable plant on the island needs water then they spawned fluid is allways fresh_water
-        if (needs_water(soils)) then
-            fluids = {"fresh_water"}
-            place_fluid = true
+        if (global.adventurers_guild_gui.send_explorers) then
+            -------------------Adventurers Guild Island generation-------------------
+            soils = adventurers_guild_gui_get_soils()
+            ores = adventurers_guild_gui_get_ores()
+            fluids = adventurers_guild_gui_get_fluids()
+            alternatives = adventurers_guild_gui_get_alternatives(soils, ores)
+
+            place_fluid = global.adventurers_guild_gui.additional_frame_switch == "right"
+
+            global.adventurers_guild_gui.send_explorers = false
         else
-            place_fluid = (math.random() - place_fluid_probability) < 0
-            fluids = roll_fluids(1)
-            alternatives = roll_alternatives(1, soils, ores)
+            -------------------Normal Island generation-------------------
+
+            soils = roll_soils(1)
+            ores = roll_ores(1)
+            --if any of the growable plant on the island needs water then they spawned fluid is allways fresh_water
+            if (needs_water(soils)) then
+                fluids = {"fresh_water"}
+                place_fluid = true
+            else
+                place_fluid = (math.random() - place_fluid_probability) < 0
+                fluids = roll_fluids(1)
+                alternatives = roll_alternatives(1, soils, ores)
+            end
         end
     else
+        -------------------First Island generation-------------------
         soils = {"apple_soil"}
         ores = {"stone"}
         fluids = {"fresh_water"}

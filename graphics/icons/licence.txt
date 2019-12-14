@@ -157,3 +157,5 @@ scale by "gggeorggg" from https://sketchfab.com/3d-models/antique-scale-7bd70ece
 table by "DeMoon" from https://sketchfab.com/3d-models/table-01-01-b3e125681ced468cbbcd9730e2350a65 under https://creativecommons.org/licenses/by/4.0/
 "Beam Scale" by "Friends of Upminster Windmill" from https://sketchfab.com/3d-models/beam-scale-0eedb0d40a244bb5b0f0c2aa32dbbeae under https://creativecommons.org/licenses/by/4.0/
 --------------
+adventurers_guild_icon.png from ""The Drunk Troll" Tavern" by mrrobot from https://sketchfab.com/3d-models/the-drunk-troll-tavern-6cdc0bdee2df457ebf9ac06a3a9910b8 under https://creativecommons.org/licenses/by/4.0/
+---------------

@@ -18,6 +18,7 @@ require("scripts.shore_placement")
 require("scripts.castle")
 require("scripts.towers")
 require("scripts.range_overlay")
+require("scripts.adventurers_guild")
 ----------------------------------------------
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
@@ -258,6 +259,27 @@ function on_force_created_collection(event)
    name_islands_on_force_created(event)
 end
 
+function on_gui_opened_collection(event)
+   if (event.gui_type == defines.gui_type.entity and event.entity) then
+      local entity_name = event.entity.name
+      if_adventurers_guild_gui_opened(event, entity_name)
+   end
+end
+
+function on_gui_closed_collection(event)
+   if_adventurers_guild_gui_closed(event)
+end
+
+function on_gui_click_collection(event)
+   if_adventurers_guild_gui_clicked(event)
+end
+
+function on_gui_switch_state_changed_collection(event)
+   if_adventurers_guild_gui_state_changed(event)
+end
+
+
+
 ----------------------------------------------------------------------------------------------------
 function give_player_starting_items(player)
    player.force.research_queue_enabled = false
@@ -282,6 +304,7 @@ function give_player_starting_items_default(player)
    player.insert {name = "wood", count = 80}
    player.insert {name = "fishing_boat", count = 2}
    player.insert {name = "kontor", count = 1}
+   player.insert {name = "marketplace", count = 2}
    player.insert {name = "seedling", count = 40}
 end
 
@@ -358,3 +381,9 @@ script.on_event(defines.events.on_force_created, on_force_created_collection)
 
 script.on_configuration_changed(on_configuration_changed_collection)
 script.on_init(on_init_collection)
+
+script.on_event(defines.events.on_gui_opened, on_gui_opened_collection)
+script.on_event(defines.events.on_gui_closed, on_gui_closed_collection)
+script.on_event(defines.events.on_gui_click, on_gui_click_collection)
+script.on_event(defines.events.on_gui_switch_state_changed, on_gui_switch_state_changed_collection)
+
