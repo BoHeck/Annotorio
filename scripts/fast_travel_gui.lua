@@ -1,9 +1,12 @@
 require("scripts.util")
 
 local fast_travel_cooldown = 180 * 60
-global.fast_travel_last_used_on_tick = {}
 
 function create_fast_travel_gui(player_index, flow)
+
+    if (global.fast_travel_last_used_on_tick == nil) then
+        global.fast_travel_last_used_on_tick = {}
+    end
     global.fast_travel_last_used_on_tick[player_index] = -fast_travel_cooldown
 
     flow.add {
@@ -97,7 +100,7 @@ function if_fast_travel_gui_clicked(event)
             local a = global.kontors[index]
             local b = global.kontors[index].harbor_1
 
-            global.fast_travel_last_used_on_tick[event.player_index]= game.tick
+            global.fast_travel_last_used_on_tick[event.player_index] = game.tick
             player.teleport(global.kontors[index].harbor_1.position)
             player.opened.destroy()
         end

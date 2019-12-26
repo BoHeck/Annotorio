@@ -146,11 +146,9 @@ function on_configuration_changed_collection(ConfigurationChangedData)
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.3.4") then
          migrate_0_3_4()
       end
-
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.5.0") then
          migrate_0_5_0()
       end
-
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.0") then
          migrate_0_6_0()
       end
@@ -163,6 +161,31 @@ function on_configuration_changed_collection(ConfigurationChangedData)
       if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.3") then
          migrate_0_6_3()
       end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.4") then
+         migrate_0_6_4()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.5") then
+         migrate_0_6_5()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.6") then
+         migrate_0_6_6()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.7") then
+         migrate_0_6_7()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.8") then
+         migrate_0_6_8()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.6.9") then
+         migrate_0_6_9()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.7.1") then
+         migrate_0_7_1()
+      end
+      if (ConfigurationChangedData.mod_changes["Annotorio"].old_version == "0.7.2") then
+         migrate_0_7_2()
+      end
+
       log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
    end
 end
