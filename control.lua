@@ -19,6 +19,7 @@ require("scripts.castle")
 require("scripts.towers")
 require("scripts.range_overlay")
 require("scripts.adventurers_guild")
+require("scripts.fast_travel_gui")
 ----------------------------------------------
 --require("prototypes.map.voroni_noise")
 require("prototypes.map.hole_islands")
@@ -268,17 +269,17 @@ end
 
 function on_gui_closed_collection(event)
    if_adventurers_guild_gui_closed(event)
+   if_fast_travel_window_closed(event)
 end
 
 function on_gui_click_collection(event)
    if_adventurers_guild_gui_clicked(event)
+   if_fast_travel_gui_clicked(event)
 end
 
 function on_gui_switch_state_changed_collection(event)
    if_adventurers_guild_gui_state_changed(event)
 end
-
-
 
 ----------------------------------------------------------------------------------------------------
 function give_player_starting_items(player)
@@ -304,7 +305,7 @@ function give_player_starting_items_default(player)
    player.insert {name = "wood", count = 80}
    player.insert {name = "fishing_boat", count = 2}
    player.insert {name = "kontor", count = 1}
-   player.insert {name = "marketplace", count = 2}
+   player.insert {name = "marketplace_dummy", count = 2}
    player.insert {name = "seedling", count = 40}
 end
 
@@ -386,4 +387,3 @@ script.on_event(defines.events.on_gui_opened, on_gui_opened_collection)
 script.on_event(defines.events.on_gui_closed, on_gui_closed_collection)
 script.on_event(defines.events.on_gui_click, on_gui_click_collection)
 script.on_event(defines.events.on_gui_switch_state_changed, on_gui_switch_state_changed_collection)
-

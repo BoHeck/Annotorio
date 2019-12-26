@@ -81,8 +81,6 @@ function if_adventurers_guild_gui_opened(event, entity_name)
     local player = game.players[event.player_index]
 
     player.opened = create_adventurers_guild_gui(entity, player)
-
-    --if event.gui_type == defines.gui_type.entity and entity and entity.name == "magic-lamp" then
 end
 
 function if_adventurers_guild_gui_closed(event)
@@ -149,8 +147,6 @@ end
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 function create_adventurers_guild_gui(entity, player)
-    -- local config = global.lamps[entity.unit_number].config
-
     local flow =
         player.gui.center.add {
         type = "frame",
@@ -284,20 +280,5 @@ function create_adventurers_guild_gui(entity, player)
         recall.style = "red_back_button"
     end
 
-    --[[
-
-
-    local mode =
-        flow.add {
-        type = "drop-down",
-        name = "adventurers_guild.ores",
-        items = {
-            {"magic-lamp.mode-numeric"},
-            {"magic-lamp.mode-iconstrip"}, -- bitmask icon strip
-            {"magic-lamp.mode-string"} -- string mode, utf32 strings on signals in prototype order
-        },
-        selected_index = mode
-    }
-]]
     return flow
 end

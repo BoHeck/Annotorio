@@ -42,8 +42,8 @@ data:extend(
                 type = "electric",
                 usage_priority = "primary-input",
                 drain = "0kW",
-                buffer_capacity = "50MJ",
-                input_flow_limit = "50MJ"
+                buffer_capacity = "1kJ",
+                input_flow_limit = "1kJ"
             },
             pictures = {
                 layers = {

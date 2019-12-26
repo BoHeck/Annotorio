@@ -226,13 +226,11 @@ data:extend(
             pictures = pipepictures(),
             working_sound = {
                 sound = {
-                    {
-                        filename = "__base__/sound/pipe.ogg",
-                        volume = 0.85
-                    }
+                    filename = "__Annotorio__/sound/Flowing_Water_1_Short.wav",
+                    volume = 0.75
                 },
-                match_volume_to_activity = true,
-                max_sounds_per_type = 3
+                --match_volume_to_activity = true,
+                max_sounds_per_type = 1
             },
             horizontal_window_bounding_box = {{-0.25, -0.28125}, {0.25, 0.15625}},
             vertical_window_bounding_box = {{-0.28125, -0.5}, {0.03125, 0.125}}

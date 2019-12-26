@@ -46,6 +46,15 @@ data:extend(
             width = 64,
             height = 64,
             flags = sprite_flags
+        },
+        {
+            type = "sprite",
+            name = "fast_travel_icon",
+            filename = "__Annotorio__/graphics/icons/fast_travel_icon.png",
+            priority = "extra-high",
+            width = 64,
+            height = 64,
+            flags = sprite_flags
         }
     }
 )
