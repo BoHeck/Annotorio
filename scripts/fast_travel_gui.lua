@@ -3,7 +3,6 @@ require("scripts.util")
 local fast_travel_cooldown = 180 * 60
 
 function create_fast_travel_gui(player_index, flow)
-
     if (global.fast_travel_last_used_on_tick == nil) then
         global.fast_travel_last_used_on_tick = {}
     end
@@ -102,6 +101,11 @@ function if_fast_travel_gui_clicked(event)
 
             global.fast_travel_last_used_on_tick[event.player_index] = game.tick
             player.teleport(global.kontors[index].harbor_1.position)
+
+            if (player.vehicle) then
+                player.vehicle.teleport(global.kontors[index].harbor_1.position)
+            end
+            
             player.opened.destroy()
         end
     end
