@@ -4,6 +4,7 @@
 
 require("scripts.util")
 require("scripts.shared_inventory")
+require("scripts.fast_travel_gui")
 
 local everyXticks = 12
 local gold_count_text_color = {r = 255, g = 234, b = 79}
@@ -17,6 +18,9 @@ function create_gui_for_player(player)
         name = "anno_gui",
         direction = "horizontal"
     }
+
+    create_fast_travel_gui(player.index, flow)
+
     flow.add {
         type = "label",
         caption = "   ",
@@ -87,6 +91,8 @@ function refresh_gui_on_every_x_ticks()
     local final_gold_count = math.floor(get_gold_count() / 1000)
 
     for _, player in pairs(game.players) do
+        player.gui.left.anno_gui.fast_travel_gui.number = get_cooldown(player.index)
+
         player.gui.left.anno_gui.gold_count.caption = final_gold_count
         player.gui.left.anno_gui.wood_count.caption = global.banked_wood
         player.gui.left.anno_gui.tool_count.caption = global.banked_tool
@@ -94,15 +100,14 @@ function refresh_gui_on_every_x_ticks()
     end
 end
 
-
 function print_intro_msg(player)
     if (global.print_anno_intro) then
-       if game.is_multiplayer() then
-          player.print("anno_intro")
-          player.print("anno_intro2")
-       else
-          game.show_message_dialog {text = {"anno_intro"}}
-          game.show_message_dialog {text = {"anno_intro2"}}
-       end
+        if game.is_multiplayer() then
+            player.print("anno_intro")
+            player.print("anno_intro2")
+        else
+            game.show_message_dialog {text = {"anno_intro"}}
+            game.show_message_dialog {text = {"anno_intro2"}}
+        end
     end
- end
+end

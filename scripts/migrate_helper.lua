@@ -179,6 +179,58 @@ function migrate_0_6_3()
     rebuild_houses("houses_pioneers", "invisible_house_pioneer")
     rebuild_houses("houses_settlers", "invisible_house_settler")
     rebuild_houses("houses_citizens", "invisible_house_citizen")
+
+    migrate_0_7_1()
+end
+
+function migrate_0_6_4()
+    log("apply0_6_4 to 0_6_5")
+    migrate_0_6_5()
+end
+
+function migrate_0_6_5()
+    log("apply 0_6_5 to 0_6_6")
+    migrate_0_6_6()
+end
+function migrate_0_6_6()
+    log("apply 0_6_6 to 0_6_7")
+    migrate_0_6_7()
+end
+
+function migrate_0_6_7()
+    log("apply 0_6_7 to 0_6_8")
+    migrate_0_6_8()
+end
+
+function migrate_0_6_8()
+    log("apply 0_6_8 to 0_6_9")
+    migrate_0_6_9()
+end
+
+function migrate_0_6_9()
+    log("apply 0_6_9 to 0_7_1")
+    migrate_0_7_1()
+end
+
+function migrate_0_7_1()
+    log("apply 0_7_1 to 0_7_2")
+    migrate_0_7_2()
+end
+
+function migrate_0_7_2()
+    log("apply 0_7_2 to 0_7_3")
+
+    global.adventurers_guild_gui = {}
+    global.adventurers_guild_gui.fertility_frame = {}
+    global.adventurers_guild_gui.ore_frame = {}
+    global.adventurers_guild_gui.fluid_frame = {}
+    global.adventurers_guild_gui.alternative_frame = {}
+    global.adventurers_guild_gui.fertility_frame.dropdown_last_selected = 0
+    global.adventurers_guild_gui.ore_frame.dropdown_last_selected = 0
+    global.adventurers_guild_gui.fluid_frame.dropdown_last_selected = 0
+    global.adventurers_guild_gui.alternative_frame.dropdown_last_selected = 0
+    global.adventurers_guild_gui.send_explorers = false
+    global.adventurers_guild_gui.additional_frame_switch = "right"
 end
 
 function rebuild_houses(global_name, replacement)

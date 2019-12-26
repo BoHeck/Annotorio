@@ -93,7 +93,10 @@ data:extend(
                 },
                 pipe_connections = {
                     {
-                        positions = {{0, -2}, {2, 0}, {0, 2}, {-2, 0}}
+                        position = {-2, 0}
+                    },
+                    {
+                        position = {2, 0}
                     }
                 }
             },
@@ -174,6 +177,7 @@ data:extend(
             collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
             selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
             autoplace = nil,
+            render_layer = "lower-object",
             stage_counts = {0},
             stages = {
                 sheet = {

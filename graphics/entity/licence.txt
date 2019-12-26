@@ -110,4 +110,5 @@ table by "DeMoon" from https://sketchfab.com/3d-models/table-01-01-b3e125681ced4
 hr_sulfur.png and sulfur.png from Factorio by tinting "copper-ore.png". Do not share outside this mod!
 fresh_water.png is a modification of crude-oil.png from Factorio. Do not share outside this mod!
 ---------------
-
+adventurers_guild.png + adventurers_guild_s.png from ""The Drunk Troll" Tavern" by mrrobot from https://sketchfab.com/3d-models/the-drunk-troll-tavern-6cdc0bdee2df457ebf9ac06a3a9910b8 under https://creativecommons.org/licenses/by/4.0/
+---------------

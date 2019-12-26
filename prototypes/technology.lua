@@ -393,6 +393,10 @@ data:extend(
                 {
                     type = "unlock-recipe",
                     recipe = "carrack_from_loc"
+                },
+                {
+                    type = "unlock-recipe",
+                    recipe = "adventurers_guild"
                 }
             },
             unit = {
