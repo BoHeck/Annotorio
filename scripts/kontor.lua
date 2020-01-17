@@ -17,10 +17,6 @@ if (global.kontors == nil) then
     global.kontor_count = 0
 end
 
-if (global.banked_gold == nil) then
-    global.banked_gold = 50000000
-end
-
 local names_stage_1 = {
     "kontor_container_west",
     "kontor_container_east",
@@ -135,16 +131,20 @@ function if_kontor_build(event, entity_name)
     end
 
     local ent = event.created_entity
-    local player_index = event.player_index
+
+    --local player_index = event.player_index
+
     local data = determine_kontor_data(ent.direction, ent.position)
+    local player_force = game.players[event.player_index].force
+    local player = game.players[event.player_index]
 
     local ent1 =
         ent.surface.create_entity {
         name = data.container_name,
         position = data.container_position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -154,9 +154,9 @@ function if_kontor_build(event, entity_name)
         ent.surface.create_entity {
         name = "hidden_accumulator",
         position = ent.position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -166,9 +166,9 @@ function if_kontor_build(event, entity_name)
         ent.surface.create_entity {
         name = "hidden_pole",
         position = data.pole_position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -178,9 +178,9 @@ function if_kontor_build(event, entity_name)
         ent.surface.create_entity {
         name = "hidden_generator_for_pioneers",
         position = ent.position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -189,9 +189,9 @@ function if_kontor_build(event, entity_name)
         ent.surface.create_entity {
         name = "hidden_generator_for_settlers",
         position = ent.position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -200,9 +200,9 @@ function if_kontor_build(event, entity_name)
         ent.surface.create_entity {
         name = "hidden_generator_for_citizens",
         position = ent.position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -211,9 +211,9 @@ function if_kontor_build(event, entity_name)
         ent.surface.create_entity {
         name = "hidden_trade_post",
         position = data.trade_post_position,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -223,9 +223,9 @@ function if_kontor_build(event, entity_name)
         name = "anno_crane",
         position = data.crane_1_position,
         direction = data.crane_1_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -237,9 +237,9 @@ function if_kontor_build(event, entity_name)
         name = "anno_crane",
         position = data.crane_2_position,
         direction = data.crane_2_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -251,9 +251,9 @@ function if_kontor_build(event, entity_name)
         name = "water_rail_straight",
         position = data.rail_1_position,
         direction = data.rail_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -262,9 +262,9 @@ function if_kontor_build(event, entity_name)
         name = "water_rail_straight",
         position = data.rail_2_position,
         direction = data.rail_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -273,9 +273,9 @@ function if_kontor_build(event, entity_name)
         name = "water_rail_straight",
         position = data.rail_3_position,
         direction = data.rail_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -284,9 +284,9 @@ function if_kontor_build(event, entity_name)
         name = "water_rail_straight",
         position = data.rail_4_position,
         direction = data.rail_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -297,9 +297,9 @@ function if_kontor_build(event, entity_name)
         name = "anno_harbor",
         position = data.harbor_1_position,
         direction = data.harbor_1_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -309,9 +309,9 @@ function if_kontor_build(event, entity_name)
         name = "anno_harbor",
         position = data.harbor_2_position,
         direction = data.harbor_2_rotation,
-        force = game.players[player_index].force,
+        force = player_force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -333,16 +333,25 @@ function if_kontor_build(event, entity_name)
         harbor_2 = ent11
     }
 
-    ent2.energy = global.banked_gold
-    global.banked_gold = 0
+    ------------------------------------------
+    local force_index
+
+    for index, force2 in pairs(game.forces) do
+        if (force2 == player.force) then
+            force_index = index
+            break
+        end
+    end
+
+    ent2.energy = global.banked_gold[force_index]
+    global.banked_gold[force_index] = 0
     ------------------------------------------
 
     add_to_the_grid(ent3)
 
     ------------------------------------------
-    local f = game.players[player_index].force
-    if (set_progress(f, "settle_island", 1)) then
-        f.set_spawn_position(game.players[player_index].position, game.players[player_index].surface)
+    if (set_progress(player_force, "settle_island", 1)) then
+        player_force.set_spawn_position(player.position, player.surface)
     end
     ------------------------------------------
 
@@ -355,10 +364,20 @@ end
 --also handle shared_resources
 function ifKontorRemoved(event, entity_name)
     local ent = event.entity
+    local force_index
+
+    for index, force in pairs(game.forces) do
+        if (force == event.entity.force) then
+            force_index = index
+            break
+        end
+    end
+
+
 
     if string.find(entity_name, "kontor_container") then
         -----------------------------------------------------------
-        global.banked_gold = global.banked_gold + global.kontors[ent.unit_number].accumulator.energy --the gold is stored in a global variable until another kontor is build
+        global.banked_gold[force_index] = global.banked_gold[force_index] + global.kontors[ent.unit_number].accumulator.energy --the gold is stored in a global variable until another kontor is build
 
         global.kontor_count = global.kontor_count - 1
         -----------------------------------------------------------

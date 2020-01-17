@@ -1,7 +1,34 @@
 local desired_stack_size = 20
 
-if (global.castles == nil) then
-    global.castles = {}
+function init_castles()
+    log("init_castles")
+
+    if (global.castles == nil) then
+        global.castles = {}
+    end
+
+    for force_index, force in pairs(game.forces) do
+        log(force_index)
+        if (global.castles[force_index] == nil) then
+            global.castles[force_index] = {}
+        end
+    end
+
+    --------------------------------
+    if (global.towers == nil) then
+        global.towers = {}
+        global.towers[1] = {}
+        global.towers[2] = {}
+        global.towers[3] = {}
+    end
+
+    for force_index, force in pairs(game.forces) do
+        if (global.towers[1][force_index] == nil) then
+            global.towers[1][force_index] = {}
+            global.towers[2][force_index] = {}
+            global.towers[3][force_index] = {}
+        end
+    end
 end
 
 function if_castle_build(event, entity_name)
@@ -10,15 +37,15 @@ function if_castle_build(event, entity_name)
     end
 
     local ent = event.created_entity
-    local player_index = event.player_index
+    local player = game.players[event.player_index]
 
     local ent1 =
         ent.surface.create_entity {
         name = "castle",
         position = ent.position,
-        force = game.players[player_index].force,
+        force = player.force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
@@ -27,15 +54,18 @@ function if_castle_build(event, entity_name)
         ent.surface.create_entity {
         name = "castle_armory",
         position = ent.position,
-        force = game.players[player_index].force,
+        force = player.force,
         fast_replace = false,
-        player = game.players[player_index],
+        player = player,
         spill = false,
         raise_built = false,
         create_build_effect_smoke = false
     }
 
-    global.castles[ent2.unit_number] = {
+    log("if_castle_build")
+    log(player.force.name)
+
+    global.castles[player.force.name][ent2.unit_number] = {
         castle = ent1,
         armory = ent2
     }
@@ -47,22 +77,26 @@ function if_castle_removed(event, entity_name)
     local ent = event.entity
 
     if (entity_name == "castle_armory") then
-        global.castles[ent.unit_number].castle.destroy()
-        global.castles[ent.unit_number] = nil
+        global.castles[ent.force.name][ent.unit_number].castle.destroy()
+        global.castles[ent.force.name][ent.unit_number] = nil
     end
 end
 
 function castle_on_every_x_ticks()
-    distribute("anno_arrow", 1)
-    distribute("musket_ball", 2)
+    for force_index, force in pairs(game.forces) do
+        if (#force.players > 0) then
+            distribute("anno_arrow", 1, force_index)
+            distribute("musket_ball", 2, force_index)
+        end
+    end
 end
 
-function distribute(item_name, index)
+function distribute(item_name, tower_index, force_index)
     --log("distribute")
 
     local availible_items = 0
 
-    for i, castle in pairs(global.castles) do
+    for i, castle in pairs(global.castles[force_index]) do
         availible_items =
             availible_items + castle.armory.get_inventory(defines.inventory.chest).get_item_count(item_name)
         --log("castle")
@@ -72,7 +106,7 @@ function distribute(item_name, index)
     local availible_items_total = availible_items
     local count
 
-    for j, tower in pairs(global.towers[index]) do
+    for j, tower in pairs(global.towers[tower_index][force_index]) do
         if (availible_items <= 0) then
             break
         end
@@ -90,7 +124,7 @@ function distribute(item_name, index)
     --log("--------part2------------")
     local distributed_count = availible_items_total - availible_items
 
-    for i, castle in pairs(global.castles) do
+    for i, castle in pairs(global.castles[force_index]) do
         if (distributed_count <= 0) then
             break
         end

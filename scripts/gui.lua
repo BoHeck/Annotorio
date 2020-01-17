@@ -88,15 +88,21 @@ function create_gui_for_player(player)
 end
 
 function refresh_gui_on_every_x_ticks()
-    local final_gold_count = math.floor(get_gold_count() / 1000)
+    local final_gold_count
 
-    for _, player in pairs(game.players) do
-        player.gui.left.anno_gui.fast_travel_gui.number = get_cooldown(player.index)
+    for force_index, force in pairs(game.forces) do
+        final_gold_count = math.floor(get_gold_count(force_index) / 1000)
 
-        player.gui.left.anno_gui.gold_count.caption = final_gold_count
-        player.gui.left.anno_gui.wood_count.caption = global.banked_wood
-        player.gui.left.anno_gui.tool_count.caption = global.banked_tool
-        player.gui.left.anno_gui.brick_count.caption = global.banked_brick
+        for _, player in pairs(game.players) do
+            if (player.force == force) then
+                player.gui.left.anno_gui.fast_travel_gui.number = get_cooldown(player.index)
+
+                player.gui.left.anno_gui.gold_count.caption = final_gold_count
+                player.gui.left.anno_gui.wood_count.caption = global.banked_wood[force_index]
+                player.gui.left.anno_gui.tool_count.caption = global.banked_tool[force_index]
+                player.gui.left.anno_gui.brick_count.caption = global.banked_brick[force_index]
+            end
+        end
     end
 end
 

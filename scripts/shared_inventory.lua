@@ -7,21 +7,36 @@
 
 --This files aims to implement the shared inventory function.
 --There is a global stack of wood,tools and bricks that can be accessed by any player
---This is done by global.banked_wood ...
+--This is done by global.banked_wood[force_index] ...
 --And listening to  on_player_main_inventory_changed
 
 require("scripts.util")
 
 local resource_freshhold = 150 --The system aims to place this many resources into every players inventory.
 
-if (global.banked_wood == nil) then
-    global.banked_wood = 0
-end
-if (global.banked_tool == nil) then
-    global.banked_tool = 0
-end
-if (global.banked_brick == nil) then
-    global.banked_brick = 0
+function init_shared_inventory()
+    if (global.banked_wood == nil) then
+        global.banked_wood = {}
+    end
+    if (global.banked_tool == nil) then
+        global.banked_tool = {}
+    end
+    if (global.banked_brick == nil) then
+        global.banked_brick = {}
+    end
+
+    if (global.banked_gold == nil) then
+        global.banked_gold = {}
+    end
+
+    for force_index, force in pairs(game.forces) do
+        if (global.banked_wood[force_index] == nil) then
+            global.banked_wood[force_index] = 0
+            global.banked_tool[force_index] = 0
+            global.banked_brick[force_index] = 0
+            global.banked_gold[force_index] = 50000000
+        end
+    end
 end
 
 function dont_allow_inventory_placeholder_in_the_cursor(event)
@@ -40,31 +55,40 @@ end
 
 --If the inventory changed in some way then we need to find out if (wood,tool,brick) has changed and then update accordingly
 function inventory_changed_sync(player)
+    local force_index
+
+    for index, force in pairs(game.forces) do
+        if (force == player.force) then
+            force_index = index
+            break
+        end
+    end
+
     --log("inventory_changed_sync")
-    check(player, "wood", "banked_wood", "wood_placeholder")
-    check(player, "anno_tool", "banked_tool", "anno_tool_placeholder")
-    check(player, "ceramics", "banked_brick", "ceramics_placeholder")
+    check(force_index, player, "wood", "banked_wood", "wood_placeholder")
+    check(force_index, player, "anno_tool", "banked_tool", "anno_tool_placeholder")
+    check(force_index, player, "ceramics", "banked_brick", "ceramics_placeholder")
 end
 
-function check(player, item_name, global_name, placeholder_name)
+function check(force_index, player, item_name, global_name, placeholder_name)
     --log(item_name)
-    local reference_value = math.min(resource_freshhold, global[global_name])
+    local reference_value = math.min(resource_freshhold, global[global_name][force_index])
     local difference = player.get_main_inventory().get_item_count(item_name) - reference_value
 
     --log(reference_value)
     -- log(difference)
 
     if (difference ~= 0) then
-        global[global_name] = global[global_name] + difference
-        local insert_amount = math.min(resource_freshhold, global[global_name])
+        global[global_name][force_index] = global[global_name][force_index] + difference
+        local insert_amount = math.min(resource_freshhold, global[global_name][force_index])
 
         if (reference_value ~= insert_amount) then
             -- log(insert_amount)
-            sync_inventory_all(item_name, placeholder_name, insert_amount)
-            check(player, item_name, global_name, placeholder_name)
+            sync_inventory_force(player.force, item_name, placeholder_name, insert_amount)
+            check(force_index, player, item_name, global_name, placeholder_name)
         else
             sync_inventory(player, item_name, placeholder_name, insert_amount)
-            check(player, item_name, global_name, placeholder_name)
+            check(force_index, player, item_name, global_name, placeholder_name)
         end
     end
 end
@@ -72,19 +96,38 @@ end
 --This function needs to be called for every new player so his starting resources get banked
 function init_shared_resources(player)
     --  log("Init player")
+
+    local force_index
+
+    for index, force in pairs(game.forces) do
+        if (force == player.force) then
+            force_index = index
+            break
+        end
+    end
+
+    if (global.banked_wood[force_index] == nil) then
+        global.banked_wood[force_index] = 0
+        global.banked_tool[force_index] = 0
+        global.banked_brick[force_index] = 0
+    end
+
     --Move relevant items into the bank
-    global.banked_wood = global.banked_wood + player.get_main_inventory().get_item_count("wood")
-    global.banked_tool = global.banked_tool + player.get_main_inventory().get_item_count("anno_tool")
-    global.banked_brick = global.banked_brick + player.get_main_inventory().get_item_count("ceramics")
+    global.banked_wood[force_index] =
+        global.banked_wood[force_index] + player.get_main_inventory().get_item_count("wood")
+    global.banked_tool[force_index] =
+        global.banked_tool[force_index] + player.get_main_inventory().get_item_count("anno_tool")
+    global.banked_brick[force_index] =
+        global.banked_brick[force_index] + player.get_main_inventory().get_item_count("ceramics")
     --log(global.banked_wood)
     --log(global.banked_tool)
     -- log(global.banked_brick)
 
-    local min = math.min(resource_freshhold, global.banked_wood)
+    local min = math.min(resource_freshhold, global.banked_wood[force_index])
     sync_inventory(player, "wood", "wood_placeholder", min)
-    min = math.min(resource_freshhold, global.banked_tool)
+    min = math.min(resource_freshhold, global.banked_tool[force_index])
     sync_inventory(player, "anno_tool", "anno_tool_placeholder", min)
-    min = math.min(resource_freshhold, global.banked_brick)
+    min = math.min(resource_freshhold, global.banked_brick[force_index])
     sync_inventory(player, "ceramics", "ceramics_placeholder", min)
 end
 
@@ -95,10 +138,11 @@ function remove_all(item_name, inventory)
     end
 end
 
-function sync_inventory_all(item_name, placeholder_name, insert_amount)
+function sync_inventory_force(force, item_name, placeholder_name, insert_amount)
     for _, player in pairs(game.players) do
-        --  log(insert_amount)
-        sync_inventory(player, item_name, placeholder_name, insert_amount)
+        if (player.force == force) then
+            sync_inventory(player, item_name, placeholder_name, insert_amount)
+        end
     end
 end
 
@@ -115,54 +159,56 @@ function sync_inventory(player, item_name, placeholder_name, insert_amount)
 end
 
 function search_in_storage_on_every_x_ticks()
-    deliver_resource_to_bank("wood", "wood_placeholder", "banked_wood")
-    deliver_resource_to_bank("anno_tool", "anno_tool_placeholder", "banked_tool")
-    deliver_resource_to_bank("ceramics", "ceramics_placeholder", "banked_brick")
+    for force_index, force in pairs(game.forces) do
+        deliver_resource_to_bank(force_index, "wood", "wood_placeholder", "banked_wood")
+        deliver_resource_to_bank(force_index, "anno_tool", "anno_tool_placeholder", "banked_tool")
+        deliver_resource_to_bank(force_index, "ceramics", "ceramics_placeholder", "banked_brick")
 
-    --------------------technlogy--------------------
-    local index
-
-    for i, kontor in pairs(global.kontors) do --TODO this needs to change once players can have more than one kontor
-        index = i
+        update_technology_resource_requierements(force_index)
     end
+end
 
-    if (index ~= nil) then
-        if (global.kontors[index].kontor.force.current_research ~= nil) then
-            local t_name = global.kontors[index].kontor.force.current_research.name
+--Some technologies progress depends on resources which is handled here
+function update_technology_resource_requierements(force_index)
+    --If the current research is listed in global.anno_technology_resource_requierements
+    --1) determine the progress
+    --2) if the requierements are meet then aquiere the technology and deduce resources
 
-            if (global.anno_technology_resource_requierements[t_name] ~= nil) then
-                local progress = check_progress(global.anno_technology_resource_requierements[t_name])
+    local force = game.forces[force_index]
 
-                if (progress >= 1) then
-                    global.kontors[index].kontor.force.current_research.researched = true
-                    debug_print("consume")
-                    consume(global.anno_technology_resource_requierements[t_name])
-                else
-                    set_progress(global.kontors[index].kontor.force, t_name, progress)
-                end
+    if (force.current_research ~= nil) then
+        local t_name = force.current_research.name
+
+        if (global.anno_technology_resource_requierements[t_name] ~= nil) then
+            local progress = check_progress(force_index, global.anno_technology_resource_requierements[t_name])
+
+            if (progress >= 1) then
+                force.current_research.researched = true
+                consume(force_index, global.anno_technology_resource_requierements[t_name])
+            else
+                set_progress(force, t_name, progress)
             end
         end
     end
-    -------------------------------------------------
 end
 
-function consume(resources)
+function consume(force_index, resources)
     for i, v in pairs(resources) do
-        consume_single(v.name, v.amount)
+        consume_single(force_index, v.name, v.amount)
     end
 end
 
-function consume_single(item_name, amount)
+function consume_single(force_index, item_name, amount)
     if (item_name == "wood") then
-        change_banked_count(item_name, "wood_placeholder", "banked_wood", -amount)
+        change_banked_count(force_index, item_name, "wood_placeholder", "banked_wood", -amount)
         return
     end
     if (item_name == "anno_tool") then
-        change_banked_count(item_name, "anno_tool_placeholder", "banked_tool", -amount)
+        change_banked_count(force_index, item_name, "anno_tool_placeholder", "banked_tool", -amount)
         return
     end
     if (item_name == "ceramics") then
-        change_banked_count(item_name, "ceramics_placeholder", "banked_brick", -amount)
+        change_banked_count(force_index, item_name, "ceramics_placeholder", "banked_brick", -amount)
         return
     end
     -------------------------------------------------
@@ -171,135 +217,135 @@ function consume_single(item_name, amount)
     local removed
 
     for i, kontor in pairs(global.kontors) do
-        res = kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
-        removed = math.min(res, amount_left)
-        amount_left = amount_left - removed
-        kontor.kontor.get_inventory(defines.inventory.chest).remove({name = item_name, count = removed})
-        if (amount_left == 0) then
-            return
+        if (kontor.kontor.force == game.forces[force_index]) then
+            res = kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
+            removed = math.min(res, amount_left)
+            amount_left = amount_left - removed
+            kontor.kontor.get_inventory(defines.inventory.chest).remove({name = item_name, count = removed})
+            if (amount_left == 0) then
+                return
+            end
         end
     end
 
     for i, market in pairs(global.markets) do
-        res = market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
-        removed = math.min(res, amount_left)
-        amount_left = amount_left - removed
-        market.chest.get_inventory(defines.inventory.chest).remove({name = item_name, count = removed})
-        if (amount_left == 0) then
-            return
+        if (market.chest.force == force) then
+            res = market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
+            removed = math.min(res, amount_left)
+            amount_left = amount_left - removed
+            market.chest.get_inventory(defines.inventory.chest).remove({name = item_name, count = removed})
+            if (amount_left == 0) then
+                return
+            end
         end
     end
 end
 
-function check_progress(resources)
+function check_progress(force_index, resources)
     local sum = 0
     local found = 0
+
     for i, v in pairs(resources) do
-        found = found + search(v.name, v.amount)
+        found = found + search(force_index, v.name, v.amount)
         sum = sum + v.amount
     end
 
     return (found / sum)
 end
 
-function search(name, amount)
+function search(force_index, name, amount)
     if (name == "wood") then
-        return math.min(amount, global.banked_wood)
+        return math.min(amount, global.banked_wood[force_index])
     end
     if (name == "anno_tool") then
-        return math.min(amount, global.banked_tool)
+        return math.min(amount, global.banked_tool[force_index])
     end
     if (name == "ceramics") then
-        return math.min(amount, global.banked_brick)
+        return math.min(amount, global.banked_brick[force_index])
     end
 
-    return math.min(search_resources_in_storage(name), amount)
+    return math.min(search_resources_in_storage(game.forces[force_index], name), amount)
 end
 
-function get_gold_count()
+function get_gold_count(force_index)
     local gold = 0
 
-    for i, kontor in pairs(global.kontors) do --TODO this needs to change once players can have more than one kontor
-        gold = gold + kontor.accumulator.energy
+    for i, kontor in pairs(global.kontors) do
+        if (kontor.kontor.force == game.forces[force_index]) then
+            gold = gold + kontor.accumulator.energy
+        end
     end
-    return gold + global.banked_gold
+    return gold + global.banked_gold[force_index]
 end
 
-function search_resources_in_storage(item_name)
+function search_resources_in_storage(force, item_name)
     local new_res = 0
 
     for i, kontor in pairs(global.kontors) do
-        new_res = new_res + kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
+        if (kontor.kontor.force == force) then
+            new_res = new_res + kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
+        end
     end
 
     for i, market in pairs(global.markets) do
-        new_res = new_res + market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
+        if (market.chest.force == force) then
+            new_res = new_res + market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
+        end
     end
 
     return new_res
 end
 
-function deliver_resource_to_bank(item_name, placeholder_name, global_name)
+function deliver_resource_to_bank(force_index, item_name, placeholder_name, global_name)
     local new_res = 0
     local limit = settings.global["do_not_send_more_resources_after_limit"]["value"]
+    local force = game.forces[force_index]
 
     if (limit >= 0) then
-        if (global[global_name] >= limit) then
+        if (global[global_name][force_index] >= limit) then
             return
         end
     end
 
+    ------Handle Kontors------
     if (settings.global["kontors_function_like_markets"]["value"]) then
         for i, kontor in pairs(global.kontors) do
-            new_res = new_res + kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
-            remove_all(item_name, kontor.kontor.get_inventory(defines.inventory.chest))
+            if (kontor.kontor.force == force) then
+                new_res = new_res + kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
+                remove_all(item_name, kontor.kontor.get_inventory(defines.inventory.chest))
+            end
         end
     end
 
+    ------Handle Markets------
     for i, market in pairs(global.markets) do
-        new_res = new_res + market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
-        remove_all(item_name, market.chest.get_inventory(defines.inventory.chest))
+        if (market.chest.force == force) then
+            new_res = new_res + market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
+            remove_all(item_name, market.chest.get_inventory(defines.inventory.chest))
+        end
     end
 
-    global[global_name] = global[global_name] + new_res
+    global[global_name][force_index] = global[global_name][force_index] + new_res
 
-    if (new_res ~= 0 and (global[global_name] - new_res) < resource_freshhold) then
-        sync_inventory_all(item_name, placeholder_name, math.min(resource_freshhold, global[global_name]))
+    if (new_res ~= 0 and (global[global_name][force_index] - new_res) < resource_freshhold) then
+        sync_inventory_force(
+            force,
+            item_name,
+            placeholder_name,
+            math.min(resource_freshhold, global[global_name][force_index])
+        )
     end
 end
 
---[[
-function deliver_kontor_resource_with_limit(item_name, global_name, limit)
-    local maximum = limit - global[global_name]
-    local new_res = 0
-    local curren_res = 0
+function change_banked_count(force_index, item_name, placeholder_name, global_name, amount)
+    global[global_name][force_index] = global[global_name][force_index] + amount
 
-    if (maximum == 0) then
-        return
-    end
-
-    for i, kontor in pairs(global.kontors) do
-        curren_res = kontor.kontor.get_inventory(defines.inventory.chest).get_item_count(item_name)
-
-        remove_amount(item_name, kontor.kontor.get_inventory(defines.inventory.chest), math.min(curren_res, maximum))
-        new_res = new_res + math.min(curren_res, maximum)
-        maximum = maximum - math.min(curren_res, maximum)
-    end
-
-    for i, market in pairs(global.markets) do
-        curren_res = market.chest.get_inventory(defines.inventory.chest).get_item_count(item_name)
-
-        remove_amount(item_name, market.chest.get_inventory(defines.inventory.chest), math.min(curren_res, maximum))
-        new_res = new_res + math.min(curren_res, maximum)
-        maximum = maximum - math.min(curren_res, maximum)
-    end
-    global[global_name] = global[global_name] + new_res
-end
-]]
-function change_banked_count(item_name, placeholder_name, global_name, amount)
-    global[global_name] = global[global_name] + amount
-
-    if (amount ~= 0 and (global[global_name] - amount) < resource_freshhold) then
-        sync_inventory_all(item_name, placeholder_name, math.min(resource_freshhold, global[global_name]))
+    if (amount ~= 0 and (global[global_name][force_index] - amount) < resource_freshhold) then
+        sync_inventory_force(
+            game.forces[force_index],
+            item_name,
+            placeholder_name,
+            math.min(resource_freshhold, global[global_name][force_index])
+        )
     end
 end

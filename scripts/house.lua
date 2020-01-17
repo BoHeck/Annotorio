@@ -59,7 +59,8 @@ function setup_needs()
         luxus_buildings = 3
     }
     global.settler_needs["bacon_omelet"] = {
-        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 170,8854167,
+        SellValuePerTick = settings.global["tax_multiplier"]["value"] * 170,
+        8854167,
         DurabilityLossPerTick = 0.003125,
         luxus_buildings = 4
     }
@@ -355,17 +356,26 @@ end
 
 function upgrade(house, upgrade_table, houses)
     local unit_number = house.unit_number
+    local force_index
+
+    for index, force in pairs(game.forces) do
+        if (force == house.force) then
+            force_index = index
+            break
+        end
+    end
 
     if
-        (global.banked_wood < upgrade_table.cost_wood or global.banked_wood < upgrade_table.cost_tools or
-            global.banked_wood < upgrade_table.cost_bricks)
+        (global.banked_wood[force_index] < upgrade_table.cost_wood or
+            global.banked_tool[force_index] < upgrade_table.cost_tools or
+            global.banked_brick[force_index] < upgrade_table.cost_bricks)
      then
         return false
     end
 
-    change_banked_count("wood", "wood_placeholder", "banked_wood", -upgrade_table.cost_wood)
-    change_banked_count("anno_tool", "anno_tool_placeholder", "banked_tool", -upgrade_table.cost_tools)
-    change_banked_count("ceramics", "ceramics_placeholder", "banked_brick", -upgrade_table.cost_bricks)
+    change_banked_count(force_index, "wood", "wood_placeholder", "banked_wood", -upgrade_table.cost_wood)
+    change_banked_count(force_index, "anno_tool", "anno_tool_placeholder", "banked_tool", -upgrade_table.cost_tools)
+    change_banked_count(force_index, "ceramics", "ceramics_placeholder", "banked_brick", -upgrade_table.cost_bricks)
 
     --store input resources
     local inv = house.get_inventory(defines.inventory.assembling_machine_input)
@@ -392,8 +402,6 @@ function upgrade(house, upgrade_table, houses)
     }
 
     --inserting stored resources
-    --ent.set_recipe("settler_needs")
-    --TODO this is a hack , instead it needs to be set dynamicly
     inv = ent.get_inventory(defines.inventory.assembling_machine_input)
 
     for item_name, value in pairs(res) do
@@ -408,7 +416,7 @@ end
 
 function get_number_of_luxus_buildings(entry)
     local number = 0
-    for i, luxus_building in ipairs(global.luxus_buildings) do --TODO check if this iterates 1 2 3 4 5....
+    for i, luxus_building in ipairs(global.luxus_buildings) do
         if (entry[luxus_building.name] ~= nil) then
             number = number + 1
         else

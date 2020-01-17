@@ -245,6 +245,9 @@ function on_init_collection()
       remote.call("freeplay", "set_respawn_items", {})
       remote.call("freeplay", "set_skip_intro", true)
    end
+
+   init_shared_inventory()
+   init_castles()
 end
 
 function on_runtime_mod_setting_changed_collection()
@@ -268,10 +271,19 @@ function on_selected_entity_changed_collection(event)
 end
 
 function on_research_finished_collection(event)
-   change_banked_count("anno_tool", "anno_tool_placeholder", "banked_tool", 12)
+   local force_index
+
+   for index, force in pairs(game.forces) do
+      if (force == event.research.force) then
+         force_index = index
+         break
+      end
+   end
+
+   change_banked_count(force_index, "anno_tool", "anno_tool_placeholder", "banked_tool", 12)
 
    for _, player in pairs(game.players) do
-      if player.connected then
+      if player.connected and player.force == event.research.force then
          player.print {"technology_finished_message", event.research.localised_name}
       end
    end
@@ -302,6 +314,60 @@ end
 
 function on_gui_switch_state_changed_collection(event)
    if_adventurers_guild_gui_state_changed(event)
+end
+
+function on_force_created_collection(event)
+   local force_index = event.force.name
+
+   global.banked_wood[force_index] = 0
+   global.banked_tool[force_index] = 0
+   global.banked_brick[force_index] = 0
+   global.banked_gold[force_index] = 50000000
+   global.castles[force_index] = {}
+
+   global.towers[1][force_index] = {}
+   global.towers[2][force_index] = {}
+   global.towers[3][force_index] = {}
+end
+
+function on_forces_merged_collection(event)
+   local force_index = event.destination.name
+
+   change_banked_count(force_index, "wood", "wood_placeholder", "banked_wood", global.banked_wood[event.source_name])
+   change_banked_count(
+      force_index,
+      "anno_tool",
+      "anno_tool_placeholder",
+      "banked_tool",
+      global.banked_tool[event.source_name]
+   )
+   change_banked_count(
+      force_index,
+      "ceramics",
+      "ceramics_placeholder",
+      "banked_brick",
+      global.banked_brick[event.source_name]
+   )
+
+   for i, v in pairs(global.castles[event.source_name]) do
+      global.castles[force_index][i] = v
+   end
+
+   for i, v in pairs(global.towers) do
+      for j, w in pairs(global.towers[i][event.source_name]) do
+         global.towers[i][force_index][j] = w
+      end
+   end
+
+   --Resetting the resources of the destroyed force
+   global.banked_wood[event.source_name] = 0
+   global.banked_tool[event.source_name] = 0
+   global.banked_brick[event.source_name] = 0
+   global.banked_gold[event.source_name] = 50000000
+   global.castles[event.source_name] = {}
+   global.towers[1][event.source_name] = {}
+   global.towers[2][event.source_name] = {}
+   global.towers[3][event.source_name] = {}
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -410,3 +476,6 @@ script.on_event(defines.events.on_gui_opened, on_gui_opened_collection)
 script.on_event(defines.events.on_gui_closed, on_gui_closed_collection)
 script.on_event(defines.events.on_gui_click, on_gui_click_collection)
 script.on_event(defines.events.on_gui_switch_state_changed, on_gui_switch_state_changed_collection)
+
+script.on_event(defines.events.on_force_created, on_force_created_collection)
+script.on_event(defines.events.on_forces_merged, on_forces_merged_collection)
